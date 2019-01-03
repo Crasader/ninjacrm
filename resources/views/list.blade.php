@@ -444,8 +444,7 @@
 				} else {
 					filter = '';
 				}
-				var url = '{{ URL::to('
-				set_entity_filter / ' . $entityType) }}' + '/' + filter;
+				var url = '{{ URL::to('				set_entity_filter / ' . $entityType) }}' + '/' + filter;
 				$.get(url, function (data) {
 					refreshDatatable_ {
 						{

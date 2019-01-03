@@ -1,6 +1,5 @@
 <script type="text/javascript">
-    var currencies = {!!\Cache::get('currencies') !!
-    };
+    var currencies = {!!\Cache::get('currencies')!!};
     var currencyMap = {};
     for (var i = 0; i < currencies.length; i++) {
         var currency = currencies[i];
@@ -8,42 +7,25 @@
         currencyMap[currency.code] = currency;
     }
 
-    var countries = {!!\Cache::get('countries') !!
-    };
+    var countries = {!!\Cache::get('countries') !!};
     var countryMap = {};
     for (var i = 0; i < countries.length; i++) {
         var country = countries[i];
         countryMap[country.id] = country;
     }
 
-    fx.base = '{{ config('
-    ninja.exchange_rates_base ') }}';
-    fx.rates = {!!cache('currencies') -
-        > keyBy('code') -
-        > map(function ($item, $key) {
-            return $item->exchange_rate ? : 1;
-        });!!
-    };
+    fx.base = '{{ config('ninja.exchange_rates_base') }}';
+    fx.rates = {!!cache('currencies')->keyBy('code')->map(function ($item, $key) { return $item->exchange_rate ? : 1;});!!};
 
     var NINJA = NINJA || {};
     @if(Auth::check())
     NINJA.primaryColor = "{{ Auth::user()->account->primary_color }}";
     NINJA.secondaryColor = "{{ Auth::user()->account->secondary_color }}";
-    NINJA.fontSize = {
-        {
-            Auth::user()->account->font_size ? : DEFAULT_FONT_SIZE
-        }
-    };
-    NINJA.headerFont = {!!json_encode(Auth::user()->account->getHeaderFontName()) !!
-    };
-    NINJA.bodyFont = {!!json_encode(Auth::user()->account->getBodyFontName()) !!
-    };
+    NINJA.fontSize = {{  Auth::user()->account->font_size ? : DEFAULT_FONT_SIZE }};
+    NINJA.headerFont = {!!json_encode(Auth::user()->account->getHeaderFontName()) !!};
+    NINJA.bodyFont = {!!json_encode(Auth::user()->account->getBodyFontName()) !!};
     @else
-    NINJA.fontSize = {
-        {
-            DEFAULT_FONT_SIZE
-        }
-    };
+    NINJA.fontSize = {{DEFAULT_FONT_SIZE}};
     @endif
 
     function formatMoneyInvoice(value, invoice, decorator, precision) {
@@ -82,11 +64,7 @@
         }
 
         if (!currencyId) {
-            currencyId = {
-                {
-                    Session::get(SESSION_CURRENCY, DEFAULT_CURRENCY)
-                }
-            };
+            currencyId = {{ Session::get(SESSION_CURRENCY, DEFAULT_CURRENCY) }};
         }
 
         if (!precision) {
@@ -109,21 +87,13 @@
         value = NINJA.parseFloat(value);
 
         if (!currencyId) {
-            currencyId = {
-                {
-                    Session::get(SESSION_CURRENCY, DEFAULT_CURRENCY)
-                }
-            };
+            currencyId = {{ Session::get(SESSION_CURRENCY, DEFAULT_CURRENCY) }};
         }
 
         var currency = currencyMap[currencyId];
 
         if (!currency) {
-            currency = currencyMap[{
-                {
-                    Session::get(SESSION_CURRENCY, DEFAULT_CURRENCY)
-                }
-            }];
+            currencyId = {{ Session::get(SESSION_CURRENCY, DEFAULT_CURRENCY) }};
         }
 
         if (!decorator) {
@@ -144,11 +114,7 @@
         var code = currency.code;
         var swapSymbol = currency.swap_currency_symbol;
 
-        if (countryId && currencyId == {
-                {
-                    CURRENCY_EURO
-                }
-            }) {
+        if (countryId && currencyId == {{ CURRENCY_EURO }}) {
             var country = countryMap[countryId];
             swapSymbol = country.swap_currency_symbol;
             if (country.thousand_separator) {

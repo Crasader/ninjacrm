@@ -60,11 +60,7 @@
     <script type="text/javascript">
         var NINJA = NINJA || {};
         NINJA.fontSize = 9;
-        NINJA.isRegistered = {
-            {
-                Utils::isRegistered() ? 'true' : 'false'
-            }
-        };
+        NINJA.isRegistered = true;
         NINJA.loggedErrorCount = 0;
 
         window.onerror = function (errorMsg, url, lineNumber, column, error) {
@@ -96,8 +92,7 @@
             try {
                 $.ajax({
                     type: 'GET',
-                    url: '{{ URL::to('
-                    log_error ') }}',
+                    url: '{{ URL::to('                    log_error ') }}',
                     data: 'error=' + encodeURIComponent(errorMsg + ' | Line: ' + lineNumber + ', Column: ' +
                             column) +
                         '&url=' + encodeURIComponent(window.location)
@@ -113,18 +108,14 @@
         }
 
         // http://t4t5.github.io/sweetalert/
-        function sweetConfirm(successCallback, text, title, cancelCallback) {
-            title = title || {!!json_encode(trans("texts.are_you_sure")) !!
-            };
+        function sweetConfirm(successCallback, text, title, cancelCallback) {title = title || test;
             swal({
                 //type: "warning",
                 //confirmButtonColor: "#DD6B55",
                 title: title,
                 text: text,
-                cancelButtonText: {!!json_encode(trans("texts.no")) !!
-                },
-                confirmButtonText: {!!json_encode(trans("texts.yes")) !!
-                },
+                cancelButtonText: {!!json_encode(trans("texts.no")) !!},
+                confirmButtonText: {!!json_encode(trans("texts.yes")) !!},
                 showCancelButton: true,
                 closeOnConfirm: false,
                 allowOutsideClick: true,
@@ -140,17 +131,13 @@
 
         function showPasswordStrength(password, score) {
             if (password) {
-                var str = {!!json_encode(trans('texts.password_strength')) !!
-                } + ': ';
+                var str = {!!json_encode(trans('texts.password_strength')) !!} + ': ';
                 if (password.length < 8 || score < 50) {
-                    str += {!!json_encode(trans('texts.strength_weak')) !!
-                    };
+                    str += {!!json_encode(trans('texts.strength_weak')) !!};
                 } else if (score < 75) {
-                    str += {!!json_encode(trans('texts.strength_good')) !!
-                    };
+                    str += {!!json_encode(trans('texts.strength_good')) !!};
                 } else {
-                    str += {!!json_encode(trans('texts.strength_strong')) !!
-                    };
+                    str += {!!json_encode(trans('texts.strength_strong')) !!};
                 }
                 $('#passwordStrength').html(str);
             } else {
@@ -167,8 +154,7 @@
             "oLanguage": {
                 'sEmptyTable': "{{ trans('texts.empty_table') }}",
                 'sInfoEmpty': "{{ trans('texts.empty_table_footer') }}",
-                'sLengthMenu': '_MENU_ {{ trans('
-                texts.rows ') }}',
+                'sLengthMenu': '_MENU_ {{ trans('texts.rows') }}',
                 'sInfo': "{{ trans('texts.datatable_info', ['start' => '_START_', 'end' => '_END_', 'total' => '_TOTAL_']) }}",
                 'sSearch': ''
             }
@@ -280,11 +266,7 @@
     @yield('body')
 
     <script type="text/javascript">
-        NINJA.formIsChanged = {
-            {
-                isset($formIsChanged) && $formIsChanged ? 'true' : 'false'
-            }
-        };
+        NINJA.formIsChanged = {{isset($formIsChanged) && $formIsChanged ? 'true' : 'false'}};
 
         NINJA.parseFloat = function (str) {
             if (!str) {

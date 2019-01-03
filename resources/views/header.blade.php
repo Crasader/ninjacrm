@@ -135,13 +135,7 @@
 
     $(function () {
         // auto-logout after 8 hours
-        window.setTimeout(function () {
-            window.location = '{{ URL::to(' / logout ? reason = inactive ') }}';
-        }, {
-            {
-                1000 * env('AUTO_LOGOUT_SECONDS', (60 * 60 * 8))
-            }
-        });
+        window.setTimeout(function () {window.location = '{{ URL::to('/logout?reason=inactive') }}';}, {{ 1000 * env('AUTO_LOGOUT_SECONDS', (60 * 60 * 8))}});
 
         // auto-hide status alerts
         window.setTimeout(function () {
@@ -151,11 +145,7 @@
         /* Set the defaults for Bootstrap datepicker */
         $.extend(true, $.fn.datepicker.defaults, {
             //language: '{{ $appLanguage }}', // causes problems with some languages (ie, fr_CA) if the date includes strings (ie, July 31, 2016)
-            weekStart: {
-                {
-                    Session::get('start_of_week')
-                }
-            }
+            weekStart: {{ Session::get('start_of_week') }}
         });
 
         if (isStorageSupported()) {
@@ -188,8 +178,7 @@
                 $("#wrapper").toggleClass("toggled-" + side);
 
                 var toggled = $("#wrapper").hasClass("toggled-" + side) ? '1' : '0';
-                $.post('{{ url('
-                    save_sidebar_state ') }}?show_' + side + '=' + toggled);
+                $.post('{{ url('save_sidebar_state') }}?show_' + side + '=' + toggled);
 
                 if (isStorageSupported()) {
                     localStorage.setItem('show_' + side + '_sidebar', toggled);
@@ -203,8 +192,7 @@
                 if (storage != toggled) {
                     setTimeout(function () {
                         $("#wrapper").toggleClass("toggled-" + side);
-                        $.post('{{ url('
-                            save_sidebar_state ') }}?show_' + side + '=' + storage);
+                        $.post('{{ url('save_sidebar_state') }}?show_' + side + '=' + storage);
                     }, 200);
                 }
             }

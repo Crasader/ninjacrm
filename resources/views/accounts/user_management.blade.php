@@ -42,8 +42,7 @@ trans('texts.action'))
 
     function setTrashVisible() {
         var checked = $('#trashed').is(':checked');
-        var url = '{{ URL::to('
-        set_entity_filter / user ') }}' + (checked ? '/active,archived' : '/active');
+        var url = '{{ URL::to('set_entity_filter/user') }}' + (checked ? '/active,archived' : '/active');
 
         $.get(url, function (data) {
             refreshDatatable();

@@ -187,8 +187,7 @@
     function serverPreview(field) {
         $('#templatePreviewModal').modal('show');
         var template = $('#email_template_' + field).val();
-        var url = '{{ URL::to('
-        settings / email_preview ') }}?template=' + template;
+        var url = '{{ URL::to('settings/email_preview') }}?template=' + template;
         $('#server-preview').attr('src', url).load(function () {
             // disable links in the preview
             $('iframe').contents().find('a').each(function (index) {
