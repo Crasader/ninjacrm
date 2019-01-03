@@ -15,9 +15,18 @@ class CreateInvoiceRequest extends InvoiceRequest
     public function authorize()
     {
         if (request()->input('is_quote'))
+		{
             return $this->user()->can('createEntity', ENTITY_QUOTE);
-        else
-            return $this->user()->can('create', Invoice::class);
+        }
+		else {
+
+            if(request()->input('is_recurring'))
+                $standardOrRecurringInvoice = ENTITY_RECURRING_INVOICE;
+            else
+                $standardOrRecurringInvoice = ENTITY_INVOICE;
+
+            return $this->user()->can('create', $standardOrRecurringInvoice);
+        }
 
     }
 

@@ -18,6 +18,8 @@ Detailed Guides
 
 - HostGator: `catsinja.com <http://blog.catsinja.com/2018/10/setup-invoice-ninja-on-hostgator-shared/>`_
 
+- HostGator: `catsinja.com <http://blog.catsinja.com/2018/10/setup-invoice-ninja-on-hostgator-shared/>`_
+
 Automatic Install/Update
 ^^^^^^^^^^^^^^^^^^^^^^^^
 

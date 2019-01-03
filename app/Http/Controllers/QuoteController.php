@@ -67,6 +67,7 @@ class QuoteController extends BaseController
         return $this->invoiceService->getDatatable($accountId, $clientPublicId, ENTITY_QUOTE, $search);
     }
 
+
     public function getRecurringDatatable($clientPublicId = null)
     {
         $accountId = Auth::user()->account_id;

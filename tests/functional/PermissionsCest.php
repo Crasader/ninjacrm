@@ -412,20 +412,6 @@ class PermissionsCest
         $I->seeResponseCodeIs(403);
     }
 
-    public function testViewInvoice(FunctionalTester $I)
-    {
-        $I->amOnPage('/invoices/1');
-        $I->canSeeInCurrentUrl('dashboard');
-    }
-
-    public function testEditInvoice(FunctionalTester $I)
-    {
-        $I->amOnPage('/invoices/11/edit');
-        $I->canSeeInCurrentUrl('dashboard');
-    }
-
-
-
     public function testCreateQuote(FunctionalTester $I)
     {
         $I->amOnPage('/quotes/create');
@@ -498,7 +484,6 @@ class PermissionsCest
         $I->amOnPage('/quotes/1');
         $I->seeResponseCodeIs(403);
     }
-
 
     public function setCreatePermissions(FunctionalTester $I)
     {

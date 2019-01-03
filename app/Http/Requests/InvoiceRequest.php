@@ -9,6 +9,7 @@ class InvoiceRequest extends EntityRequest
 {
     protected $entityType = ENTITY_INVOICE;
 
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -16,7 +17,6 @@ class InvoiceRequest extends EntityRequest
      */
     public function authorize()
     {
-
         $invoice = parent::entity();
         $entity  = $invoice ? $invoice->subEntityType() : ENTITY_INVOICE;
 
@@ -67,10 +67,6 @@ class InvoiceRequest extends EntityRequest
 
         if($invoice && $invoice->isQuote() && request()->is('*quotes/*') && request()->isMethod('get') && $this->user()->can('view', $invoice, $entity))
             return true;
-
-        if ($invoice) {
-            HistoryUtils::trackViewed($invoice);
-        }
 
         return false;
     }

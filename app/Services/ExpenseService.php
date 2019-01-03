@@ -114,4 +114,5 @@ class ExpenseService extends BaseService
 
         return $this->datatableService->createDatatable($datatable, $query);
     }
+
 }

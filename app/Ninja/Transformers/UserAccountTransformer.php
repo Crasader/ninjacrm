@@ -216,7 +216,6 @@ class UserAccountTransformer extends EntityTransformer
             'email_template_reminder1' => $account->getEmailTemplate('reminder1'),
             'email_template_reminder2' => $account->getEmailTemplate('reminder2'),
             'email_template_reminder3' => $account->getEmailTemplate('reminder3'),
-
         ];
     }
 }

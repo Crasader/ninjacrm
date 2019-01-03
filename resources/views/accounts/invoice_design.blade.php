@@ -304,7 +304,7 @@
 									->help($account->isModuleEnabled(ENTITY_PROPOSAL)
 											? trans('texts.background_image_help', ['link' => link_to('/proposals/create?show_assets=true', trans('texts.proposal_editor'), ['target' => '_blank'])])
 											//: trans('texts.enable_proposals_for_background', ['link' => link_to('/settings/account_management', trans('texts.click_here'), ['target' => '_blank'])])
-											: 'To upload a background image <a href="http://www.ninja.test/settings/account_management" target="_blank">click here</a> to enable the proposals module.'
+											: 'To upload a background image <a href="http://www.ninja.test/settings/account_management" target="_blank">click here</a> to enable the proposals module.' 
 										) !!}
 						@endif
 

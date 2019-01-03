@@ -380,6 +380,17 @@ class User extends Authenticatable
         return false;
     }
 
+
+    public function viewModel($model, $entityType)
+    {
+        if($this->hasPermission('view_'.$entityType))
+            return true;
+        elseif($model->user_id == $this->id)
+            return true;
+        else
+            return false;
+    }
+
     /**
      * @param $entity
      *
@@ -545,11 +556,11 @@ class User extends Authenticatable
         return array_combine($keys, $values);
     }
 
+
     public function isTicketMaster()
     {
         return $this->id == $this->account->account_ticket_settings->ticket_master_id;
     }
-
 
 }
 
