@@ -1,27 +1,27 @@
 @extends('header')
 
 @section('head')
-    @parent
+@parent
 
-    @include('money_script')
+@include('money_script')
 
-    <style type="text/css">
-        table.accounts-table > thead > tr > th.header {
-            background-color: #777 !important;
-            color:#fff !important;
-            padding-top:8px;
-        }
-    </style>
+<style type="text/css">
+    table.accounts-table>thead>tr>th.header {
+        background-color: #777 !important;
+        color: #fff !important;
+        padding-top: 8px;
+    }
+</style>
 @stop
 
 @section('content')
-    @parent
+@parent
 
-    @include('accounts.nav', ['selected' => ACCOUNT_BANKS])
+@include('accounts.nav', ['selected' => ACCOUNT_BANKS])
 
-    {!! Former::open()->addClass('main-form warn-on-exit') !!}
+{!! Former::open()->addClass('main-form warn-on-exit') !!}
 
-    <div class="panel panel-default">
+<div class="panel panel-default">
     <div class="panel-heading">
         <h3 class="panel-title" data-bind="text: title">&nbsp;</h3>
     </div>
@@ -30,48 +30,51 @@
         <div data-bind="visible: page() == 'login'">
             <div class="form-padding-right">
                 @if ($bankAccount)
-                    {!! Former::populate($bankAccount) !!}
-                    {!! Former::hidden('public_id') !!}
+                {!! Former::populate($bankAccount) !!}
+                {!! Former::hidden('public_id') !!}
                 @else
-                    {!! Former::populateField('app_version', DEFAULT_BANK_APP_VERSION) !!}
-                    {!! Former::populateField('ofx_version', DEFAULT_BANK_OFX_VERSION) !!}
-                    {!! Former::select('bank_id')
-                            ->data_bind('combobox: bank_id')
-                            ->addOption('', '')
-                            ->fromQuery($banks, 'name', 'id')
-                            ->blockHelp(trans('texts.bank_accounts_help', ['link' => link_to(OFX_HOME_URL, trans('texts.us_banks'), ['target' => '_blank'])]))  !!}
+                {!! Former::populateField('app_version', DEFAULT_BANK_APP_VERSION) !!}
+                {!! Former::populateField('ofx_version', DEFAULT_BANK_OFX_VERSION) !!}
+                {!! Former::select('bank_id')
+                ->data_bind('combobox: bank_id')
+                ->addOption('', '')
+                ->fromQuery($banks, 'name', 'id')
+                ->blockHelp(trans('texts.bank_accounts_help', ['link' => link_to(OFX_HOME_URL, trans('texts.us_banks'),
+                ['target' => '_blank'])])) !!}
                 @endif
 
-                <br/>
+                <br />
 
                 {!! Former::password('bank_username')
-                        ->data_bind("value: bank_username, valueUpdate: 'afterkeydown'")
-                        ->label(trans('texts.username'))
-                        ->data_lpignore('true') !!}
+                ->data_bind("value: bank_username, valueUpdate: 'afterkeydown'")
+                ->label(trans('texts.username'))
+                ->data_lpignore('true') !!}
 
                 {!! Former::password('bank_password')
-                        ->label(trans('texts.password'))
-                        ->data_bind("value: bank_password, valueUpdate: 'afterkeydown'")
-                        ->blockHelp(trans(Request::secure() ? 'texts.bank_password_help' : 'texts.bank_password_warning'))
-                        ->data_lpignore('true') !!}
+                ->label(trans('texts.password'))
+                ->data_bind("value: bank_password, valueUpdate: 'afterkeydown'")
+                ->blockHelp(trans(Request::secure() ? 'texts.bank_password_help' : 'texts.bank_password_warning'))
+                ->data_lpignore('true') !!}
 
-                <br/>
+                <br />
 
                 {!! Former::select('app_version')
-                        ->addOption('Quicken 2014', 2300)
-                        ->addOption('Quicken 2015', 2400)
-                        ->addOption('Quicken 2016', 2500)
-                        ->addOption('Quicken 2017', 2600) !!}
+                ->addOption('Quicken 2014', 2300)
+                ->addOption('Quicken 2015', 2400)
+                ->addOption('Quicken 2016', 2500)
+                ->addOption('Quicken 2017', 2600) !!}
 
                 {!! Former::select('ofx_version')
-                        ->addOption('100', 100)
-                        ->addOption('101', 101)
-                        ->addOption('102', 102)
-                        ->addOption('103', 103)
-                        ->help(trans('texts.ofx_help', [
-                            'ofxhome_link' => link_to('http://www.ofxhome.com/index.php/home/directory', 'OFX Home', ['target' => '_blank', 'id' => 'ofxLink']),
-                            'ofxget_link' => link_to('http://www.ofxhome.com/index.php/home/ofxget', 'Ofxget', ['target' => '_blank']),
-                        ])) !!}
+                ->addOption('100', 100)
+                ->addOption('101', 101)
+                ->addOption('102', 102)
+                ->addOption('103', 103)
+                ->help(trans('texts.ofx_help', [
+                'ofxhome_link' => link_to('http://www.ofxhome.com/index.php/home/directory', 'OFX Home', ['target' =>
+                '_blank', 'id' => 'ofxLink']),
+                'ofxget_link' => link_to('http://www.ofxhome.com/index.php/home/ofxget', 'Ofxget', ['target' =>
+                '_blank']),
+                ])) !!}
 
             </div>
         </div>
@@ -89,14 +92,13 @@
                 <tbody data-bind="foreach: bank_accounts">
                     <tr>
                         <td>
-                            <input type="text" class="form-control" data-bind="value: account_name, valueUpdate: 'afterkeydown', attr: {name: 'bank_accounts[' + $index() + '][account_name]'}"/>
-                            <input type="text" style="display:none" data-bind="value: hashed_account_number, attr: {name: 'bank_accounts[' + $index() + '][hashed_account_number]'}"/>
+                            <input type="text" class="form-control" data-bind="value: account_name, valueUpdate: 'afterkeydown', attr: {name: 'bank_accounts[' + $index() + '][account_name]'}" />
+                            <input type="text" style="display:none" data-bind="value: hashed_account_number, attr: {name: 'bank_accounts[' + $index() + '][hashed_account_number]'}" />
                         </td>
                         <td data-bind="text: masked_account_number"></td>
                         <td data-bind="text: balance"></td>
                         <td style="text-align:center">
-                            <input type="checkbox" value="1"
-                                data-bind="checked: includeAccount, attr: {name: 'bank_accounts[' + $index() + '][include]'}"/>
+                            <input type="checkbox" value="1" data-bind="checked: includeAccount, attr: {name: 'bank_accounts[' + $index() + '][include]'}" />
                         </td>
                     </tr>
                 </tbody>
@@ -111,19 +113,19 @@
                 </div>
                 <div class="col-md-4">
                     <input type="text" class="form-control" data-bind="value: $root.filter, valueUpdate: 'afterkeydown'"
-                        placeholder="{{ trans('texts.filter') }}"/>
+                        placeholder="{{ trans('texts.filter') }}" />
                 </div>
             </div>
 
             <div data-bind="foreach: bank_accounts">
 
-                <h4 data-bind="text: account_name"></h4><br/>
+                <h4 data-bind="text: account_name"></h4><br />
 
                 <table class="table accounts-table" style="width:100%;">
                     <thead>
                         <tr>
                             <th class="header">
-                                <input type="checkbox" data-bind="checked: checkall, click: updateChecked"/>
+                                <input type="checkbox" data-bind="checked: checkall, click: updateChecked" />
                             </th>
                             <th class="header">{{ trans('texts.vendor') }}</th>
                             <th class="header">{{ trans('texts.info') }}</th>
@@ -135,20 +137,16 @@
                     <tbody data-bind="foreach: filteredTransactions">
                         <tr>
                             <td style="text-align:center">
-                                <input type="checkbox" value="1"
-                                    data-bind="checked: includeTransaction, attr: {name: 'bank_accounts[' + $index() + '][include]'}"/>
+                                <input type="checkbox" value="1" data-bind="checked: includeTransaction, attr: {name: 'bank_accounts[' + $index() + '][include]'}" />
                             </td>
                             <td>
-                                <input type="text" class="form-control"
-                                    data-bind="value: vendor.pretty, valueUpdate: 'afterkeydown'"/>
+                                <input type="text" class="form-control" data-bind="value: vendor.pretty, valueUpdate: 'afterkeydown'" />
                             </td>
                             <td>
-                                <input type="text" class="form-control"
-                                    data-bind="value: info, valueUpdate: 'afterkeydown'"/>
+                                <input type="text" class="form-control" data-bind="value: info, valueUpdate: 'afterkeydown'" />
                             </td>
                             <td>
-                                <input type="text" class="form-control"
-                                    data-bind="value: memo, valueUpdate: 'afterkeydown'"/>
+                                <input type="text" class="form-control" data-bind="value: memo, valueUpdate: 'afterkeydown'" />
                             </td>
                             <td data-bind="text: date" nowrap></td>
                             <td data-bind="text: amount.pretty" nowrap></td>
@@ -161,87 +159,87 @@
 
         <div class="col-lg-12 col-sm-12" data-bind="visible: page() == 'done'" style="display:none">
             <div class="alert alert-info" role="alert">
-              <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
-              <span data-bind="text: importResults()"></span>
+                <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
+                <span data-bind="text: importResults()"></span>
             </div>
         </div>
 
         <div class="col-lg-12 col-sm-12" data-bind="visible: isLoading" style="display:none">
             <p>&nbsp;</p>
             <div class="progress">
-              <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
-              </div>
+                <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="0"
+                    aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                </div>
             </div>
         </div>
 
         <div class="col-lg-12 col-sm-12" data-bind="visible: errorStr" style="display:none">
             <div class="alert alert-danger" role="alert">
-              <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                  {{ trans('texts.bank_account_error') }}
+                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                {{ trans('texts.bank_account_error') }}
             </div>
         </div>
 
     </div>
-    </div>
+</div>
 
-    @if (Auth::user()->hasFeature(FEATURE_EXPENSES))
-        <center class="buttons">
-            {!! count(Cache::get('banks')) > 0 ?
-                Button::normal(trans('texts.cancel'))
-                    ->withAttributes([
-                        'data-bind' => 'visible: !importResults()',
-                    ])
-                    ->large()
-                    ->asLinkTo(URL::to('/settings/bank_accounts'))
-                    ->appendIcon(Icon::create('remove-circle')) : false !!}
-            {!! Button::success(trans('texts.validate'))
-                ->withAttributes([
-                    'data-bind' => 'css: {disabled: disableValidate}, visible: page() == "login"',
-                    'onclick' => 'validate()'
-                ])
-                ->large()
-                ->appendIcon(Icon::create('lock')) !!}
-            {!! Button::success(trans('texts.save'))
-                ->withAttributes([
-                    'data-bind' => 'css: {disabled: disableSave}, visible: page() == "setup"',
-                    'style' => 'display:none',
-                    'onclick' => 'save()'
-                ])
-                ->large()
-                ->appendIcon(Icon::create('floppy-disk')) !!}
-            {!! Button::success(trans('texts.import'))
-                ->withAttributes([
-                    'data-bind' => 'css: {disabled: disableSaveExpenses}, visible: page() == "import"',
-                    'style' => 'display:none',
-                    'onclick' => 'saveExpenses()'
-                ])
-                ->large()
-                ->appendIcon(Icon::create('floppy-disk')) !!}
-        </center>
-    @endif
+@if (Auth::user()->hasFeature(FEATURE_EXPENSES))
+<center class="buttons">
+    {!! count(Cache::get('banks')) > 0 ?
+    Button::normal(trans('texts.cancel'))
+    ->withAttributes([
+    'data-bind' => 'visible: !importResults()',
+    ])
+    ->large()
+    ->asLinkTo(URL::to('/settings/bank_accounts'))
+    ->appendIcon(Icon::create('remove-circle')) : false !!}
+    {!! Button::success(trans('texts.validate'))
+    ->withAttributes([
+    'data-bind' => 'css: {disabled: disableValidate}, visible: page() == "login"',
+    'onclick' => 'validate()'
+    ])
+    ->large()
+    ->appendIcon(Icon::create('lock')) !!}
+    {!! Button::success(trans('texts.save'))
+    ->withAttributes([
+    'data-bind' => 'css: {disabled: disableSave}, visible: page() == "setup"',
+    'style' => 'display:none',
+    'onclick' => 'save()'
+    ])
+    ->large()
+    ->appendIcon(Icon::create('floppy-disk')) !!}
+    {!! Button::success(trans('texts.import'))
+    ->withAttributes([
+    'data-bind' => 'css: {disabled: disableSaveExpenses}, visible: page() == "import"',
+    'style' => 'display:none',
+    'onclick' => 'saveExpenses()'
+    ])
+    ->large()
+    ->appendIcon(Icon::create('floppy-disk')) !!}
+</center>
+@endif
 
-    {!! Former::close() !!}
+{!! Former::close() !!}
 
-    <script type="text/javascript">
-
+<script type="text/javascript">
     function validate() {
         model.errorStr(false);
         model.isLoading(true);
-        $.post('{{ URL::to('/bank_accounts/validate') }}', $('.main-form').serialize())
-            .done(function(data) {
+        $.post('{{ URL::to(' / bank_accounts / validate ') }}', $('.main-form').serialize())
+            .done(function (data) {
                 data = JSON.parse(data);
                 if (!data || !data.length) {
                     model.isLoading(false);
                     model.errorStr('error');
                 } else {
                     loadTransactions(data);
-                    @if ($bankAccount)
-                        model.setPage('import')
+                    @if($bankAccount)
+                    model.setPage('import')
                     @else
-                        model.setPage('setup')
+                    model.setPage('setup')
                     @endif
                 }
-            }).fail(function() {
+            }).fail(function () {
                 model.isLoading(false);
                 model.errorStr('error');
             });
@@ -250,8 +248,8 @@
     function save() {
         model.errorStr(false);
         model.isLoading(true);
-        $.post('{{ URL::to('/bank_accounts') }}', $('.main-form').serialize())
-            .done(function(data) {
+        $.post('{{ URL::to(' / bank_accounts ') }}', $('.main-form').serialize())
+            .done(function (data) {
                 data = JSON.parse(data);
                 if (!data || !data.length) {
                     model.isLoading(false);
@@ -260,7 +258,7 @@
                     loadTransactions(data);
                     model.setPage('import')
                 }
-            }).fail(function() {
+            }).fail(function () {
                 model.isLoading(false);
                 model.errorStr('error');
             });
@@ -268,12 +266,12 @@
 
     function loadTransactions(data) {
         model.bank_accounts.removeAll();
-        for (var i=0; i<data.length; i++) {
+        for (var i = 0; i < data.length; i++) {
             var row = data[i];
             var account = new BankAccountModel(row);
             if (row.transactions) {
                 var transactions = account.transactions();
-                for (var j=0; j<row.transactions.length; j++) {
+                for (var j = 0; j < row.transactions.length; j++) {
                     var transaction = row.transactions[j];
                     transactions.push(new TransactionModel(transaction));
                 }
@@ -288,7 +286,7 @@
         model.isLoading(true);
 
         $.ajax({
-            url: '{{ URL::to('/bank_accounts/import_expenses') }}' + '/' + model.bank_id(),
+            url: '{{ URL::to(' / bank_accounts / import_expenses ') }}' + '/' + model.bank_id(),
             type: 'POST',
             data: ko.toJSON(model.includedTransactions()),
             datatype: 'json',
@@ -302,18 +300,19 @@
         });
     }
 
-    $(function() {
+    $(function () {
 
-        var banks = {!! $banks || '[]' !!};
+        var banks = {!!$banks || '[]'!!
+        };
         var bankMap = {};
 
-        for (var i=0; i<banks.length; i++) {
+        for (var i = 0; i < banks.length; i++) {
             var bank = banks[i];
             bankMap[bank.id] = bank;
         }
 
         $('#bank_id')
-            .change(function(event) {
+            .change(function (event) {
                 var bankId = $(event.currentTarget).val();
                 bankId = bankMap[bankId] ? bankMap[bankId].remote_id : false;
                 if (bankId) {
@@ -326,7 +325,7 @@
             .focus();
     });
 
-    var TransactionModel = function(data) {
+    var TransactionModel = function (data) {
         var self = this;
         self.vendor = ko.observable(data.vendor);
         self.info = ko.observable(data.info);
@@ -344,10 +343,10 @@
             },
             write: function (value) {
                 this.vendor(value);
-                for (var i=0; i<model.bank_accounts().length; i++) {
+                for (var i = 0; i < model.bank_accounts().length; i++) {
                     var account = model.bank_accounts()[i];
                     var transactions = account.transactions();
-                    for (var j=0; j<transactions.length; j++) {
+                    for (var j = 0; j < transactions.length; j++) {
                         var transaction = transactions[j];
                         if (transaction.vendor_orig == this.vendor_orig) {
                             transaction.vendor(value);
@@ -369,14 +368,14 @@
             owner: self
         });
 
-        self.isMatch = function(filter) {
+        self.isMatch = function (filter) {
             var filter = filter.toLowerCase();
             var values = [
                 self.vendor(),
                 self.info(),
                 self.memo()
             ];
-            for (var i=0; i<values.length; i++) {
+            for (var i = 0; i < values.length; i++) {
                 if (values[i] && values[i].toLowerCase().indexOf(filter) >= 0) {
                     return true;
                 }
@@ -385,7 +384,7 @@
         }
     }
 
-    var BankAccountModel = function(data) {
+    var BankAccountModel = function (data) {
         var self = this;
         self.includeAccount = ko.observable(true);
         self.checkall = ko.observable();
@@ -395,24 +394,29 @@
         self.balance = ko.observable(data.balance);
         self.transactions = ko.observableArray();
 
-        self.filteredTransactions = ko.computed(function() {
+        self.filteredTransactions = ko.computed(function () {
             if (!model.filter()) {
                 return self.transactions();
             } else {
-                return ko.utils.arrayFilter(self.transactions(), function(transaction) {
+                return ko.utils.arrayFilter(self.transactions(), function (transaction) {
                     return transaction.isMatch(model.filter());
                 });
             }
-        }, self).extend({ rateLimit: { timeout: 350, method: 'notifyWhenChangesStop' } });
+        }, self).extend({
+            rateLimit: {
+                timeout: 350,
+                method: 'notifyWhenChangesStop'
+            }
+        });
 
 
-        self.isValid = ko.computed(function() {
+        self.isValid = ko.computed(function () {
             return self.account_name() ? true : false;
         }, self);
 
-        self.updateChecked = function() {
+        self.updateChecked = function () {
             var data = self.filteredTransactions();
-            for (var i=0; i<data.length; i++) {
+            for (var i = 0; i < data.length; i++) {
                 data[i].includeTransaction(self.checkall());
             }
             self.transactions.valueHasMutated();
@@ -420,9 +424,13 @@
         }
     }
 
-    var ViewModel = function() {
+    var ViewModel = function () {
         var self = this;
-        self.bank_id = ko.observable({{ $bankAccount ? $bankAccount->bank_id : 0 }});
+        self.bank_id = ko.observable({
+            {
+                $bankAccount ? $bankAccount - > bank_id : 0
+            }
+        });
         self.bank_username = ko.observable('{{ $bankAccount ? $bankAccount->username : false }}');
         self.bank_password = ko.observable();
         self.bank_accounts = ko.observableArray();
@@ -434,14 +442,14 @@
         self.importResults = ko.observable();
         self.filter = ko.observable();
 
-        self.setPage = function(page) {
+        self.setPage = function (page) {
             self.isLoading(false);
             self.page(page);
             if (page == 'login') {
-                @if ($bankAccount)
-                    self.title("{{ $bankAccount->bank->name }}");
+                @if($bankAccount)
+                self.title("{{ $bankAccount->bank->name }}");
                 @else
-                    self.title("{{ trans('texts.add_bank_account') }}");
+                self.title("{{ trans('texts.add_bank_account') }}");
                 @endif
             } else if (page == 'setup') {
                 self.title("{{ trans('texts.setup_account') }}");
@@ -451,11 +459,11 @@
         }
         self.setPage('login')
 
-        self.includedTransactions = ko.computed(function() {
+        self.includedTransactions = ko.computed(function () {
             var data = [];
-            for (var i=0; i<self.bank_accounts().length; i++) {
+            for (var i = 0; i < self.bank_accounts().length; i++) {
                 var account = self.bank_accounts()[i];
-                var transactions = ko.utils.arrayFilter(account.transactions(), function(transaction) {
+                var transactions = ko.utils.arrayFilter(account.transactions(), function (transaction) {
                     return transaction.includeTransaction();
                 });
                 data = data.concat(transactions);
@@ -463,11 +471,11 @@
             return data;
         });
 
-        self.countExpenses = ko.computed(function() {
+        self.countExpenses = ko.computed(function () {
             var count = 0;
-            for (var i=0; i<self.bank_accounts().length; i++) {
+            for (var i = 0; i < self.bank_accounts().length; i++) {
                 var account = self.bank_accounts()[i];
-                var transactions = ko.utils.arrayFilter(account.transactions(), function(transaction) {
+                var transactions = ko.utils.arrayFilter(account.transactions(), function (transaction) {
                     return transaction.includeTransaction();
                 });
                 count += transactions.length;
@@ -475,36 +483,37 @@
             return count;
         });
 
-        self.statusLabel = ko.computed(function() {
+        self.statusLabel = ko.computed(function () {
             var count = 0;
             var total = 0;
-            for (var i=0; i<self.bank_accounts().length; i++) {
+            for (var i = 0; i < self.bank_accounts().length; i++) {
                 var account = self.bank_accounts()[i];
-                var transactions = ko.utils.arrayFilter(account.transactions(), function(transaction) {
+                var transactions = ko.utils.arrayFilter(account.transactions(), function (transaction) {
                     return transaction.includeTransaction();
                 });
                 count += transactions.length;
-                for (var j=0; j<transactions.length; j++) {
+                for (var j = 0; j < transactions.length; j++) {
                     total += transactions[j].amount();
                 }
             }
-            var str = count + (count == 1 ? " {{ trans('texts.expense') }}" : " {{ trans('texts.expenses') }}") + " | ";
+            var str = count + (count == 1 ? " {{ trans('texts.expense') }}" :
+                " {{ trans('texts.expenses') }}") + " | ";
             return str + formatMoney(total);
         });
 
-        self.disableValidate = ko.computed(function() {
+        self.disableValidate = ko.computed(function () {
             if (self.isLoading()) {
                 return true;
             }
             return !self.bank_id() || !self.bank_username() || !self.bank_password();
         }, self);
 
-        self.disableSave = ko.computed(function() {
+        self.disableSave = ko.computed(function () {
             if (self.disableValidate()) {
                 return true;
             }
             var hasAccount = false;
-            for (var i=0; i<self.bank_accounts().length; i++) {
+            for (var i = 0; i < self.bank_accounts().length; i++) {
                 var account = self.bank_accounts()[i];
                 if (account.includeAccount()) {
                     if (account.isValid()) {
@@ -517,7 +526,7 @@
             return !hasAccount;
         }, self);
 
-        self.disableSaveExpenses = ko.computed(function() {
+        self.disableSaveExpenses = ko.computed(function () {
             if (self.isLoading()) {
                 return true;
             }
@@ -528,12 +537,12 @@
     window.model = new ViewModel();
     ko.applyBindings(model);
 
-    @if (!empty($transactions))
-        loadTransactions({!! $transactions !!});
-        model.setPage('import');
+    @if(!empty($transactions))
+    loadTransactions({!!$transactions!!
+    });
+    model.setPage('import');
     @endif
-
-    </script>
+</script>
 
 
 @stop

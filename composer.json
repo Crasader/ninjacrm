@@ -6,12 +6,10 @@
         "laravel"
     ],
     "license": "Attribution Assurance License",
-    "authors": [
-        {
-            "name": "Hillel Coren",
-            "email": "hillelcoren@gmail.com"
-        }
-    ],
+    "authors": [{
+        "name": "Hillel Coren",
+        "email": "hillelcoren@gmail.com"
+    }],
     "config": {
         "preferred-install": "dist",
         "sort-packages": true,
@@ -20,53 +18,53 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "php": ">=7.0.0",
+        "php": ">=7.1.3",
         "ext-gd": "*",
-        "anahkiasen/former": "4.*",
-        "asgrim/ofxparser": "^1.1",
+        "anahkiasen/former": "^4.1",
+        "asgrim/ofxparser": "^1.2",
         "bacon/bacon-qr-code": "^1.0",
-        "barryvdh/laravel-cors": "^0.9.1",
-        "barryvdh/laravel-debugbar": "~2.2",
-        "barryvdh/laravel-ide-helper": "~2.2",
-        "cerdic/css-tidy": "~v1.5",
+        "barryvdh/laravel-cors": "^0.9.3",
+        "barryvdh/laravel-debugbar": "^2.4",
+        "barryvdh/laravel-ide-helper": "^2.4",
+        "cerdic/css-tidy": "^1.6",
         "chumper/datatable": "dev-add-back-options",
-        "cleverit/ubl_invoice": "1.*",
+        "cleverit/ubl_invoice": "^1.0",
         "codedge/laravel-selfupdater": "5.x-dev",
-        "doctrine/dbal": "2.5.x",
+        "doctrine/dbal": "^2.5",
         "dompdf/dompdf": "0.6.2",
-        "ezyang/htmlpurifier": "~v4.7",
-        "fzaninotto/faker": "^1.5",
-        "google/apiclient": "^2.0",
+        "ezyang/htmlpurifier": "^4.10",
+        "fzaninotto/faker": "^1.8",
+        "google/apiclient": "^2.2",
         "guzzlehttp/guzzle": "^6.3",
         "intervention/image": "dev-master",
-        "jaybizzle/laravel-crawler-detect": "1.*",
-        "jlapp/swaggervel": "master-dev",
+        "jaybizzle/laravel-crawler-detect": "^1.2",
+        "jlapp/swaggervel": "dev-master",
         "jonnyw/php-phantomjs": "dev-fixes",
         "laracasts/presenter": "dev-master",
         "laravel/framework": "5.4.*",
         "laravel/legacy-encrypter": "^1.0",
-        "laravel/socialite": "~3.0",
+        "laravel/socialite": "^3.2",
         "laravel/tinker": "^1.0",
         "laravelcollective/html": "5.4.*",
         "league/csv": "^9.1",
-        "league/flysystem-aws-s3-v3": "~1.0",
-        "league/flysystem-rackspace": "~1.0",
+        "league/flysystem-aws-s3-v3": "^1.0",
+        "league/flysystem-rackspace": "^1.0",
         "league/fractal": "0.13.*",
-        "maatwebsite/excel": "~2.0",
+        "maatwebsite/excel": "^2.1",
         "mpdf/mpdf": "7.1.0",
-        "nesbot/carbon": "^1.25",
-        "nwidart/laravel-modules": "1.*",
+        "nesbot/carbon": "^1.36",
+        "nwidart/laravel-modules": "^1.27",
         "patricktalmadge/bootstrapper": "5.5.x",
-        "pragmarx/google2fa-laravel": "^0.1.2",
+        "pragmarx/google2fa-laravel": "^0.1.4",
         "predis/predis": "^1.1",
         "roave/security-advisories": "dev-master",
         "simshaun/recurr": "dev-master",
-        "symfony/css-selector": "~3.1",
+        "symfony/css-selector": "^3.4",
         "tamayo/laravel-scout-elastic": "^3.0",
         "turbo124/laravel-push-notification": "2.*",
         "webpatser/laravel-countries": "dev-master#75992ad",
         "wepay/php-sdk": "^0.2",
-        "wildbit/postmark-php": "^2.5"
+        "wildbit/postmark-php": "^2.6"
     },
     "require-dev": {
         "symfony/dom-crawler": "~3.1",
@@ -117,8 +115,7 @@
             "php artisan key:generate"
         ]
     },
-    "repositories": [
-        {
+    "repositories": [{
             "type": "vcs",
             "url": "https://github.com/hillelcoren/datatable"
         },

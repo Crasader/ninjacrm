@@ -1,43 +1,61 @@
 @extends('header')
 
 @section('head')
-	@parent
+@parent
 
-    @include('money_script')
-        <link href="{{ asset('css/jsoneditor.min.css') }}" rel="stylesheet" type="text/css">
-        <script src="{{ asset('js/jsoneditor.min.js') }}" type="text/javascript"></script>
+@include('money_script')
+<link href="{{ asset('css/jsoneditor.min.css') }}" rel="stylesheet" type="text/css">
+<script src="{{ asset('js/jsoneditor.min.js') }}" type="text/javascript"></script>
 
-    @foreach ($account->getFontFolders() as $font)
-        <script src="{{ asset('js/vfs_fonts/'.$font.'.js') }}" type="text/javascript"></script>
-    @endforeach
-        <script src="{{ asset('pdf.built.js') }}?no_cache={{ NINJA_VERSION }}" type="text/javascript"></script>
+@foreach ($account->getFontFolders() as $font)
+<script src="{{ asset('js/vfs_fonts/'.$font.'.js') }}" type="text/javascript"></script>
+@endforeach
+<script src="{{ asset('pdf.built.js') }}?no_cache={{ NINJA_VERSION }}" type="text/javascript"></script>
 
-      <style type="text/css">
+<style type="text/css">
+    select.form-control {
+        background: #FFFFFF !important;
+        margin-right: 12px;
+    }
 
-        select.form-control {
-            background: #FFFFFF !important;
-            margin-right: 12px;
-        }
-        table {
-            background: #FFFFFF !important;
-        }
+    table {
+        background: #FFFFFF !important;
+    }
 
-        /* http://stackoverflow.com/questions/4810841/how-can-i-pretty-print-json-using-javascript */
-        pre {outline: 1px solid #ccc; padding: 5px; margin: 5px; }
-        .string { color: green; }
-        .number { color: red; }
-        .boolean { color: blue; }
-        .null { color: gray; }
-        .key { color: black; }
+    /* http://stackoverflow.com/questions/4810841/how-can-i-pretty-print-json-using-javascript */
+    pre {
+        outline: 1px solid #ccc;
+        padding: 5px;
+        margin: 5px;
+    }
 
-      </style>
+    .string {
+        color: green;
+    }
+
+    .number {
+        color: red;
+    }
+
+    .boolean {
+        color: blue;
+    }
+
+    .null {
+        color: gray;
+    }
+
+    .key {
+        color: black;
+    }
+</style>
 
 @stop
 
 @section('content')
-    @parent
+@parent
 
-  <script>
+<script>
     var invoiceDesigns = {!! $invoiceDesigns !!};
     var invoiceFonts = {!! $invoiceFonts !!};
     var invoice = {!! json_encode($invoice) !!};
@@ -167,99 +185,116 @@
   </script>
 
 
-  <div class="row">
+<div class="row">
     <div class="col-md-6">
 
-      {!! Former::open()->addClass('warn-on-exit') !!}
+        {!! Former::open()->addClass('warn-on-exit') !!}
 
         <div style="display:none">
             {!! Former::text('custom_design') !!}
         </div>
 
 
-      <div role="tabpanel">
-        <ul class="nav nav-tabs" role="tablist" style="border: none">
-            <li role="presentation" class="active"><a href="#content" aria-controls="content" role="tab" data-toggle="tab">{{ trans('texts.content') }}</a></li>
-            <li role="presentation"><a href="#styles" aria-controls="styles" role="tab" data-toggle="tab">{{ trans('texts.styles') }}</a></li>
-            <li role="presentation"><a href="#defaults" aria-controls="defaults" role="tab" data-toggle="tab">{{ trans('texts.defaults') }}</a></li>
-            <li role="presentation"><a href="#margins" aria-controls="margins" role="tab" data-toggle="tab">{{ trans('texts.margins') }}</a></li>
-            <li role="presentation"><a href="#header" aria-controls="header" role="tab" data-toggle="tab">{{ trans('texts.header') }}</a></li>
-            <li role="presentation"><a href="#footer" aria-controls="footer" role="tab" data-toggle="tab">{{ trans('texts.footer') }}</a></li>
-			@if ($account->isEnterprise() && $account->background_image_id)
-				<li role="presentation"><a href="#background" aria-controls="footer" role="tab" data-toggle="tab">{{ trans('texts.background') }}</a></li>
-			@endif
-        </ul>
-    </div>
-    <div id="jsoneditor" style="width: 100%; height: 814px;"></div>
-    <p>&nbsp;</p>
+        <div role="tabpanel">
+            <ul class="nav nav-tabs" role="tablist" style="border: none">
+                <li role="presentation" class="active"><a href="#content" aria-controls="content" role="tab"
+                        data-toggle="tab">{{ trans('texts.content') }}</a></li>
+                <li role="presentation"><a href="#styles" aria-controls="styles" role="tab" data-toggle="tab">{{
+                        trans('texts.styles') }}</a></li>
+                <li role="presentation"><a href="#defaults" aria-controls="defaults" role="tab" data-toggle="tab">{{
+                        trans('texts.defaults') }}</a></li>
+                <li role="presentation"><a href="#margins" aria-controls="margins" role="tab" data-toggle="tab">{{
+                        trans('texts.margins') }}</a></li>
+                <li role="presentation"><a href="#header" aria-controls="header" role="tab" data-toggle="tab">{{
+                        trans('texts.header') }}</a></li>
+                <li role="presentation"><a href="#footer" aria-controls="footer" role="tab" data-toggle="tab">{{
+                        trans('texts.footer') }}</a></li>
+                @if ($account->isEnterprise() && $account->background_image_id)
+                <li role="presentation"><a href="#background" aria-controls="footer" role="tab" data-toggle="tab">{{
+                        trans('texts.background') }}</a></li>
+                @endif
+            </ul>
+        </div>
+        <div id="jsoneditor" style="width: 100%; height: 814px;"></div>
+        <p>&nbsp;</p>
 
-    <div>
-    {!! Former::select('invoice_design_id')
-			->placeholder(trans('texts.load_design'))
-			->style('display:inline;width:180px')
-			->fromQuery($invoiceDesigns, 'name', 'id')
-			->onchange('onSelectChange()')
-			->raw() !!}
-    <div class="pull-right">
-        {!! Button::normal(trans('texts.help'))->withAttributes(['onclick' => 'showHelp()'])->appendIcon(Icon::create('question-sign')) !!}
-        {!! Button::normal(trans('texts.cancel'))->asLinkTo(URL::to('/settings/invoice_design'))->appendIcon(Icon::create('remove-circle')) !!}
-        @if (Auth::user()->hasFeature(FEATURE_CUSTOMIZE_INVOICE_DESIGN))
-            {!! Button::success(trans('texts.save'))->withAttributes(['onclick' => 'submitForm()'])->appendIcon(Icon::create('floppy-disk'))->withAttributes(['class' => 'save-button']) !!}
-        @endif
-    </div>
-    </div>
+        <div>
+            {!! Former::select('invoice_design_id')
+            ->placeholder(trans('texts.load_design'))
+            ->style('display:inline;width:180px')
+            ->fromQuery($invoiceDesigns, 'name', 'id')
+            ->onchange('onSelectChange()')
+            ->raw() !!}
+            <div class="pull-right">
+                {!! Button::normal(trans('texts.help'))->withAttributes(['onclick' =>
+                'showHelp()'])->appendIcon(Icon::create('question-sign')) !!}
+                {!!
+                Button::normal(trans('texts.cancel'))->asLinkTo(URL::to('/settings/invoice_design'))->appendIcon(Icon::create('remove-circle'))
+                !!}
+                @if (Auth::user()->hasFeature(FEATURE_CUSTOMIZE_INVOICE_DESIGN))
+                {!! Button::success(trans('texts.save'))->withAttributes(['onclick' =>
+                'submitForm()'])->appendIcon(Icon::create('floppy-disk'))->withAttributes(['class' => 'save-button'])
+                !!}
+                @endif
+            </div>
+        </div>
 
-      <script>
+        <script>
 
-        function showHelp() {
+            function showHelp() {
             $('#designHelpModal').modal('show');
         }
 
       </script>
 
-      {!! Former::close() !!}
+        {!! Former::close() !!}
 
 
-    <div class="modal fade" id="designHelpModal" tabindex="-1" role="dialog" aria-labelledby="designHelpModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title" id="designHelpModalLabel">{{ trans('texts.help') }}</h4>
-          </div>
+        <div class="modal fade" id="designHelpModal" tabindex="-1" role="dialog" aria-labelledby="designHelpModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="designHelpModalLabel">{{ trans('texts.help') }}</h4>
+                    </div>
 
-		  <div class="container" style="width: 100%; padding-bottom: 0px !important">
-		  <div class="panel panel-default">
-		  <div class="panel-body">
-	            {!! trans('texts.customize_help', [
-						'pdfmake_link' => link_to('http://pdfmake.org', 'pdfmake', ['target' => '_blank']),
-						'playground_link' => link_to('http://pdfmake.org/playground.html', trans('texts.playground'), ['target' => '_blank']),
-						'forum_link' => link_to('https://www.invoiceninja.com/forums/forum/support', trans('texts.support_forum'), ['target' => '_blank']),
-					]) !!}<br/>
+                    <div class="container" style="width: 100%; padding-bottom: 0px !important">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                {!! trans('texts.customize_help', [
+                                'pdfmake_link' => link_to('http://pdfmake.org', 'pdfmake', ['target' => '_blank']),
+                                'playground_link' => link_to('http://pdfmake.org/playground.html',
+                                trans('texts.playground'), ['target' => '_blank']),
+                                'forum_link' => link_to('https://www.invoiceninja.com/forums/forum/support',
+                                trans('texts.support_forum'), ['target' => '_blank']),
+                                ]) !!}<br />
 
-				@include('partials/variables_help', ['entityType' => ENTITY_INVOICE, 'account' => $account])
-          </div>
-	  	  </div>
-  		  </div>
+                                @include('partials/variables_help', ['entityType' => ENTITY_INVOICE, 'account' =>
+                                $account])
+                            </div>
+                        </div>
+                    </div>
 
-         <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">{{ trans('texts.close') }}</button>
-			<a class="btn btn-primary" href="{{ config('ninja.video_urls.custom_design') }}" target="_blank">{{ trans('texts.video') }}</a>
-         </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">{{ trans('texts.close') }}</button>
+                        <a class="btn btn-primary" href="{{ config('ninja.video_urls.custom_design') }}" target="_blank">{{
+                            trans('texts.video') }}</a>
+                    </div>
 
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
 
 
 
     </div>
     <div class="col-md-6">
-      <div id="pdf-error" class="alert alert-danger" style="display:none"></div>
+        <div id="pdf-error" class="alert alert-danger" style="display:none"></div>
 
-      @include('invoices.pdf', ['account' => Auth::user()->account, 'pdfHeight' => 930])
+        @include('invoices.pdf', ['account' => Auth::user()->account, 'pdfHeight' => 930])
 
     </div>
-  </div>
+</div>
 
 @stop

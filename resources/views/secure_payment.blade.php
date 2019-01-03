@@ -14,7 +14,7 @@
 
 <section class="secure">
   <div class="container">
-    <div id="secure-form" class="row">          
+    <div id="secure-form" class="row">
       <div class="col-md-7 info">
         <form>
           <div class="row">
@@ -66,62 +66,63 @@
             </div>
           </div>
 
-        </div>
-        <div class="col-md-5">
-          <div class="card">
-            <div class="row">
-              <div class="form-group col-md-12">
-                <label for="streetadress">Card number</label>
-                <input type="text" class="form-control with-icon" id="cardnumber" name="cardnumber">
-                <span class="glyphicon glyphicon-lock"></span>
-                <span class="help-block" style="display: none;">Please enter your card number.</span>
+      </div>
+      <div class="col-md-5">
+        <div class="card">
+          <div class="row">
+            <div class="form-group col-md-12">
+              <label for="streetadress">Card number</label>
+              <input type="text" class="form-control with-icon" id="cardnumber" name="cardnumber">
+              <span class="glyphicon glyphicon-lock"></span>
+              <span class="help-block" style="display: none;">Please enter your card number.</span>
 
-              </div>
             </div>
-            <div class="row">
-              <div class="form-group col-md-6">
-                <label for="firstname">Expiration Month</label>
-                <select class="form-control" id="month" name="month">
-                  <option>January</option>
-                </select>
-                <span class="help-block" style="display: none;">Please select the month.</span>
+          </div>
+          <div class="row">
+            <div class="form-group col-md-6">
+              <label for="firstname">Expiration Month</label>
+              <select class="form-control" id="month" name="month">
+                <option>January</option>
+              </select>
+              <span class="help-block" style="display: none;">Please select the month.</span>
 
-              </div>
-              <div class="form-group col-md-6">
-                <label for="firstname">Expiration year</label>
-                <select class="form-control" id="year" name="year">
-                  <option>2016</option>
-                </select>
-                <span class="help-block" style="display: none;">Please select the year.</span>
-
-              </div>
             </div>
+            <div class="form-group col-md-6">
+              <label for="firstname">Expiration year</label>
+              <select class="form-control" id="year" name="year">
+                <option>2016</option>
+              </select>
+              <span class="help-block" style="display: none;">Please select the year.</span>
 
-
-            <div class="row">
-              <div class="form-group col-md-6">
-                <label for="apt">CVV</label>
-                <input type="text" class="form-control" id="cvv" name="cvv">
-                <span class="help-block" style="display: none;">Please enter the CVV.</span>
-              </div>
-
-              <div class="col-md-6">
-                <p><span class="glyphicon glyphicon-credit-card" style="margin-right: 10px;"></span><a href="#">Where Do I find CVV?</a></p>
-              </div>
             </div>
           </div>
 
 
+          <div class="row">
+            <div class="form-group col-md-6">
+              <label for="apt">CVV</label>
+              <input type="text" class="form-control" id="cvv" name="cvv">
+              <span class="help-block" style="display: none;">Please enter the CVV.</span>
+            </div>
+
+            <div class="col-md-6">
+              <p><span class="glyphicon glyphicon-credit-card" style="margin-right: 10px;"></span><a href="#">Where Do
+                  I find CVV?</a></p>
+            </div>
+          </div>
         </div>
+
+
       </div>
-      <div class="row">
-        <div class="col-md-12">
-          <button type="submit" id="feedbackSubmit" class="btn btn-primary btn-lg green">PAY NOW - $2.00</button>
-        </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <button type="submit" id="feedbackSubmit" class="btn btn-primary btn-lg green">PAY NOW - $2.00</button>
+      </div>
       </form>
     </div>
   </div>
-</div>
+  </div>
 
 
 </section>

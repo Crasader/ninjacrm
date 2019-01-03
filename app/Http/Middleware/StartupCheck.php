@@ -65,11 +65,12 @@ class StartupCheck
 
             if (app()->configurationIsCached()) {
                 echo 'Config caching is not currently supported, please run the following command to clear the cache.<pre>php artisan config:clear</pre>';
-            if (! env('APP_URL')) {
-                echo "<p>There appears to be a problem with your configuration, please check your .env file.</p>" .
-                     "<p>If you've run 'php artisan config:cache' you will need to run 'php artisan config:clear'</p>.";
-                exit;
-            }
+				if (! env('APP_URL')) {
+					echo "<p>There appears to be a problem with your configuration, please check your .env file.</p>" .
+						 "<p>If you've run 'php artisan config:cache' you will need to run 'php artisan config:clear'</p>.";
+					exit;
+				}
+			}
 
             // Check if a new version was installed
             $file = storage_path() . '/version.txt';
