@@ -75,7 +75,7 @@
                             hint: true,
                             highlight: true,
                         }
-                        @if(Auth::check() && Auth::user() - > account - > customLabel('client1')), {
+                        @if(Auth::check() && Auth::user() ->account ->customLabel('client1')), {
                             name: 'data',
                             limit: 3,
                             display: 'value',
@@ -86,7 +86,7 @@
                                 client1 ') }}</span>'
                             }
                         }
-                        @endif @if(Auth::check() && Auth::user() - > account - > customLabel('client2')), {
+                        @endif @if(Auth::check() && Auth::user() ->account ->customLabel('client2')), {
                             name: 'data',
                             limit: 3,
                             display: 'value',
@@ -97,7 +97,7 @@
                                 client2 ') }}</span>'
                             }
                         }
-                        @endif @if(Auth::check() && Auth::user() - > account - > customLabel('invoice_text1')), {
+                        @endif @if(Auth::check() && Auth::user() ->account ->customLabel('invoice_text1')), {
                             name: 'data',
                             limit: 3,
                             display: 'value',
@@ -108,7 +108,7 @@
                                 invoice_text1 ') }}</span>'
                             }
                         }
-                        @endif @if(Auth::check() && Auth::user() - > account - > customLabel('invoice_text2')), {
+                        @endif @if(Auth::check() && Auth::user() ->account ->customLabel('invoice_text2')), {
                             name: 'data',
                             limit: 3,
                             display: 'value',
@@ -169,7 +169,7 @@
         });
 
         if (isStorageSupported()) {
-            @if(Auth::check() && !Auth::user() - > registered)
+            @if(Auth::check() && !Auth::user() ->registered)
             localStorage.setItem('guest_key', '{{ Auth::user()->password }}');
             @endif
         }

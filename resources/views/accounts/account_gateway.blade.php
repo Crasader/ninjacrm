@@ -384,7 +384,7 @@
         $('.stripe-webhook-options').toggle(enableAch || enableAlipay || enableSofort || enableSepa || enableBicoin);
         $('.stripe-ach-options').toggle(enableAch && {
             {
-                $accountGateway && $accountGateway - > getPlaidClientId() ? 'true' : 'false'
+                $accountGateway && $accountGateway ->getPlaidClientId() ? 'true' : 'false'
             }
         });
         $('.verification-file').toggle(enableApplePay);

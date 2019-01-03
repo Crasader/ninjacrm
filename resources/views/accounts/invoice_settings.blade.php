@@ -580,7 +580,7 @@
     function setQuoteNumberEnabled() {
         var disabled = $('#share_counter').prop('checked');
         $('#quote_number_counter').prop('disabled', disabled);
-        $('#quote_number_counter').val(disabled ? '' : {!!json_encode($account - > quote_number_counter) !!
+        $('#quote_number_counter').val(disabled ? '' : {!!json_encode($account ->quote_number_counter) !!
         });
     }
 
@@ -601,7 +601,7 @@
             $('#clientNumberDiv').show();
             $('#client_number_counter').val({
                 {
-                    $account - > client_number_counter ? : 1
+                    $account ->client_number_counter ? : 1
                 }
             });
         } else {
@@ -616,7 +616,7 @@
             $('#creditNumberDiv').show();
             $('#credit_number_counter').val({
                 {
-                    $account - > credit_number_counter ? : 1
+                    $account ->credit_number_counter ? : 1
                 }
             });
         } else {
@@ -650,7 +650,7 @@
     });
 
 
-    var defaultDocuments = {!!$account - > defaultDocuments() - > get() !!
+    var defaultDocuments = {!!$account ->defaultDocuments() ->get() !!
     };
 
     $(function () {
@@ -670,7 +670,7 @@
             toggleDatePicker('reset_counter_date');
         });
 
-        @if($account - > hasFeature(FEATURE_DOCUMENTS))
+        @if($account ->hasFeature(FEATURE_DOCUMENTS))
         @include('partials.dropzone', ['documentSource' => 'defaultDocuments', 'isDefault' => true])
         @endif
     });

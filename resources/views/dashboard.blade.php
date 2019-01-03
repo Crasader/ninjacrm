@@ -14,7 +14,7 @@
 @section('content')
 
 <script type="text/javascript">
-    @if(Auth::user() - > hasPermission('view_dashboard'))
+    @if(Auth::user() ->hasPermission('view_dashboard'))
 
     function loadChart(data) {
         var ctx = document.getElementById('chart-canvas').getContext('2d');
@@ -90,10 +90,10 @@
     var chartGroupBy = 'day';
     var chartCurrencyId = {
         {
-            $account - > getCurrencyId()
+            $account ->getCurrencyId()
         }
     };
-    var dateRanges = {!!$account - > present() - > dateRangeOptions!!
+    var dateRanges = {!!$account ->present() ->dateRangeOptions!!
     };
     var chartStartDate;
     var chartEndDate;

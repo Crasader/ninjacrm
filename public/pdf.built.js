@@ -11470,7 +11470,7 @@ EventEmitter.prototype.removeListener = function(type, listener) {
       this.emit('removeListener', type, listener);
 
   } else if (isObject(list)) {
-    for (i = length; i-- > 0;) {
+    for (i = length; i-->0;) {
       if (list[i] === listener ||
           (list[i].listener && list[i].listener === listener)) {
         position = i;
@@ -16096,7 +16096,7 @@ StyleContextStack.prototype.push = function (styleNameOrOverride) {
 StyleContextStack.prototype.pop = function (howMany) {
 	howMany = howMany || 1;
 
-	while (howMany-- > 0) {
+	while (howMany-->0) {
 		this.styleOverrides.pop();
 	}
 };
@@ -19939,7 +19939,7 @@ function CopyUncompressedBlockToOutput(output, len, pos, ringbuffer, ringbuffer_
 
   /* For short lengths copy byte-by-byte */
   if (len < 8 || br.bit_pos_ + (len << 3) < br.bit_end_pos_) {
-    while (len-- > 0) {
+    while (len-->0) {
       br.readMoreInput();
       ringbuffer[rb_pos++] = br.readBits(8);
       if (rb_pos === rb_size) {

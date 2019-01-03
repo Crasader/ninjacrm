@@ -92820,7 +92820,7 @@ PDFJS.build = "88ec2bd";
           if (flags & 0x08) {
             repeat += code[i++];
           }
-          while (repeat-- > 0) {
+          while (repeat-->0) {
             points.push({
               flags: flags
             });
@@ -103199,7 +103199,7 @@ PDFJS.build = "88ec2bd";
           }
 
           var repeatLength = this.getBits(bitsLength) + bitsOffset;
-          while (repeatLength-- > 0) codeLengths[i++] = what;
+          while (repeatLength-->0) codeLengths[i++] = what;
         }
 
         litCodeTable = this.generateHuffmanTable(

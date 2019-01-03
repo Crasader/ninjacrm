@@ -73,7 +73,7 @@
 			locale: '{{ App::getLocale() }}',
 			firstDay: {
 				{
-					$account - > start_of_week ? : '0'
+					$account ->start_of_week ? : '0'
 				}
 			},
 			defaultView: lastView,

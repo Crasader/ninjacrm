@@ -227,10 +227,10 @@ trans('texts.action'))
 	}
 	var gatewaySettings = {};
 
-	@foreach($account - > account_gateway_settings as $setting)
+	@foreach($account ->account_gateway_settings as $setting)
 	gatewaySettings[{
 		{
-			$setting - > gateway_type_id
+			$setting ->gateway_type_id
 		}
 	}] = {!!$setting!!
 	};
@@ -300,7 +300,7 @@ trans('texts.action'))
 				}
 			} || {
 				{
-					$account - > gateway_fee_enabled ? '0' : '1'
+					$account ->gateway_fee_enabled ? '0' : '1'
 				}
 			}) {
 			$('#feesEnabled').hide();

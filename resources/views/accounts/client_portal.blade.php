@@ -511,7 +511,7 @@ iframe.src = '{{ rtrim(SITE_URL ,'/') }}/' + parts[1] + '/' + parts[0].substring
 
             var form = '<form action="' + link + '" method="post" target="_top">' + "\n";
 
-            @foreach($account - > present() - > customTextFields as $field => $val)
+            @foreach($account ->present() ->customTextFields as $field => $val)
             if ($('input#{{ $val['
                     name '] }}').is(':checked')) {
                 form += '<input type="text" name="{{ $val['
@@ -566,7 +566,7 @@ iframe.src = '{{ rtrim(SITE_URL ,'/') }}/' + parts[1] + '/' + parts[0].substring
         } else if (val == 'iframe') {
             $('.iframe_url, #iframeModalHelp').show();
         } else {
-            @if(auth() - > user() - > isEnterprise())
+            @if(auth() ->user() ->isEnterprise())
             $('.iframe_url, #domainModalHelp').show();
             $('#is_custom_domain').val(1);
             @else

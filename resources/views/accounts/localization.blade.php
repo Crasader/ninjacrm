@@ -88,12 +88,12 @@
         } else {
             symbolExample = formatMoney(1000, currencyId, {
                 {
-                    Auth::user() - > account - > country_id ? : DEFAULT_COUNTRY
+                    Auth::user() ->account ->country_id ? : DEFAULT_COUNTRY
                 }
             }, '{{ CURRENCY_DECORATOR_SYMBOL }}');
             codeExample = formatMoney(1000, currencyId, {
                 {
-                    Auth::user() - > account - > country_id ? : DEFAULT_COUNTRY
+                    Auth::user() ->account ->country_id ? : DEFAULT_COUNTRY
                 }
             }, '{{ CURRENCY_DECORATOR_CODE }}');
             $('.currrency_radio').show();

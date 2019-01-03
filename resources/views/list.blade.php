@@ -379,17 +379,17 @@
 
 		function changeSumLabel() {
 			var dTable = $('.listForm_{{ $entityType }} .data-table').DataTable();
-			@if($datatable - > sumColumn() != null)
+			@if($datatable ->sumColumn() != null)
 			@if(in_array($entityType, [ENTITY_TASK]))
 			var sumColumnNodes = dTable.column({
 				{
-					$datatable - > sumColumn()
+					$datatable ->sumColumn()
 				}
 			}).nodes();
 			@else
 			sumColumnNodes = dTable.column({
 				{
-					$datatable - > sumColumn()
+					$datatable ->sumColumn()
 				}
 			}).data().toArray();
 			@endif

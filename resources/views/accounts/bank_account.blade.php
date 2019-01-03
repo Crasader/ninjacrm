@@ -428,7 +428,7 @@
         var self = this;
         self.bank_id = ko.observable({
             {
-                $bankAccount ? $bankAccount - > bank_id : 0
+                $bankAccount ? $bankAccount ->bank_id : 0
             }
         });
         self.bank_username = ko.observable('{{ $bankAccount ? $bankAccount->username : false }}');

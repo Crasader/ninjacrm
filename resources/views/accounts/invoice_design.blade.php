@@ -69,17 +69,17 @@
         invoice.features = {
             customize_invoice_design: {
                 {
-                    Auth::user() - > hasFeature(FEATURE_CUSTOMIZE_INVOICE_DESIGN) ? 'true' : 'false'
+                    Auth::user() ->hasFeature(FEATURE_CUSTOMIZE_INVOICE_DESIGN) ? 'true' : 'false'
                 }
             },
             remove_created_by: {
                 {
-                    Auth::user() - > hasFeature(FEATURE_REMOVE_CREATED_BY) ? 'true' : 'false'
+                    Auth::user() ->hasFeature(FEATURE_REMOVE_CREATED_BY) ? 'true' : 'false'
                 }
             },
             invoice_settings: {
                 {
-                    Auth::user() - > hasFeature(FEATURE_INVOICE_SETTINGS) ? 'true' : 'false'
+                    Auth::user() ->hasFeature(FEATURE_INVOICE_SETTINGS) ? 'true' : 'false'
                 }
             }
         };
@@ -140,7 +140,7 @@
     $(function () {
         var options = {
             preferredFormat: 'hex',
-            disabled: {!!Auth::user() - > hasFeature(FEATURE_CUSTOMIZE_INVOICE_DESIGN) ? 'false' : 'true'!!
+            disabled: {!!Auth::user() ->hasFeature(FEATURE_CUSTOMIZE_INVOICE_DESIGN) ? 'false' : 'true'!!
             },
             showInitial: false,
             showInput: true,

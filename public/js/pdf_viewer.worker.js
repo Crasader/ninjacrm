@@ -23361,7 +23361,7 @@ var FontRendererFactory = (function FontRendererFactoryClosure() {
         if ((flags & 0x08)) {
           repeat += code[i++];
         }
-        while (repeat-- > 0) {
+        while (repeat-->0) {
           points.push({flags: flags});
         }
       }
@@ -32771,7 +32771,7 @@ var FlateStream = (function FlateStreamClosure() {
         }
 
         var repeatLength = this.getBits(bitsLength) + bitsOffset;
-        while (repeatLength-- > 0)
+        while (repeatLength-->0)
           codeLengths[i++] = what;
       }
 
