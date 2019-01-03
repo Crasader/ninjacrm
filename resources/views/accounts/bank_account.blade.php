@@ -36,40 +36,40 @@
                 {!! Former::populateField('app_version', DEFAULT_BANK_APP_VERSION) !!}
                 {!! Former::populateField('ofx_version', DEFAULT_BANK_OFX_VERSION) !!}
                 {!! Former::select('bank_id')
-                ->data_bind('combobox: bank_id')
-                ->addOption('', '')
-                ->fromQuery($banks, 'name', 'id')
-                ->blockHelp(trans('texts.bank_accounts_help', ['link' => link_to(OFX_HOME_URL, trans('texts.us_banks'),
+               ->data_bind('combobox: bank_id')
+               ->addOption('', '')
+               ->fromQuery($banks, 'name', 'id')
+               ->blockHelp(trans('texts.bank_accounts_help', ['link' => link_to(OFX_HOME_URL, trans('texts.us_banks'),
                 ['target' => '_blank'])])) !!}
                 @endif
 
                 <br />
 
                 {!! Former::password('bank_username')
-                ->data_bind("value: bank_username, valueUpdate: 'afterkeydown'")
-                ->label(trans('texts.username'))
-                ->data_lpignore('true') !!}
+               ->data_bind("value: bank_username, valueUpdate: 'afterkeydown'")
+               ->label(trans('texts.username'))
+               ->data_lpignore('true') !!}
 
                 {!! Former::password('bank_password')
-                ->label(trans('texts.password'))
-                ->data_bind("value: bank_password, valueUpdate: 'afterkeydown'")
-                ->blockHelp(trans(Request::secure() ? 'texts.bank_password_help' : 'texts.bank_password_warning'))
-                ->data_lpignore('true') !!}
+               ->label(trans('texts.password'))
+               ->data_bind("value: bank_password, valueUpdate: 'afterkeydown'")
+               ->blockHelp(trans(Request::secure() ? 'texts.bank_password_help' : 'texts.bank_password_warning'))
+               ->data_lpignore('true') !!}
 
                 <br />
 
                 {!! Former::select('app_version')
-                ->addOption('Quicken 2014', 2300)
-                ->addOption('Quicken 2015', 2400)
-                ->addOption('Quicken 2016', 2500)
-                ->addOption('Quicken 2017', 2600) !!}
+               ->addOption('Quicken 2014', 2300)
+               ->addOption('Quicken 2015', 2400)
+               ->addOption('Quicken 2016', 2500)
+               ->addOption('Quicken 2017', 2600) !!}
 
                 {!! Former::select('ofx_version')
-                ->addOption('100', 100)
-                ->addOption('101', 101)
-                ->addOption('102', 102)
-                ->addOption('103', 103)
-                ->help(trans('texts.ofx_help', [
+               ->addOption('100', 100)
+               ->addOption('101', 101)
+               ->addOption('102', 102)
+               ->addOption('103', 103)
+               ->help(trans('texts.ofx_help', [
                 'ofxhome_link' => link_to('http://www.ofxhome.com/index.php/home/directory', 'OFX Home', ['target' =>
                 '_blank', 'id' => 'ofxLink']),
                 'ofxget_link' => link_to('http://www.ofxhome.com/index.php/home/ofxget', 'Ofxget', ['target' =>
@@ -187,35 +187,35 @@
 <center class="buttons">
     {!! count(Cache::get('banks')) > 0 ?
     Button::normal(trans('texts.cancel'))
-    ->withAttributes([
+   ->withAttributes([
     'data-bind' => 'visible: !importResults()',
     ])
-    ->large()
-    ->asLinkTo(URL::to('/settings/bank_accounts'))
-    ->appendIcon(Icon::create('remove-circle')) : false !!}
+   ->large()
+   ->asLinkTo(URL::to('/settings/bank_accounts'))
+   ->appendIcon(Icon::create('remove-circle')) : false !!}
     {!! Button::success(trans('texts.validate'))
-    ->withAttributes([
+   ->withAttributes([
     'data-bind' => 'css: {disabled: disableValidate}, visible: page() == "login"',
     'onclick' => 'validate()'
     ])
-    ->large()
-    ->appendIcon(Icon::create('lock')) !!}
+   ->large()
+   ->appendIcon(Icon::create('lock')) !!}
     {!! Button::success(trans('texts.save'))
-    ->withAttributes([
+   ->withAttributes([
     'data-bind' => 'css: {disabled: disableSave}, visible: page() == "setup"',
     'style' => 'display:none',
     'onclick' => 'save()'
     ])
-    ->large()
-    ->appendIcon(Icon::create('floppy-disk')) !!}
+   ->large()
+   ->appendIcon(Icon::create('floppy-disk')) !!}
     {!! Button::success(trans('texts.import'))
-    ->withAttributes([
+   ->withAttributes([
     'data-bind' => 'css: {disabled: disableSaveExpenses}, visible: page() == "import"',
     'style' => 'display:none',
     'onclick' => 'saveExpenses()'
     ])
-    ->large()
-    ->appendIcon(Icon::create('floppy-disk')) !!}
+   ->large()
+   ->appendIcon(Icon::create('floppy-disk')) !!}
 </center>
 @endif
 
@@ -428,7 +428,7 @@
         var self = this;
         self.bank_id = ko.observable({
             {
-                $bankAccount ? $bankAccount ->bank_id : 0
+                $bankAccount ? $bankAccount->bank_id : 0
             }
         });
         self.bank_username = ko.observable('{{ $bankAccount ? $bankAccount->username : false }}');

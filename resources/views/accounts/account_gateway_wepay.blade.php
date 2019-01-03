@@ -53,7 +53,7 @@
 
         <div id="wepay-country">
             {!! Former::radios('country')
-            ->radios([
+           ->radios([
             trans('texts.country_United States') => ['value' => 'US'],
             trans('texts.country_Canada') => ['value' => 'CA'],
             trans('texts.country_United Kingdom') => ['value' => 'GB'],
@@ -61,37 +61,37 @@
         </div>
         <div id="wepay-accept-debit" style="display:none">
             {!! Former::checkbox('debit_cards')
-            ->text(trans('texts.accept_debit_cards'))
-            ->value(1) !!}
+           ->text(trans('texts.accept_debit_cards'))
+           ->value(1) !!}
 
         </div>
 
         {!! Former::checkbox('show_address')
-        ->label(trans('texts.billing_address'))
-        ->text(trans('texts.show_address_help'))
-        ->value(1) !!}
+       ->label(trans('texts.billing_address'))
+       ->text(trans('texts.show_address_help'))
+       ->value(1) !!}
         {!! Former::checkbox('update_address')
-        ->label(' ')
-        ->text(trans('texts.update_address_help'))
-        ->value(1) !!}
+       ->label(' ')
+       ->text(trans('texts.update_address_help'))
+       ->value(1) !!}
         {!! Former::checkboxes('creditCardTypes[]')
-        ->label('accepted_card_logos')
-        ->checkboxes($creditCardTypes)
-        ->class('creditcard-types')
-        ->inline()
-        ->value(1) !!}
+       ->label('accepted_card_logos')
+       ->checkboxes($creditCardTypes)
+       ->class('creditcard-types')
+       ->inline()
+       ->value(1) !!}
         {!! Former::checkbox('enable_ach')
-        ->label(trans('texts.ach'))
-        ->text(trans('texts.enable_ach'))
-        ->value(1) !!}
+       ->label(trans('texts.ach'))
+       ->text(trans('texts.enable_ach'))
+       ->value(1) !!}
 
         {!! Former::checkbox('tos_agree')->label(' ')
-        ->text(trans('texts.wepay_payment_tos_agree', [
+       ->text(trans('texts.wepay_payment_tos_agree', [
         'terms' => '<a href="https://go.wepay.com/terms-of-service" target="_blank">'.trans('texts.terms_of_service').'</a>',
         'privacy_policy' => '<a href="https://go.wepay.com/privacy-policy" target="_blank">'.trans('texts.privacy_policy').'</a>',
         ]))
-        ->value('true')
-        ->inlineHelp('standard_fees_apply') !!}
+       ->value('true')
+       ->inlineHelp('standard_fees_apply') !!}
 
     </div>
 

@@ -92,9 +92,9 @@
 
     @if($entityType == ENTITY_TICKET)
     {!! Button::primary(trans('texts.new_ticket'))
-    ->asLinkTo(URL::to('/client/tickets/create'))
-    ->withAttributes(['class' => 'pull-right'])
-    ->appendIcon(Icon::create('plus-sign')) !!}
+   ->asLinkTo(URL::to('/client/tickets/create'))
+   ->withAttributes(['class' => 'pull-right'])
+   ->appendIcon(Icon::create('plus-sign')) !!}
     @endif
 
 
@@ -108,11 +108,11 @@
     <h3>{{ $title }}</h3>
 
     {!! Datatable::table()
-    ->addColumn($columns)
-    ->setUrl(route('api.client.' . $entityType . 's'))
-    ->setOptions('sPaginationType', 'bootstrap')
-    ->setOptions('aaSorting', [[$sortColumn, 'desc']])
-    ->render('datatable') !!}
+   ->addColumn($columns)
+   ->setUrl(route('api.client.' . $entityType . 's'))
+   ->setOptions('sPaginationType', 'bootstrap')
+   ->setOptions('aaSorting', [[$sortColumn, 'desc']])
+   ->render('datatable') !!}
 </div>
 
 @if ($entityType == ENTITY_RECURRING_INVOICE)

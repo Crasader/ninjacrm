@@ -133,10 +133,10 @@
     @if (empty($extends))
         <div class="pull-right">
             {!! Button::normal(trans('texts.download'))
-                    ->withAttributes(['onclick' => 'onDownloadClick()'])
-                    ->appendIcon(Icon::create('download-alt')) !!}
+                   ->withAttributes(['onclick' => 'onDownloadClick()'])
+                   ->appendIcon(Icon::create('download-alt')) !!}
             {!! Button::primary(trans('texts.view_client'))
-                    ->asLinkTo($client->present()->url) !!}
+                   ->asLinkTo($client->present()->url) !!}
         </div>
 
         <ol class="breadcrumb pull-left">
@@ -157,10 +157,10 @@
             &nbsp;&nbsp;
 
             {!! Former::select('status_id')
-                    ->label('status')
-                    ->addOption(trans('texts.all'), 'false')
-                    ->addOption(trans('texts.unpaid'), INVOICE_STATUS_UNPAID)
-                    ->addOption(trans('texts.paid'), INVOICE_STATUS_PAID) !!}
+                   ->label('status')
+                   ->addOption(trans('texts.all'), 'false')
+                   ->addOption(trans('texts.unpaid'), INVOICE_STATUS_UNPAID)
+                   ->addOption(trans('texts.paid'), INVOICE_STATUS_PAID) !!}
 
             &nbsp;&nbsp;&nbsp;&nbsp;
 
@@ -197,8 +197,8 @@
         @if (! empty($extends))
             <div class="pull-right">
                 {!! Button::normal(trans('texts.download') . ' &nbsp; ')
-                        ->withAttributes(['onclick' => 'onDownloadClick()'])
-                        ->appendIcon(Icon::create('download-alt')) !!}
+                       ->withAttributes(['onclick' => 'onDownloadClick()'])
+                       ->appendIcon(Icon::create('download-alt')) !!}
             </div>
         @endif
         &nbsp;

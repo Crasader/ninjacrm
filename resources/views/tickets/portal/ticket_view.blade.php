@@ -18,10 +18,10 @@
     </style>
 
     {!! Former::open($url)
-            ->addClass('col-lg-10 col-lg-offset-1 warn-on-exit main-form')
-            ->autocomplete('off')
-            ->method($method)
-            ->rules([
+           ->addClass('col-lg-10 col-lg-offset-1 warn-on-exit main-form')
+           ->autocomplete('off')
+           ->method($method)
+           ->rules([
                 'name' => 'required',
                 'client_id' => 'required',
                 'subject' => 'required',
@@ -108,9 +108,9 @@
             @if(!$ticket)
             {{trans('texts.subject')}}
             {!! Former::small_text('subject')
-                     ->label('')
-                     ->id('subject')
-                     ->style('width:100%;')
+                    ->label('')
+                    ->id('subject')
+                    ->style('width:100%;')
             !!}
 
 

@@ -4,9 +4,9 @@
 @section('content')
 
     {!! Former::open($url)
-            ->addClass('col-lg-10 col-lg-offset-1 warn-on-exit')
-            ->method($method)
-            ->rules([
+           ->addClass('col-lg-10 col-lg-offset-1 warn-on-exit')
+           ->method($method)
+           ->rules([
                 'name' => 'required',
             ]) !!}
 

@@ -11,12 +11,12 @@
 @section('content')
 
     {!! Former::open($url)
-            ->method($method)
-            ->onsubmit('return onFormSubmit(event)')
-            ->id('mainForm')
-            ->autocomplete('off')
-            ->addClass('warn-on-exit')
-            ->rules([
+           ->method($method)
+           ->onsubmit('return onFormSubmit(event)')
+           ->id('mainForm')
+           ->autocomplete('off')
+           ->addClass('warn-on-exit')
+           ->rules([
                 'invoice_id' => 'required',
             ]) !!}
 
@@ -38,16 +38,16 @@
                 <div class="row">
                     <div class="col-md-6">
                         {!! Former::select('invoice_id')->addOption('', '')
-                                ->label(trans('texts.quote'))
-                                ->addGroupClass('invoice-select') !!}
+                               ->label(trans('texts.quote'))
+                               ->addGroupClass('invoice-select') !!}
                         {!! Former::select('proposal_template_id')->addOption('', '')
-                                ->label(trans('texts.template'))
-                                ->addGroupClass('template-select') !!}
+                               ->label(trans('texts.template'))
+                               ->addGroupClass('template-select') !!}
 
                     </div>
                     <div class="col-md-6">
                         {!! Former::textarea('private_notes')
-                                ->style('height: 100px') !!}
+                               ->style('height: 100px') !!}
                     </div>
                 </div>
             </div>
@@ -58,27 +58,27 @@
     @if(Auth::user()->canCreateOrEdit(ENTITY_PROPOSAL, $proposal))
     <center class="buttons">
         {!! Button::normal(trans('texts.cancel'))
-                ->appendIcon(Icon::create('remove-circle'))
-                ->asLinkTo(HTMLUtils::previousUrl('/proposals')) !!}
+               ->appendIcon(Icon::create('remove-circle'))
+               ->asLinkTo(HTMLUtils::previousUrl('/proposals')) !!}
 
         @if ($proposal)
             {!! Button::primary(trans('texts.download'))
-                    ->withAttributes(['onclick' => 'onDownloadClick()'])
-                    ->appendIcon(Icon::create('download-alt')) !!}
+                   ->withAttributes(['onclick' => 'onDownloadClick()'])
+                   ->appendIcon(Icon::create('download-alt')) !!}
         @endif
 
         {!! Button::success(trans("texts.save"))
-                ->withAttributes(['id' => 'saveButton'])
-                ->submit()
-                ->appendIcon(Icon::create('floppy-disk')) !!}
+               ->withAttributes(['id' => 'saveButton'])
+               ->submit()
+               ->appendIcon(Icon::create('floppy-disk')) !!}
 
         {!! Button::info(trans('texts.email'))
-                ->withAttributes(['id' => 'emailButton', 'onclick' => 'onEmailClick()'])
-                ->appendIcon(Icon::create('send')) !!}
+               ->withAttributes(['id' => 'emailButton', 'onclick' => 'onEmailClick()'])
+               ->appendIcon(Icon::create('send')) !!}
 
         @if ($proposal)
             {!! DropdownButton::normal(trans('texts.more_actions'))
-                    ->withContents($proposal->present()->moreActions()) !!}
+                   ->withContents($proposal->present()->moreActions()) !!}
         @endif
 
     </center>

@@ -20,7 +20,7 @@
                     trans('texts.all_invoices') => array('name' => 'only_notify_owned', 'value' => 0),
                     trans('texts.my_invoices') => array('name' => 'only_notify_owned', 'value' => 1),
                 ])->inline()
-                    ->label('send_notifications_for') !!}
+                   ->label('send_notifications_for') !!}
         @endif
     </div>
 </div>

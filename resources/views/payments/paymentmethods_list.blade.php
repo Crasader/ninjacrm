@@ -141,19 +141,19 @@
 <center>
     @if (false && $account->getGatewayByType(GATEWAY_TYPE_CREDIT_CARD) && $account->getGatewayByType(GATEWAY_TYPE_TOKEN))
         {!! Button::success(strtoupper(trans('texts.add_credit_card')))
-        ->asLinkTo(URL::to('/client/add/credit_card')) !!}
+       ->asLinkTo(URL::to('/client/add/credit_card')) !!}
         &nbsp;
     @endif
     @if (false && $account->getGatewayByType(GATEWAY_TYPE_BANK_TRANSFER) && $account->getGatewayByType(GATEWAY_TYPE_TOKEN))
         {!! Button::success(strtoupper(trans('texts.add_bank_account')))
-            ->withAttributes(['id'=>'add-ach'])
-            ->asLinkTo(URL::to('/client/add/bank_transfer')) !!}
+           ->withAttributes(['id'=>'add-ach'])
+           ->asLinkTo(URL::to('/client/add/bank_transfer')) !!}
         &nbsp;
     @endif
     @if (false && $account->getGatewayByType(GATEWAY_TYPE_PAYPAL) && $account->getGatewayByType(GATEWAY_TYPE_TOKEN))
         {!! Button::success(strtoupper(trans('texts.add_paypal_account')))
-            ->withAttributes(['id'=>'add-paypal'])
-            ->asLinkTo(URL::to('/client/add/paypal')) !!}
+           ->withAttributes(['id'=>'add-paypal'])
+           ->asLinkTo(URL::to('/client/add/paypal')) !!}
         <div id="paypal-container"></div>
     @endif
 </center>

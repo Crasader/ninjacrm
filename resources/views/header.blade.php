@@ -32,8 +32,7 @@
         }
 
         if (force || NINJA.isRegistered) {
-            window.location = '{{ URL::to('
-            logout ') }}' + (force ? '?force_logout=true' : '');
+            window.location = '{{ URL::to('logout') }}' + (force ? '?force_logout=true' : '');
         } else {
             $('#logoutModal').modal('show');
         }
@@ -68,55 +67,46 @@
         if (!window.loadedSearchData) {
             window.loadedSearchData = true;
             trackEvent('/activity', '/search');
-            var request = $.get('{{ URL::route('
-                get_search_data ') }}',
+            var request = $.get('{{ URL::route('get_search_data') }}',
                 function (data) {
                     $('#search').typeahead({
                             hint: true,
                             highlight: true,
                         }
-                        @if(Auth::check() && Auth::user() ->account ->customLabel('client1')), {
+                        @if(Auth::check() && Auth::user()->account->customLabel('client1')), {
                             name: 'data',
                             limit: 3,
                             display: 'value',
-                            source: searchData(data['{{ Auth::user()->account->present()->customLabel('
-                                client1 ') }}'], 'tokens'),
+                            source: searchData(data['{{ Auth::user()->account->present()->customLabel('client1') }}'], 'tokens'),
                             templates: {
-                                header: '&nbsp;<span style="font-weight:600;font-size:16px">{{ Auth::user()->account->present()->customLabel('
-                                client1 ') }}</span>'
+                                header: '&nbsp;<span style="font-weight:600;font-size:16px">{{ Auth::user()->account->present()->customLabel('client1') }}</span>'
                             }
                         }
-                        @endif @if(Auth::check() && Auth::user() ->account ->customLabel('client2')), {
+                        @endif @if(Auth::check() && Auth::user()->account->customLabel('client2')), {
                             name: 'data',
                             limit: 3,
                             display: 'value',
-                            source: searchData(data['{{ Auth::user()->account->present()->customLabel('
-                                client2 ') }}'], 'tokens'),
+                            source: searchData(data['{{ Auth::user()->account->present()->customLabel('client2') }}'], 'tokens'),
                             templates: {
-                                header: '&nbsp;<span style="font-weight:600;font-size:16px">{{ Auth::user()->account->present()->customLabel('
-                                client2 ') }}</span>'
+                                header: '&nbsp;<span style="font-weight:600;font-size:16px">{{ Auth::user()->account->present()->customLabel('client2') }}</span>'
                             }
                         }
-                        @endif @if(Auth::check() && Auth::user() ->account ->customLabel('invoice_text1')), {
+                        @endif @if(Auth::check() && Auth::user()->account->customLabel('invoice_text1')), {
                             name: 'data',
                             limit: 3,
                             display: 'value',
-                            source: searchData(data['{{ Auth::user()->account->present()->customLabel('
-                                invoice_text1 ') }}'], 'tokens'),
+                            source: searchData(data['{{ Auth::user()->account->present()->customLabel('invoice_text1') }}'], 'tokens'),
                             templates: {
-                                header: '&nbsp;<span style="font-weight:600;font-size:16px">{{ Auth::user()->account->present()->customLabel('
-                                invoice_text1 ') }}</span>'
+                                header: '&nbsp;<span style="font-weight:600;font-size:16px">{{ Auth::user()->account->present()->customLabel('invoice_text1') }}</span>'
                             }
                         }
-                        @endif @if(Auth::check() && Auth::user() ->account ->customLabel('invoice_text2')), {
+                        @endif @if(Auth::check() && Auth::user()->account->customLabel('invoice_text2')), {
                             name: 'data',
                             limit: 3,
                             display: 'value',
-                            source: searchData(data['{{ Auth::user()->account->present()->customLabel('
-                                invoice_text2 ') }}'], 'tokens'),
+                            source: searchData(data['{{ Auth::user()->account->present()->customLabel('invoice_text2') }}'], 'tokens'),
                             templates: {
-                                header: '&nbsp;<span style="font-weight:600;font-size:16px">{{ Auth::user()->account->present()->customLabel('
-                                invoice_text2 ') }}</span>'
+                                header: '&nbsp;<span style="font-weight:600;font-size:16px">{{ Auth::user()->account->present()->customLabel('invoice_text2') }}</span>'
                             }
                         }
                         @endif @foreach(['clients', 'contacts', 'invoices', 'quotes', 'navigation'] as $type), {
@@ -169,7 +159,7 @@
         });
 
         if (isStorageSupported()) {
-            @if(Auth::check() && !Auth::user() ->registered)
+            @if(Auth::check() && !Auth::user()->registered)
             localStorage.setItem('guest_key', '{{ Auth::user()->password }}');
             @endif
         }

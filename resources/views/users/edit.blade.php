@@ -48,30 +48,30 @@
             @endif
 
             {!! Former::checkbox('is_admin')
-                ->label('&nbsp;')
-                ->value(1)
-                ->text(trans('texts.administrator'))
-                ->help(trans('texts.administrator_help')) !!}
+               ->label('&nbsp;')
+               ->value(1)
+               ->text(trans('texts.administrator'))
+               ->help(trans('texts.administrator_help')) !!}
 
             <div class="panel-body">
                 <table class="table table-striped dataTable" >
                     <thead>
                     <th></th>
                     <th style="padding-bottom:0px">{!! Former::checkbox('create')
-                                  ->text( trans('texts.create') )
-                                  ->value('create_')
-                                  ->label('&nbsp;')
-                                  ->id('create_all') !!}</th>
+                                 ->text( trans('texts.create') )
+                                 ->value('create_')
+                                 ->label('&nbsp;')
+                                 ->id('create_all') !!}</th>
                     <th style="padding-bottom:0px">{!! Former::checkbox('view')
-                                  ->text( trans('texts.view') )
-                                  ->value('view_')
-                                  ->label('&nbsp;')
-                                  ->id('view_all') !!}</th>
+                                 ->text( trans('texts.view') )
+                                 ->value('view_')
+                                 ->label('&nbsp;')
+                                 ->id('view_all') !!}</th>
                     <th style="padding-bottom:0px">{!! Former::checkbox('edit')
-                                  ->text( trans('texts.edit') )
-                                  ->value('edit_')
-                                  ->label('&nbsp;')
-                                  ->id('edit_all') !!}</th>
+                                 ->text( trans('texts.edit') )
+                                 ->value('edit_')
+                                 ->label('&nbsp;')
+                                 ->id('edit_all') !!}</th>
                     </thead>
                     <tbody>
                     @foreach (json_decode(PERMISSION_ENTITIES,1) as $permissionEntity)
@@ -86,20 +86,20 @@
                         <tr>
                             <td>{{ ucfirst($permissionEntity) }}</td>
                             <td>{!! Former::checkbox('permissions[create_' . $permissionEntity . ']')
-                                  ->label('&nbsp;')
-                                  ->value('create_' . $permissionEntity . '')
-                                  ->id('create_' . $permissionEntity . '')
-                                  ->check(is_array($permissions) && in_array('create_' . $permissionEntity, $permissions, FALSE) ? true : false) !!}</td>
+                                 ->label('&nbsp;')
+                                 ->value('create_' . $permissionEntity . '')
+                                 ->id('create_' . $permissionEntity . '')
+                                 ->check(is_array($permissions) && in_array('create_' . $permissionEntity, $permissions, FALSE) ? true : false) !!}</td>
                             <td>{!! Former::checkbox('permissions[view_' . $permissionEntity . ']')
-                                  ->label('&nbsp;')
-                                  ->value('view_' . $permissionEntity . '')
-                                  ->id('view_' . $permissionEntity . '')
-                                  ->check(is_array($permissions) && in_array('view_' . $permissionEntity, $permissions, FALSE) ? true : false) !!}</td>
+                                 ->label('&nbsp;')
+                                 ->value('view_' . $permissionEntity . '')
+                                 ->id('view_' . $permissionEntity . '')
+                                 ->check(is_array($permissions) && in_array('view_' . $permissionEntity, $permissions, FALSE) ? true : false) !!}</td>
                             <td>{!! Former::checkbox('permissions[edit_' . $permissionEntity . ']')
-                                  ->label('&nbsp;')
-                                  ->value('edit_' . $permissionEntity . '')
-                                  ->id('edit_' . $permissionEntity . '')
-                                  ->check(is_array($permissions) && in_array('edit_' . $permissionEntity, $permissions, FALSE) ? true : false) !!}</td>
+                                 ->label('&nbsp;')
+                                 ->value('edit_' . $permissionEntity . '')
+                                 ->id('edit_' . $permissionEntity . '')
+                                 ->check(is_array($permissions) && in_array('edit_' . $permissionEntity, $permissions, FALSE) ? true : false) !!}</td>
                         </tr>
                     @endforeach
                     <tr><td><input type="checkbox" id="view_contact" value="view_contact" name="permissions[view_contact]" style="display:none">

@@ -7,8 +7,8 @@
 <div class="container">
 
     {!! Former::open()
-    ->rules(['password' => 'required'])
-    ->addClass('form-signin') !!}
+   ->rules(['password' => 'required'])
+   ->addClass('form-signin') !!}
 
     <h2 class="form-signin-heading">{{ trans('texts.client_login') }}</h2>
     <hr class="green">
@@ -47,8 +47,8 @@
     {!! Former::hidden('remember')->raw() !!}
 
     {!! Button::success(trans('texts.login'))
-    ->withAttributes(['id' => 'loginButton', 'class' => 'green'])
-    ->large()->submit()->block() !!}
+   ->withAttributes(['id' => 'loginButton', 'class' => 'green'])
+   ->large()->submit()->block() !!}
 
     <div class="row meta">
         <div class="col-md-12 col-sm-12" style="text-align:center;padding-top:8px;">

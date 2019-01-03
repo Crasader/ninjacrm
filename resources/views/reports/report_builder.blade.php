@@ -194,14 +194,14 @@
 
 						<div id="dateField" style="display:none" data-bind="visible: showInvoiceOrPaymentDate">
                             {!! Former::select('date_field')->label(trans('texts.filter'))
-                                    ->addOption(trans('texts.invoice_date'), FILTER_INVOICE_DATE)
-                                    ->addOption(trans('texts.payment_date'), FILTER_PAYMENT_DATE) !!}
+                                   ->addOption(trans('texts.invoice_date'), FILTER_INVOICE_DATE)
+                                   ->addOption(trans('texts.payment_date'), FILTER_PAYMENT_DATE) !!}
                         </div>
 
 						<div id="currencyType" style="display:none" data-bind="visible: showCurrencyType">
                             {!! Former::select('currency_type')->label(trans('texts.currency'))
-                                    ->addOption(trans('texts.default'), 'default')
-                                    ->addOption(trans('texts.converted'), 'converted') !!}
+                                   ->addOption(trans('texts.default'), 'default')
+                                   ->addOption(trans('texts.converted'), 'converted') !!}
                         </div>
 
 						<div id="invoiceOrExpenseField" style="display:none" data-bind="visible: showInvoiceOrExpense">

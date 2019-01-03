@@ -24,10 +24,10 @@
                     </div>
                     <center class="buttons">
                         {!! Former::text('one_time_password')
-                                ->placeholder('one_time_password')
-                                ->data_lpignore('true')
-                                ->style('width:300px;font-size:18px')
-                                ->raw() !!}
+                               ->placeholder('one_time_password')
+                               ->data_lpignore('true')
+                               ->style('width:300px;font-size:18px')
+                               ->raw() !!}
                         <p>&nbsp;</p>
                         {!! Button::normal(trans('texts.cancel'))->large()->asLinkTo(url('settings/user_details'))->appendIcon(Icon::create('remove-circle')) !!}
                         {!! Button::success(trans('texts.enable'))->large()->submit()->appendIcon(Icon::create('lock')) !!}

@@ -20,10 +20,10 @@
 @section('content')
 
     {!! Former::open($url)
-            ->addClass('col-lg-10 col-lg-offset-1 warn-on-exit main-form')
-            ->autocomplete('off')
-            ->method($method)
-            ->rules([
+           ->addClass('col-lg-10 col-lg-offset-1 warn-on-exit main-form')
+           ->autocomplete('off')
+           ->method($method)
+           ->rules([
                 'description' => 'required',
                 'subject' => ' required',
             ]) !!}
@@ -51,9 +51,9 @@
 
             {{trans('texts.subject')}}
             {!! Former::small_text('subject')
-                     ->label('')
-                     ->id('subject')
-                     ->style('width:100%;')
+                    ->label('')
+                    ->id('subject')
+                    ->style('width:100%;')
             !!}
 
 
@@ -80,11 +80,11 @@
                 <div class="col-md-9">
 
                     {!! Former::select('client_public_id')
-                            ->label('')
-                            ->addOption('', '')
-                            ->data_bind("dropdown: client_public_id, dropdownOptions: {highlighter: comboboxHighlighter}")
-                            ->addClass('pull-right')
-                            ->addGroupClass('client-select') !!}
+                           ->label('')
+                           ->addOption('', '')
+                           ->data_bind("dropdown: client_public_id, dropdownOptions: {highlighter: comboboxHighlighter}")
+                           ->addClass('pull-right')
+                           ->addGroupClass('client-select') !!}
 
                 </div>
 
@@ -98,11 +98,11 @@
 
                 <div class="col-md-9">
                     {!! Former::select('agent_id')
-                           ->label('')
-                           ->addOption('', '')
-                           ->data_bind("dropdown: agent_id, dropdownOptions: {highlighter: comboboxHighlighter}")
-                           ->addClass('pull-right')
-                           ->addGroupClass('') !!}
+                          ->label('')
+                          ->addOption('', '')
+                          ->data_bind("dropdown: agent_id, dropdownOptions: {highlighter: comboboxHighlighter}")
+                          ->addClass('pull-right')
+                          ->addGroupClass('') !!}
                 </div>
 
             </div>
@@ -113,7 +113,7 @@
                 </div>
                 <div class="col-md-9">
                     {!! Former::select('priority_id')->label('')
-                               ->fromQuery(\App\Models\Ticket::getPriorityArray(), 'name', 'id') !!}
+                              ->fromQuery(\App\Models\Ticket::getPriorityArray(), 'name', 'id') !!}
                 </div>
             </div>
 
@@ -137,8 +137,8 @@
 
                 <div class="col-md-9">
                     {!! Former::checkbox('is_internal')
-                                ->label('')
-                                ->data_bind("checked: is_internal.pretty") !!}
+                               ->label('')
+                               ->data_bind("checked: is_internal.pretty") !!}
                 </div>
             </div>
 
@@ -152,11 +152,11 @@
                 <div class="col-md-9">
 
                     {!! Former::select('parent_ticket_id')
-                            ->label('')
-                            ->addOption('', '')
-                            ->data_bind("dropdown: parent_ticket_id, dropdownOptions: {highlighter: comboboxHighlighter}")
-                            ->addClass('pull-right')
-                            ->addGroupClass('') !!}
+                           ->label('')
+                           ->addOption('', '')
+                           ->data_bind("dropdown: parent_ticket_id, dropdownOptions: {highlighter: comboboxHighlighter}")
+                           ->addClass('pull-right')
+                           ->addGroupClass('') !!}
 
                 </div>
 
@@ -185,8 +185,8 @@
 
             <div role="tabpanel" class="tab-pane active" id="private_notes" style="padding-bottom:44px">
                 {!! Former::textarea('private_notes')
-                        ->data_bind("value: private_notes, valueUpdate: 'afterkeydown'")
-                        ->label(null)->style('width: 100%')->rows(4) !!}
+                       ->data_bind("value: private_notes, valueUpdate: 'afterkeydown'")
+                       ->label(null)->style('width: 100%')->rows(4) !!}
             </div>
 
             <div role="tabpanel" class="tab-pane" id="attached-documents" style="position:relative; z-index:9;">

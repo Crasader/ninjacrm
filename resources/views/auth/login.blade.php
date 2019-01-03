@@ -7,8 +7,8 @@
 <div class="container">
 
     {!! Former::open('login')
-    ->rules(['email' => 'required|email', 'password' => 'required'])
-    ->addClass('form-signin') !!}
+   ->rules(['email' => 'required|email', 'password' => 'required'])
+   ->addClass('form-signin') !!}
 
     <h2 class="form-signin-heading">
         @if (strstr(session('url.intended'), 'time_tracker'))
@@ -52,8 +52,8 @@
     </div>
 
     {!! Button::success(trans('texts.login'))
-    ->withAttributes(['id' => 'loginButton', 'class' => 'green'])
-    ->large()->submit()->block() !!}
+   ->withAttributes(['id' => 'loginButton', 'class' => 'green'])
+   ->large()->submit()->block() !!}
 
     @if (Utils::isOAuthEnabled())
     <div class="row existing-accounts">

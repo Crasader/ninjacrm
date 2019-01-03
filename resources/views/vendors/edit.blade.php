@@ -19,12 +19,12 @@
 <div class="row">
 
 	{!! Former::open($url)
-            ->autocomplete('off')
-            ->rules([
+           ->autocomplete('off')
+           ->rules([
                 'namey' => 'required',
                 'email' => 'email'
             ])->addClass('col-md-12 warn-on-exit')
-            ->method($method) !!}
+           ->method($method) !!}
 
     @include('partials.autocomplete_fix')
 
@@ -118,8 +118,8 @@
             <div class="panel-body">
 
             {!! Former::select('currency_id')->addOption('','')
-                ->placeholder($account->currency ? $account->currency->name : '')
-                ->fromQuery($currencies, 'name', 'id') !!}
+               ->placeholder($account->currency ? $account->currency->name : '')
+               ->fromQuery($currencies, 'name', 'id') !!}
 			{!! Former::textarea('private_notes')->rows(6) !!}
 
             </div>

@@ -24,10 +24,10 @@
 @section('content')
 
     {!! Former::open($url)
-            ->addClass('col-lg-10 col-lg-offset-1 warn-on-exit main-form')
-            ->autocomplete('off')
-            ->method($method)
-            ->rules([
+           ->addClass('col-lg-10 col-lg-offset-1 warn-on-exit main-form')
+           ->autocomplete('off')
+           ->method($method)
+           ->rules([
                 'name' => 'required',
             ]) !!}
 
@@ -111,9 +111,9 @@
                 @if(!$ticket)
                     {{trans('texts.subject')}}
                     {!! Former::small_text('subject')
-                             ->label('')
-                             ->id('subject')
-                             ->style('width:100%;')
+                            ->label('')
+                            ->id('subject')
+                            ->style('width:100%;')
                     !!}
 
                     {{ trans('texts.description') }}
@@ -134,12 +134,12 @@
 
                 @if(!$ticket->is_internal && $ticket->client)
                     {!! DropdownButton::normal(trans('texts.more_actions'))
-                    ->withContents([
+                   ->withContents([
                         ['label'=>trans('texts.ticket_merge'),'url'=>'/tickets/merge/'. $ticket->public_id ],
                         ['label'=>trans('texts.new_internal_ticket'), 'url'=>'/tickets/create/'.$ticket->public_id],
                     ])
-                    ->large()
-                    ->dropup() !!}
+                   ->large()
+                   ->dropup() !!}
                 @endif
 
                 @if($ticket && $ticket->status_id == 3)
@@ -179,8 +179,8 @@
 
                     <div role="tabpanel" class="tab-pane active" id="private_notes" style="padding-bottom:44px">
                         {!! Former::textarea('private_notes')
-                                ->data_bind("value: private_notes, valueUpdate: 'afterkeydown'")
-                                ->label(null)->style('width: 100%')->rows(4) !!}
+                               ->data_bind("value: private_notes, valueUpdate: 'afterkeydown'")
+                               ->label(null)->style('width: 100%')->rows(4) !!}
                     </div>
 
                     <div role="tabpanel" class="tab-pane" id="attached-documents" style="position:relative;z-index:9">
@@ -204,29 +204,29 @@
 
                             <div style="float:left;margin:10px;">
                                 {!! Former::select('linked_object')
-                                    ->style('width:170px;padding:10px;')
-                                    ->label('')
-                                    ->text(trans('texts.type'))
-                                    ->addOption('', '')
-                                    ->fromQuery(\App\Models\Ticket::relationEntities())
-                                    ->data_bind("event: {change: onEntityChange }")
+                                   ->style('width:170px;padding:10px;')
+                                   ->label('')
+                                   ->text(trans('texts.type'))
+                                   ->addOption('', '')
+                                   ->fromQuery(\App\Models\Ticket::relationEntities())
+                                   ->data_bind("event: {change: onEntityChange }")
                                  !!}
                             </div>
 
                             <div style="float:left;margin:10px;">
                                 {!! Former::select('linked_item')
-                                    ->style('width:170px;padding:10px;')
-                                    ->label('')
-                                    ->text(trans('texts.type'))
-                                    ->addOption('', '')
-                                    ->data_bind("options: entityItems")
+                                   ->style('width:170px;padding:10px;')
+                                   ->label('')
+                                   ->text(trans('texts.type'))
+                                   ->addOption('', '')
+                                   ->data_bind("options: entityItems")
                                  !!}
                             </div>
 
                             <div style="float:left;margin:10px;">
                                 {!! Button::normal(trans('texts.link'))
-                                            ->small()
-                                            ->withAttributes(['onclick' => 'addRelation()', 'data-bind' => 'enable: checkObjectAndItemExist']) !!}
+                                           ->small()
+                                           ->withAttributes(['onclick' => 'addRelation()', 'data-bind' => 'enable: checkObjectAndItemExist']) !!}
                             </div>
 
                         </div>

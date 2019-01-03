@@ -90,12 +90,12 @@
 	@endif
 
 	{!! Former::open($url)
-            ->method($method)
-            ->addClass('warn-on-exit main-form search')
-            ->autocomplete('off')
-            ->name('lastpass-disable-search') // 'search' prevents LastPass auto-fill http://stackoverflow.com/a/30921628/497368
-            ->onsubmit('return onFormSubmit(event)')
-            ->rules(array(
+           ->method($method)
+           ->addClass('warn-on-exit main-form search')
+           ->autocomplete('off')
+           ->name('lastpass-disable-search') // 'search' prevents LastPass auto-fill http://stackoverflow.com/a/30921628/497368
+           ->onsubmit('return onFormSubmit(event)')
+           ->rules(array(
         		'client' => 'required',
                 'invoice_number' => 'required',
                 'invoice_date' => 'required',
@@ -222,7 +222,7 @@
 			@if (isset($frequencies))
 			<div data-bind="visible: is_recurring" style="display: none">
 				{!! Former::select('frequency_id')->label('frequency')->options($frequencies)->data_bind("value: frequency_id")
-                        ->appendIcon('question-sign')->addGroupClass('frequency_id')->onchange('onFrequencyChange()') !!}
+                       ->appendIcon('question-sign')->addGroupClass('frequency_id')->onchange('onFrequencyChange()') !!}
 				{!! Former::text('start_date')->data_bind("datePicker: start_date, valueUpdate: 'afterkeydown'")->data_date_start_date($invoice->id ? false : $account->formatDate($account->getDateTime()))
 							->data_date_format(Session::get(SESSION_DATE_PICKER_FORMAT, DEFAULT_DATE_PICKER_FORMAT))->appendIcon('calendar')->addGroupClass('start_date') !!}
 				{!! Former::text('end_date')->data_bind("datePicker: end_date, valueUpdate: 'afterkeydown'")->data_date_start_date($invoice->id ? false : $account->formatDate($account->getDateTime()))
@@ -243,17 +243,17 @@
 		<div class="col-md-4" id="col_2">
             <span data-bind="visible: !is_recurring()">
             {!! Former::text('invoice_number')
-                        ->label(trans("texts.{$entityType}_number_short"))
-                        ->onchange('checkInvoiceNumber()')
-                        ->addGroupClass('invoice-number')
-                        ->data_bind("value: invoice_number, valueUpdate: 'afterkeydown'") !!}
+                       ->label(trans("texts.{$entityType}_number_short"))
+                       ->onchange('checkInvoiceNumber()')
+                       ->addGroupClass('invoice-number')
+                       ->data_bind("value: invoice_number, valueUpdate: 'afterkeydown'") !!}
             </span>
             @if ($entityType == ENTITY_INVOICE)
             <span data-bind="visible: is_recurring()" style="display: none">
                 <div data-bind="visible: !(auto_bill() == {{AUTO_BILL_OPT_IN}} &amp;&amp; client_enable_auto_bill()) &amp;&amp; !(auto_bill() == {{AUTO_BILL_OPT_OUT}} &amp;&amp; !client_enable_auto_bill())" style="display: none">
                 {!! Former::select('auto_bill')
-                        ->data_bind("value: auto_bill, valueUpdate: 'afterkeydown', event:{change:function(){if(auto_bill()==".AUTO_BILL_OPT_IN.")client_enable_auto_bill(0);if(auto_bill()==".AUTO_BILL_OPT_OUT.")client_enable_auto_bill(1)}}")
-                        ->options([
+                       ->data_bind("value: auto_bill, valueUpdate: 'afterkeydown', event:{change:function(){if(auto_bill()==".AUTO_BILL_OPT_IN.")client_enable_auto_bill(0);if(auto_bill()==".AUTO_BILL_OPT_OUT.")client_enable_auto_bill(1)}}")
+                       ->options([
                             AUTO_BILL_OFF => trans('texts.off'),
                             AUTO_BILL_OPT_IN => trans('texts.opt_in'),
                             AUTO_BILL_OPT_OUT => trans('texts.opt_out'),
@@ -359,21 +359,21 @@
 				<td>{{ trans('texts.tax') }}&nbsp;&nbsp;</td>
 				<td style="min-width:120px">
                     {!! Former::select('')
-                            ->id('taxRateSelect1')
-                            ->addOption('', '')
-                            ->options($taxRateOptions)
-                            ->addClass($account->enable_second_tax_rate ? 'tax-select' : '')
-                            ->data_bind('value: tax1, event:{change:onTax1Change}')
-                            ->raw() !!}
+                           ->id('taxRateSelect1')
+                           ->addOption('', '')
+                           ->options($taxRateOptions)
+                           ->addClass($account->enable_second_tax_rate ? 'tax-select' : '')
+                           ->data_bind('value: tax1, event:{change:onTax1Change}')
+                           ->raw() !!}
                     <input type="text" name="tax_name1" data-bind="value: tax_name1" style="display:none">
                     <input type="text" name="tax_rate1" data-bind="value: tax_rate1" style="display:none">
                     <div data-bind="visible: $root.invoice().account.enable_second_tax_rate == '1'">
                     {!! Former::select('')
-                            ->addOption('', '')
-                            ->options($taxRateOptions)
-                            ->addClass('tax-select')
-                            ->data_bind('value: tax2, event:{change:onTax2Change}')
-                            ->raw() !!}
+                           ->addOption('', '')
+                           ->options($taxRateOptions)
+                           ->addClass('tax-select')
+                           ->data_bind('value: tax2, event:{change:onTax2Change}')
+                           ->raw() !!}
                     </div>
                     <input type="text" name="tax_name2" data-bind="value: tax_name2" style="display:none">
                     <input type="text" name="tax_rate2" data-bind="value: tax_rate2" style="display:none">
@@ -535,8 +535,8 @@
 
         @if ( $invoice->id && ! $invoice->is_recurring)
 		    {!! Button::primary(trans('texts.download'))
-                    ->withAttributes(['onclick' => 'onDownloadClick()', 'id' => 'downloadPdfButton'])
-                    ->appendIcon(Icon::create('download-alt')) !!}
+                   ->withAttributes(['onclick' => 'onDownloadClick()', 'id' => 'downloadPdfButton'])
+                   ->appendIcon(Icon::create('download-alt')) !!}
         @endif
 
         @if (Auth::user()->canCreateOrEdit(ENTITY_INVOICE, $invoice))
@@ -602,17 +602,17 @@
                 {!! Former::hidden('client_public_id')->data_bind("value: public_id, valueUpdate: 'afterkeydown',
                             attr: {name: 'client[public_id]'}") !!}
                 {!! Former::text('client[name]')
-                    ->data_bind("value: name, valueUpdate: 'afterkeydown', attr { placeholder: name.placeholder }")
-                    ->label('client_name') !!}
+                   ->data_bind("value: name, valueUpdate: 'afterkeydown', attr { placeholder: name.placeholder }")
+                   ->label('client_name') !!}
 
 				@if ( ! $account->client_number_counter)
                 <span data-bind="visible: $root.showMore">
 				@endif
 
             	{!! Former::text('client[id_number]')
-                            ->label('id_number')
+                           ->label('id_number')
 							->placeholder($account->clientNumbersEnabled() ? $account->getNextNumber() : ' ')
-                            ->data_bind("value: id_number, valueUpdate: 'afterkeydown'") !!}
+                           ->data_bind("value: id_number, valueUpdate: 'afterkeydown'") !!}
 
 				@if ( ! $account->client_number_counter)
 				</span>
@@ -620,15 +620,15 @@
 
 				<span data-bind="visible: $root.showMore">
                     {!! Former::text('client[vat_number]')
-                            ->label('vat_number')
-                            ->data_bind("value: vat_number, valueUpdate: 'afterkeydown'") !!}
+                           ->label('vat_number')
+                           ->data_bind("value: vat_number, valueUpdate: 'afterkeydown'") !!}
 
                     {!! Former::text('client[website]')
-                            ->label('website')
-                            ->data_bind("value: website, valueUpdate: 'afterkeydown'") !!}
+                           ->label('website')
+                           ->data_bind("value: website, valueUpdate: 'afterkeydown'") !!}
                     {!! Former::text('client[work_phone]')
-                            ->label('work_phone')
-                            ->data_bind("value: work_phone, valueUpdate: 'afterkeydown'") !!}
+                           ->label('work_phone')
+                           ->data_bind("value: work_phone, valueUpdate: 'afterkeydown'") !!}
 
                 </span>
 
@@ -653,25 +653,25 @@
                     &nbsp;
 
                     {!! Former::text('client[address1]')
-                            ->label(trans('texts.address1'))
-                            ->data_bind("value: address1, valueUpdate: 'afterkeydown'") !!}
+                           ->label(trans('texts.address1'))
+                           ->data_bind("value: address1, valueUpdate: 'afterkeydown'") !!}
                     {!! Former::text('client[address2]')
-                            ->label(trans('texts.address2'))
-                            ->data_bind("value: address2, valueUpdate: 'afterkeydown'") !!}
+                           ->label(trans('texts.address2'))
+                           ->data_bind("value: address2, valueUpdate: 'afterkeydown'") !!}
                     {!! Former::text('client[city]')
-                            ->label(trans('texts.city'))
-                            ->data_bind("value: city, valueUpdate: 'afterkeydown'") !!}
+                           ->label(trans('texts.city'))
+                           ->data_bind("value: city, valueUpdate: 'afterkeydown'") !!}
                     {!! Former::text('client[state]')
-                            ->label(trans('texts.state'))
-                            ->data_bind("value: state, valueUpdate: 'afterkeydown'") !!}
+                           ->label(trans('texts.state'))
+                           ->data_bind("value: state, valueUpdate: 'afterkeydown'") !!}
                     {!! Former::text('client[postal_code]')
-                            ->label(trans('texts.postal_code'))
-                            ->data_bind("value: postal_code, valueUpdate: 'afterkeydown'") !!}
+                           ->label(trans('texts.postal_code'))
+                           ->data_bind("value: postal_code, valueUpdate: 'afterkeydown'") !!}
                     {!! Former::select('client[country_id]')
-                            ->label(trans('texts.country_id'))
-                            ->autocomplete('off')
-                            ->addOption('','')->addGroupClass('country_select')
-                            ->fromQuery($countries, 'name', 'id')
+                           ->label(trans('texts.country_id'))
+                           ->autocomplete('off')
+                           ->addOption('','')->addGroupClass('country_select')
+                           ->fromQuery($countries, 'name', 'id')
 							->data_bind("dropdown: country_id") !!}
                 </span>
 
@@ -690,7 +690,7 @@
                             attr: {name: 'client[contacts][' + \$index() + '][last_name]'}") !!}
                     {!! Former::text('email')->data_bind("value: email, valueUpdate: 'afterkeydown',
                             attr: {name: 'client[contacts][' + \$index() + '][email]', id:'email'+\$index()}")
-                            ->addClass('client-email') !!}
+                           ->addClass('client-email') !!}
                     {!! Former::text('phone')->data_bind("value: phone, valueUpdate: 'afterkeydown',
                             attr: {name: 'client[contacts][' + \$index() + '][phone]'}") !!}
                     @if ($account->hasFeature(FEATURE_CLIENT_PORTAL_PASSWORD) && $account->enable_portal_password)
@@ -732,30 +732,30 @@
                 </span>
 
                 {!! Former::select('client[currency_id]')->addOption('','')
-                        ->placeholder($account->currency ? trans('texts.currency_'.Str::slug($account->currency->name, '_')) : '')
-                        ->label(trans('texts.currency_id'))
-                        ->data_bind('value: currency_id')
-                        ->fromQuery($currencies, 'name', 'id') !!}
+                       ->placeholder($account->currency ? trans('texts.currency_'.Str::slug($account->currency->name, '_')) : '')
+                       ->label(trans('texts.currency_id'))
+                       ->data_bind('value: currency_id')
+                       ->fromQuery($currencies, 'name', 'id') !!}
 
                 <span data-bind="visible: $root.showMore">
                 {!! Former::select('client[language_id]')->addOption('','')
 						->placeholder($account->language ? trans('texts.lang_'.$account->language->name) : '')
-                        ->label(trans('texts.language_id'))
-                        ->data_bind('value: language_id')
-                        ->fromQuery($languages, 'name', 'id') !!}
+                       ->label(trans('texts.language_id'))
+                       ->data_bind('value: language_id')
+                       ->fromQuery($languages, 'name', 'id') !!}
                 {!! Former::select('client[payment_terms]')->addOption('','')->data_bind('value: payment_terms')
-                        ->fromQuery(\App\Models\PaymentTerm::getSelectOptions(), 'name', 'num_days')
-                        ->label(trans('texts.payment_terms'))
-                        ->help(trans('texts.payment_terms_help')) !!}
+                       ->fromQuery(\App\Models\PaymentTerm::getSelectOptions(), 'name', 'num_days')
+                       ->label(trans('texts.payment_terms'))
+                       ->help(trans('texts.payment_terms_help')) !!}
                 {!! Former::select('client[size_id]')->addOption('','')->data_bind('value: size_id')
-                        ->label(trans('texts.size_id'))
-                        ->fromQuery($sizes, 'name', 'id') !!}
+                       ->label(trans('texts.size_id'))
+                       ->fromQuery($sizes, 'name', 'id') !!}
                 {!! Former::select('client[industry_id]')->addOption('','')->data_bind('value: industry_id')
-                        ->label(trans('texts.industry_id'))
-                        ->fromQuery($industries, 'name', 'id') !!}
+                       ->label(trans('texts.industry_id'))
+                       ->fromQuery($industries, 'name', 'id') !!}
                 {!! Former::textarea('client_private_notes')
-                        ->label(trans('texts.private_notes'))
-                        ->data_bind("value: private_notes, attr:{ name: 'client[private_notes]'}") !!}
+                       ->label(trans('texts.private_notes'))
+                       ->data_bind("value: private_notes, attr:{ name: 'client[private_notes]'}") !!}
                 </span>
             </div>
             </div>

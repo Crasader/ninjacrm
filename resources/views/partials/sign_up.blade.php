@@ -190,19 +190,19 @@ function handleSignedUp() {
         <div class="row signup-form">
             <div class="col-md-12">
                 {!! Former::checkbox('terms_checkbox')
-                    ->label(' ')
-                    ->value(1)
-                    ->text(trans('texts.agree_to_terms', [
+                   ->label(' ')
+                   ->value(1)
+                   ->text(trans('texts.agree_to_terms', [
                         'terms' => link_to(config('ninja.terms_of_service_url.' . (Utils::isSelfHost() ? 'selfhost' : 'hosted')), trans('texts.terms_of_service'), ['target' => '_blank']),
                     ]))
-                    ->raw() !!}
+                   ->raw() !!}
                     {!! Former::checkbox('privacy_checkbox')
-                        ->label(' ')
-                        ->value(1)
-                        ->text(trans('texts.agree_to_terms', [
+                       ->label(' ')
+                       ->value(1)
+                       ->text(trans('texts.agree_to_terms', [
                             'terms' => link_to(config('ninja.privacy_policy_url.' . (Utils::isSelfHost() ? 'selfhost' : 'hosted')), trans('texts.privacy_policy'), ['target' => '_blank']),
                         ]))
-                        ->raw() !!}
+                       ->raw() !!}
                 <br/>
             </div>
             <br/>&nbsp;<br/>
@@ -230,26 +230,26 @@ function handleSignedUp() {
                 {{ Former::setOption('TwitterBootstrap3.labelWidths.small', 0) }}
 
                 {!! Former::text('new_first_name')
-                        ->placeholder(trans('texts.first_name'))
-                        ->autocomplete('given-name')
-                        ->data_lpignore('true')
-                        ->label(' ') !!}
+                       ->placeholder(trans('texts.first_name'))
+                       ->autocomplete('given-name')
+                       ->data_lpignore('true')
+                       ->label(' ') !!}
                 {!! Former::text('new_last_name')
-                        ->placeholder(trans('texts.last_name'))
-                        ->autocomplete('family-name')
-                        ->data_lpignore('true')
-                        ->label(' ') !!}
+                       ->placeholder(trans('texts.last_name'))
+                       ->autocomplete('family-name')
+                       ->data_lpignore('true')
+                       ->label(' ') !!}
                 {!! Former::text('new_email')
-                        ->placeholder(trans('texts.email'))
-                        ->autocomplete('email')
-                        ->data_lpignore('true')
-                        ->label(' ') !!}
+                       ->placeholder(trans('texts.email'))
+                       ->autocomplete('email')
+                       ->data_lpignore('true')
+                       ->label(' ') !!}
                 {!! Former::text('new_password')
-                        ->placeholder(trans('texts.password'))
-                        ->autocomplete('new-password')
-                        ->data_lpignore('true')
-                        ->label(' ')
-                        ->help('<span id="passwordStrength">&nbsp;</span>') !!}
+                       ->placeholder(trans('texts.password'))
+                       ->autocomplete('new-password')
+                       ->data_lpignore('true')
+                       ->label(' ')
+                       ->help('<span id="passwordStrength">&nbsp;</span>') !!}
 
                 {{ Former::setOption('TwitterBootstrap3.labelWidths.large', 4) }}
                 {{ Former::setOption('TwitterBootstrap3.labelWidths.small', 4) }}

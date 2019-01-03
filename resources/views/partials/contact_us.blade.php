@@ -1,7 +1,7 @@
 {!! Former::vertical_open()
-        ->onsubmit('return onContactUsFormSubmit()')
-        ->addClass('contact-us-form')
-        ->rules([
+       ->onsubmit('return onContactUsFormSubmit()')
+       ->addClass('contact-us-form')
+       ->rules([
             'contact_us_from' => 'required',
             'contact_us_message' => 'required',
         ]) !!}
@@ -19,16 +19,16 @@
       <div class="panel-body">
           <div class="input-div">
               {!! Former::plaintext('contact_us_from')
-                    ->label('from')
-                    ->value(Auth::user()->present()->email) !!}
+                   ->label('from')
+                   ->value(Auth::user()->present()->email) !!}
 
               {!! Former::textarea('contact_us_message')
-                    ->label('message')
-                    ->rows(10) !!}
+                   ->label('message')
+                   ->rows(10) !!}
 
                 @if (! Utils::isNinjaProd())
                     {!! Former::checkbox('include_errors')->label(false)
-                        ->text(trans('texts.include_errors_help', [
+                       ->text(trans('texts.include_errors_help', [
                             'link' => link_to('/errors', trans('texts.recent_errors'), ['target' => '_blank'])
                         ])) !!}
                 @endif

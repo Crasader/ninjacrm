@@ -35,28 +35,28 @@
                 {!! Former::number('annual_revenue')->prepend('$')->append('.00')->placeholder(trans('texts.annual_revenue'))->value(floor($usdLast12Months))->required() !!}
                 {!! Former::number('average_bank_balance')->prepend('$')->append('.00')->placeholder(trans('texts.average_bank_balance'))->required() !!}
                 {!! Former::checkboxes('quote_types')
-                        ->onchange('bluevineQuoteTypesChanged()')
-                        ->required()
-                        ->checkboxes([
+                       ->onchange('bluevineQuoteTypesChanged()')
+                       ->required()
+                       ->checkboxes([
                             trans('texts.invoice_factoring') => ['value' => 'invoice_factoring', 'name' => 'quote_type_factoring', 'id'=>'quote_type_factoring'],
                             trans('texts.line_of_credit') => ['value' => 'line_of_credit', 'name' => 'quote_type_loc', 'id'=>'quote_type_loc'],
                         ]) !!}
                 {!! Former::number('desired_credit_limit_factoring')
-                    ->id('desired_credit_limit_factoring')
-                    ->name('desired_credit_limit[invoice_factoring]')
-                    ->prepend('$')->append('.00')
-                    ->value(5000)
-                    ->required()
-                    ->placeholder(trans('texts.desired_credit_limit'))
-                    ->label(trans('texts.desired_credit_limit_factoring'))!!}
+                   ->id('desired_credit_limit_factoring')
+                   ->name('desired_credit_limit[invoice_factoring]')
+                   ->prepend('$')->append('.00')
+                   ->value(5000)
+                   ->required()
+                   ->placeholder(trans('texts.desired_credit_limit'))
+                   ->label(trans('texts.desired_credit_limit_factoring'))!!}
                 {!! Former::number('desired_credit_limit_loc')
-                    ->id('desired_credit_limit_loc')
-                    ->name('desired_credit_limit[line_of_credit]')
-                    ->prepend('$')->append('.00')
-                    ->value(5000)
-                    ->required()
-                    ->placeholder(trans('texts.desired_credit_limit'))
-                    ->label(trans('texts.desired_credit_limit_loc'))!!}
+                   ->id('desired_credit_limit_loc')
+                   ->name('desired_credit_limit[line_of_credit]')
+                   ->prepend('$')->append('.00')
+                   ->value(5000)
+                   ->required()
+                   ->placeholder(trans('texts.desired_credit_limit'))
+                   ->label(trans('texts.desired_credit_limit_loc'))!!}
                 {!! Former::close() !!}
             </div>
             </div>

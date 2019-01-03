@@ -14,10 +14,10 @@
             <p>&nbsp;</p>
 
             {!! Former::vertical_open()
-                    ->autocomplete('on')
-                    ->addClass('payment-form')
-                    ->id('payment-form')
-                    ->rules(array(
+                   ->autocomplete('on')
+                   ->addClass('payment-form')
+                   ->id('payment-form')
+                   ->rules(array(
                         'name' => 'required',
                         'email' => 'required|email',
                         'first_name' => 'required',
@@ -49,31 +49,31 @@
                     @if ($client->name)
                         <div class="col-md-6">
                             {!! Former::text('name')
-                                    ->placeholder(trans('texts.name'))
-                                    ->label('') !!}
+                                   ->placeholder(trans('texts.name'))
+                                   ->label('') !!}
                         </div>
                     @else
                         <div class="col-md-6">
                             {!! Former::text('first_name')
-                                    ->placeholder(trans('texts.first_name'))
-                                    ->label('') !!}
+                                   ->placeholder(trans('texts.first_name'))
+                                   ->label('') !!}
                         </div>
                         <div class="col-md-6">
                             {!! Former::text('last_name')
-                                    ->placeholder(trans('texts.last_name'))
-                                    ->label('') !!}
+                                   ->placeholder(trans('texts.last_name'))
+                                   ->label('') !!}
                         </div>
                     @endif
                     <div class="col-md-6">
                         {!! Former::text('email')
-                                ->placeholder(trans('texts.email'))
-                                ->label('') !!}
+                               ->placeholder(trans('texts.email'))
+                               ->label('') !!}
                     </div>
                     @if ($account->vat_number || $account->isNinjaAccount())
                         <div class="col-md-6">
                             {!! Former::text('vat_number')
-                                    ->placeholder(trans('texts.vat_number'))
-                                    ->label('') !!}
+                                   ->placeholder(trans('texts.vat_number'))
+                                   ->label('') !!}
                         </div>
                     @endif
                 </div>
@@ -86,44 +86,44 @@
                 <div class="row">
                     <div class="col-md-6">
                         {!! Former::text('address1')
-                                ->autocomplete('address-line1')
-                                ->placeholder(trans('texts.address1'))
-                                ->label('') !!}
+                               ->autocomplete('address-line1')
+                               ->placeholder(trans('texts.address1'))
+                               ->label('') !!}
                     </div>
                     <div class="col-md-6">
                         {!! Former::text('address2')
-                                ->autocomplete('address-line2')
-                                ->placeholder(trans('texts.address2'))
-                                ->label('') !!}
+                               ->autocomplete('address-line2')
+                               ->placeholder(trans('texts.address2'))
+                               ->label('') !!}
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6">
                         {!! Former::text('city')
-                                ->autocomplete('address-level2')
-                                ->placeholder(trans('texts.city'))
-                                ->label('') !!}
+                               ->autocomplete('address-level2')
+                               ->placeholder(trans('texts.city'))
+                               ->label('') !!}
                     </div>
                     <div class="col-md-6">
                         {!! Former::text('state')
-                                ->autocomplete('address-level1')
-                                ->placeholder(trans('texts.state'))
-                                ->label('') !!}
+                               ->autocomplete('address-level1')
+                               ->placeholder(trans('texts.state'))
+                               ->label('') !!}
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6">
                         {!! Former::text('postal_code')
-                                ->autocomplete('postal-code')
-                                ->placeholder(trans('texts.postal_code'))
-                                ->label('') !!}
+                               ->autocomplete('postal-code')
+                               ->placeholder(trans('texts.postal_code'))
+                               ->label('') !!}
                     </div>
                     <div class="col-md-6">
                         {!! Former::select('country_id')
-                                ->placeholder(trans('texts.country_id'))
-                                ->fromQuery($countries, 'name', 'id')
-                                ->addGroupClass('country-select')
-                                ->label('') !!}
+                               ->placeholder(trans('texts.country_id'))
+                               ->fromQuery($countries, 'name', 'id')
+                               ->addGroupClass('country-select')
+                               ->label('') !!}
                     </div>
                 </div>
                 </div>

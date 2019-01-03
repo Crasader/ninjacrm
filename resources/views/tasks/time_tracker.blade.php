@@ -209,9 +209,9 @@
 									</div>
 									<div style="padding-bottom: 20px; padding-left:6px;" class="project-select col-md-6 no-padding-mobile">
 			                            {!! Former::select('project_id')
-			                                    ->addOption('', '')
-			                                    ->data_bind("dropdown: selectedTask().project_id, dropdownOptions: {highlighter: comboboxHighlighter}")
-			                                    ->label(trans('texts.project')) !!}
+			                                   ->addOption('', '')
+			                                   ->data_bind("dropdown: selectedTask().project_id, dropdownOptions: {highlighter: comboboxHighlighter}")
+			                                   ->label(trans('texts.project')) !!}
 									</div>
 								</div>
 
@@ -240,8 +240,8 @@
 
 								<div style="padding-bottom: 20px">
 	                            {!! Former::textarea('description')
-	                                    ->data_bind("value: selectedTask().description, valueUpdate: 'afterkeydown'")
-	                                    ->rows(4) !!}
+	                                   ->data_bind("value: selectedTask().description, valueUpdate: 'afterkeydown'")
+	                                   ->rows(4) !!}
 								</div>
 
 								<label>{{ trans('texts.times') }}</label>

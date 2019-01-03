@@ -8,9 +8,9 @@
 <div class="row">
     <div class="col-md-12">
         {!! Former::open('/update_setup')
-        ->addClass('warn-on-exit')
-        ->autocomplete('off')
-        ->rules([
+       ->addClass('warn-on-exit')
+       ->autocomplete('off')
+       ->rules([
         'app[url]' => 'required',
         //'database[default]' => 'required',
         'database[type][host]' => 'required',

@@ -69,17 +69,17 @@
         invoice.features = {
             customize_invoice_design: {
                 {
-                    Auth::user() ->hasFeature(FEATURE_CUSTOMIZE_INVOICE_DESIGN) ? 'true' : 'false'
+                    Auth::user()->hasFeature(FEATURE_CUSTOMIZE_INVOICE_DESIGN) ? 'true' : 'false'
                 }
             },
             remove_created_by: {
                 {
-                    Auth::user() ->hasFeature(FEATURE_REMOVE_CREATED_BY) ? 'true' : 'false'
+                    Auth::user()->hasFeature(FEATURE_REMOVE_CREATED_BY) ? 'true' : 'false'
                 }
             },
             invoice_settings: {
                 {
-                    Auth::user() ->hasFeature(FEATURE_INVOICE_SETTINGS) ? 'true' : 'false'
+                    Auth::user()->hasFeature(FEATURE_INVOICE_SETTINGS) ? 'true' : 'false'
                 }
             }
         };
@@ -140,7 +140,7 @@
     $(function () {
         var options = {
             preferredFormat: 'hex',
-            disabled: {!!Auth::user() ->hasFeature(FEATURE_CUSTOMIZE_INVOICE_DESIGN) ? 'false' : 'true'!!
+            disabled: {!!Auth::user()->hasFeature(FEATURE_CUSTOMIZE_INVOICE_DESIGN) ? 'false' : 'true'!!
             },
             showInitial: false,
             showInput: true,
@@ -224,15 +224,15 @@
                                 <div class="col-md-6">
 
                                     {!! Former::select('invoice_design_id')
-                                    ->label('invoice_design')
-                                    ->fromQuery($invoiceDesigns, 'name', 'id') !!}
+                                   ->label('invoice_design')
+                                   ->fromQuery($invoiceDesigns, 'name', 'id') !!}
                                     {!! Former::select('quote_design_id')
-                                    ->label('quote_design')
-                                    ->fromQuery($invoiceDesigns, 'name', 'id') !!}
+                                   ->label('quote_design')
+                                   ->fromQuery($invoiceDesigns, 'name', 'id') !!}
                                     {!! Former::select('body_font_id')
-                                    ->fromQuery($invoiceFonts, 'name', 'id') !!}
+                                   ->fromQuery($invoiceFonts, 'name', 'id') !!}
                                     {!! Former::select('header_font_id')
-                                    ->fromQuery($invoiceFonts, 'name', 'id') !!}
+                                   ->fromQuery($invoiceFonts, 'name', 'id') !!}
 
                                 </div>
                                 <div class="col-md-6">
@@ -241,12 +241,12 @@
                                     {{ Former::setOption('TwitterBootstrap3.labelWidths.small', 6) }}
 
                                     {!! Former::select('page_size')
-                                    ->options($pageSizes) !!}
+                                   ->options($pageSizes) !!}
 
                                     {!! Former::text('font_size')
-                                    ->type('number')
-                                    ->min('0')
-                                    ->step('1') !!}
+                                   ->type('number')
+                                   ->min('0')
+                                   ->step('1') !!}
 
                                     {!! Former::text('primary_color') !!}
                                     {!! Former::text('secondary_color') !!}
@@ -270,17 +270,17 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     {!! Former::select('label_field')
-                                    ->placeholder('select_label')
-                                    ->label('label')
-                                    ->onchange('onFieldChange()')
-                                    ->options(array_combine(App\Models\Account::$customLabels,
+                                   ->placeholder('select_label')
+                                   ->label('label')
+                                   ->onchange('onFieldChange()')
+                                   ->options(array_combine(App\Models\Account::$customLabels,
                                     Utils::trans(App\Models\Account::$customLabels))) !!}
                                 </div>
                                 <div class="col-md-6">
                                     @foreach (App\Models\Account::$customLabels as $field)
                                     {!! Former::text('labels_' . $field)
-                                    ->label($field)
-                                    ->addGroupClass($field . '-label-group label-group') !!}
+                                   ->label($field)
+                                   ->addGroupClass($field . '-label-group label-group') !!}
                                     @endforeach
                                 </div>
                             </div>
@@ -305,7 +305,7 @@
                                 </div>
                                 <div class="pull-right" style="padding-right:14px">
                                     {!! Button::normal(trans('texts.reset'))->small()
-                                    ->withAttributes(['onclick' => 'sweetConfirm(function() {
+                                   ->withAttributes(['onclick' => 'sweetConfirm(function() {
                                     resetInvoiceFields();
                                     })']) !!}
                                 </div>
@@ -326,7 +326,7 @@
                                 </div>
                                 <div class="pull-right" style="padding-right:14px">
                                     {!! Button::normal(trans('texts.reset'))->small()
-                                    ->withAttributes(['onclick' => 'sweetConfirm(function() {
+                                   ->withAttributes(['onclick' => 'sweetConfirm(function() {
                                     resetProductFields();
                                     })']) !!}
                                 </div>
@@ -338,12 +338,12 @@
 
                             @if (auth()->user()->isEnterprise())
                             {!! Former::select('background_image_id')
-                            ->label('background_image')
-                            ->addOption('', '')
-                            ->fromQuery(\App\Models\Document::scope()->proposalImages()->get(), function($model) {
+                           ->label('background_image')
+                           ->addOption('', '')
+                           ->fromQuery(\App\Models\Document::scope()->proposalImages()->get(), function($model) {
                             return $model->name . ' - ' . Utils::formatNumber($model->size / 1000, null, 1) . ' KB'; },
                             'public_id')
-                            ->help($account->isModuleEnabled(ENTITY_PROPOSAL)
+                           ->help($account->isModuleEnabled(ENTITY_PROPOSAL)
                             ? trans('texts.background_image_help', ['link' =>
                             link_to('/proposals/create?show_assets=true', trans('texts.proposal_editor'), ['target' =>
                             '_blank'])])
@@ -365,15 +365,15 @@
                             <br />
 
                             {!! Former::inline_radios('all_pages_header')
-                            ->label(trans('texts.all_pages_header'))
-                            ->radios([
+                           ->label(trans('texts.all_pages_header'))
+                           ->radios([
                             trans('texts.first_page') => ['value' => 0, 'name' => 'all_pages_header'],
                             trans('texts.all_pages') => ['value' => 1, 'name' => 'all_pages_header'],
                             ])->check($account->all_pages_header) !!}
 
                             {!! Former::inline_radios('all_pages_footer')
-                            ->label(trans('texts.all_pages_footer'))
-                            ->radios([
+                           ->label(trans('texts.all_pages_footer'))
+                           ->radios([
                             trans('texts.last_page') => ['value' => 0, 'name' => 'all_pages_footer'],
                             trans('texts.all_pages') => ['value' => 1, 'name' => 'all_pages_footer'],
                             ])->check($account->all_pages_footer) !!}
@@ -387,17 +387,17 @@
         <center class="buttons">
             {!! $account->getCustomDesign(CUSTOM_DESIGN1) ?
             DropdownButton::primary(trans('texts.customize'))
-            ->withContents($account->present()->customDesigns)
-            ->large() :
+           ->withContents($account->present()->customDesigns)
+           ->large() :
             Button::primary(trans('texts.customize'))
-            ->appendIcon(Icon::create('edit'))
-            ->asLinkTo(URL::to('/settings/customize_design') . '?design_id=' . CUSTOM_DESIGN1)
-            ->large() !!}
+           ->appendIcon(Icon::create('edit'))
+           ->asLinkTo(URL::to('/settings/customize_design') . '?design_id=' . CUSTOM_DESIGN1)
+           ->large() !!}
             {!! Auth::user()->hasFeature(FEATURE_CUSTOMIZE_INVOICE_DESIGN) ?
             Button::success(trans('texts.save'))
-            ->submit()->large()
-            ->appendIcon(Icon::create('floppy-disk'))
-            ->withAttributes(['class' => 'save-button']) :
+           ->submit()->large()
+           ->appendIcon(Icon::create('floppy-disk'))
+           ->withAttributes(['class' => 'save-button']) :
             false !!}
         </center>
 

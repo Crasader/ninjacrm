@@ -12,11 +12,11 @@
                     <tr><td class="td-left" style="height:60px">{!! trans('texts.client') !!}:</td>
                         <td class="td-right">
                             {!! Former::select('client_public_id')
-                            ->label('')
-                            ->addOption('', '')
-                            ->data_bind("dropdown: client_public_id, enable: isAdminUser, dropdownOptions: {highlighter: comboboxHighlighter}")
-                            ->addClass('')
-                            ->addGroupClass('') !!}
+                           ->label('')
+                           ->addOption('', '')
+                           ->data_bind("dropdown: client_public_id, enable: isAdminUser, dropdownOptions: {highlighter: comboboxHighlighter}")
+                           ->addClass('')
+                           ->addGroupClass('') !!}
                         </td></tr>
                 @endif
 
@@ -37,10 +37,10 @@
                         @if(Auth::user()->id == Auth::user()->account->account_ticket_settings->ticket_master->id)
                             <div id="">
                                 {!! Former::select('agent_id')
-                                    ->label('')
-                                    ->text(trans('texts.ticket_master'))
-                                    ->addOption('', '')
-                                    ->fromQuery($account->users, 'displayName', 'id')
+                                   ->label('')
+                                   ->text(trans('texts.ticket_master'))
+                                   ->addOption('', '')
+                                   ->fromQuery($account->users, 'displayName', 'id')
                                  !!}
                             </div>
                         @elseif($ticket->agent)
@@ -66,7 +66,7 @@
                 <tr><td class="td-left">{!! trans('texts.priority') !!}:</td>
                     <td class="td-right">
                         {!! Former::select('priority_id')->label('')
-                        ->fromQuery(\App\Models\Ticket::getPriorityArray(), 'name', 'id') !!}
+                       ->fromQuery(\App\Models\Ticket::getPriorityArray(), 'name', 'id') !!}
                     </td>
                 </tr>
 

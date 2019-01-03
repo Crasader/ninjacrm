@@ -12,11 +12,11 @@
 @if (Auth::user()->hasFeature(FEATURE_EXPENSES))
 <div class="pull-right">
     {!! Button::normal(trans('texts.import_ofx'))
-    ->asLinkTo(URL::to('/bank_accounts/import_ofx'))
-    ->appendIcon(Icon::create('open')) !!}
+   ->asLinkTo(URL::to('/bank_accounts/import_ofx'))
+   ->appendIcon(Icon::create('open')) !!}
     {!! Button::primary(trans('texts.add_bank_account'))
-    ->asLinkTo(URL::to('/bank_accounts/create'))
-    ->appendIcon(Icon::create('plus-sign')) !!}
+   ->asLinkTo(URL::to('/bank_accounts/create'))
+   ->appendIcon(Icon::create('plus-sign')) !!}
 </div>
 @endif
 

@@ -56,15 +56,15 @@
 
     @if (count($versionsSelect) > 1)
         {!! Former::select('version')
-                ->options($versionsSelect)
-                ->label(trans('select_version'))
-                ->style('background-color: white !important') !!}
+               ->options($versionsSelect)
+               ->label(trans('select_version'))
+               ->style('background-color: white !important') !!}
     @endif
 
     {!! Button::primary(trans('texts.edit_' . $invoice->getEntityType()))
-            ->asLinkTo(URL::to('/' . $invoice->getEntityType() . 's/' . $invoice->public_id . '/edit'))
-            ->appendIcon(Icon::create('edit'))
-            ->withAttributes(array('class' => 'pull-right')) !!}
+           ->asLinkTo(URL::to('/' . $invoice->getEntityType() . 's/' . $invoice->public_id . '/edit'))
+           ->appendIcon(Icon::create('edit'))
+           ->withAttributes(array('class' => 'pull-right')) !!}
     {!! Former::close() !!}
 
     <br/>&nbsp;<br/>

@@ -21,34 +21,34 @@
     <div class="panel-body">
 
         {!! Former::checkbox('invoice_taxes')
-        ->text(trans('texts.enable_invoice_tax'))
-        ->label('&nbsp;')
-        ->value(1) !!}
+       ->text(trans('texts.enable_invoice_tax'))
+       ->label('&nbsp;')
+       ->value(1) !!}
 
         {!! Former::checkbox('invoice_item_taxes')
-        ->text(trans('texts.enable_line_item_tax'))
-        ->label('&nbsp;')
-        ->value(1) !!}
+       ->text(trans('texts.enable_line_item_tax'))
+       ->label('&nbsp;')
+       ->value(1) !!}
 
         {!! Former::checkbox('enable_second_tax_rate')
-        ->text(trans('texts.enable_second_tax_rate'))
-        ->label('&nbsp;')
-        ->value(1) !!}
+       ->text(trans('texts.enable_second_tax_rate'))
+       ->label('&nbsp;')
+       ->value(1) !!}
 
         {!! Former::checkbox('include_item_taxes_inline')
-        ->text(trans('texts.include_item_taxes_inline'))
-        ->label('&nbsp;')
-        ->value(1) !!}
+       ->text(trans('texts.include_item_taxes_inline'))
+       ->label('&nbsp;')
+       ->value(1) !!}
 
         @if (! $hasInclusiveTaxRates && $countInvoices == 0)
         <br />
         <br />
         {!! Former::checkbox('inclusive_taxes')
-        ->text(trans('texts.inclusive_taxes_help'))
-        ->label('&nbsp;')
-        ->help('<b>' . strtoupper(trans('texts.important')) . ': '
+       ->text(trans('texts.inclusive_taxes_help'))
+       ->label('&nbsp;')
+       ->help('<b>' . strtoupper(trans('texts.important')) . ': '
             . trans('texts.inclusive_taxes_notice') . '</b>')
-        ->value(1) !!}
+       ->value(1) !!}
         @elseif ($countInvoices <= 25) {!! Former::plaintext('
             ')->help(
                 trans($account->inclusive_taxes ? ' texts.taxes_are_included_help' :

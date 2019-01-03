@@ -44,12 +44,12 @@
 @section('top-right')
     <div class="pull-right">
         {!! Button::normal(trans('texts.download'))
-                ->withAttributes(['onclick' => 'onDownloadClick()', 'id' => 'downloadPdfButton'])
-                ->appendIcon(Icon::create('download-alt')) !!}
+               ->withAttributes(['onclick' => 'onDownloadClick()', 'id' => 'downloadPdfButton'])
+               ->appendIcon(Icon::create('download-alt')) !!}
 
         {!! Button::primary(trans('texts.edit_' . $invoice->getEntityType()))
-                ->asLinkTo(url('/' . $invoice->getEntityType() . 's/' . $invoice->public_id . '/edit'))
-                ->appendIcon(Icon::create('edit')) !!}
+               ->asLinkTo(url('/' . $invoice->getEntityType() . 's/' . $invoice->public_id . '/edit'))
+               ->appendIcon(Icon::create('edit')) !!}
     </div>
 @stop
 

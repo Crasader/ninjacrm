@@ -27,42 +27,42 @@
             <div class="panel-body form-padding-right">
 
                 {!! Former::select('currency_id')
-                ->fromQuery($currencies, 'name', 'id')
-                ->onchange('updateCurrencyCodeRadio()') !!}
+               ->fromQuery($currencies, 'name', 'id')
+               ->onchange('updateCurrencyCodeRadio()') !!}
                 {!! Former::radios('show_currency_code')->radios([
                 trans('texts.currency_symbol') . ': <span id="currency_symbol_example" />' => array('name' =>
                 'show_currency_code', 'value' => 0),
                 trans('texts.currency_code') . ': <span id="currency_code_example" />' => array('name' =>
                 'show_currency_code', 'value' => 1),
                 ])->inline()
-                ->label('&nbsp;')
-                ->addGroupClass('currrency_radio') !!}
+               ->label('&nbsp;')
+               ->addGroupClass('currrency_radio') !!}
                 <br />
 
                 {!! Former::select('language_id')->addOption('','')
-                ->fromQuery($languages, 'name', 'id')
-                ->help(trans('texts.translate_app', ['link' => link_to(TRANSIFEX_URL, 'Transifex.com', ['target' =>
+               ->fromQuery($languages, 'name', 'id')
+               ->help(trans('texts.translate_app', ['link' => link_to(TRANSIFEX_URL, 'Transifex.com', ['target' =>
                 '_blank'])])) !!}
                 <br />&nbsp;<br />
 
                 {!! Former::select('timezone_id')->addOption('','')
-                ->fromQuery($timezones, 'location', 'id') !!}
+               ->fromQuery($timezones, 'location', 'id') !!}
                 {!! Former::select('date_format_id')->addOption('','')
-                ->fromQuery($dateFormats) !!}
+               ->fromQuery($dateFormats) !!}
                 {!! Former::select('datetime_format_id')->addOption('','')
-                ->fromQuery($datetimeFormats) !!}
+               ->fromQuery($datetimeFormats) !!}
                 {!! Former::checkbox('military_time')->text(trans('texts.enable'))->value(1) !!}
 
                 <br />&nbsp;<br />
 
                 {!! Former::select('start_of_week')->addOption('','')
-                ->fromQuery($weekdays)
-                ->help('start_of_week_help') !!}
+               ->fromQuery($weekdays)
+               ->help('start_of_week_help') !!}
 
                 {!! Former::select('financial_year_start')
-                ->addOption('','')
-                ->options($months)
-                ->help('financial_year_start_help') !!}
+               ->addOption('','')
+               ->options($months)
+               ->help('financial_year_start_help') !!}
 
 
             </div>
@@ -88,12 +88,12 @@
         } else {
             symbolExample = formatMoney(1000, currencyId, {
                 {
-                    Auth::user() ->account ->country_id ? : DEFAULT_COUNTRY
+                    Auth::user()->account->country_id ? : DEFAULT_COUNTRY
                 }
             }, '{{ CURRENCY_DECORATOR_SYMBOL }}');
             codeExample = formatMoney(1000, currencyId, {
                 {
-                    Auth::user() ->account ->country_id ? : DEFAULT_COUNTRY
+                    Auth::user()->account->country_id ? : DEFAULT_COUNTRY
                 }
             }, '{{ CURRENCY_DECORATOR_CODE }}');
             $('.currrency_radio').show();

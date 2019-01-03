@@ -3,10 +3,10 @@
 @section('content')
 
 	{!! Former::open($url)
-            ->addClass('col-lg-10 col-lg-offset-1 warn-on-exit main-form')
+           ->addClass('col-lg-10 col-lg-offset-1 warn-on-exit main-form')
 			->autocomplete('off')
-            ->method($method)
-            ->rules([
+           ->method($method)
+           ->rules([
                 'name' => 'required',
 				'client_id' => 'required',
             ]) !!}
@@ -41,9 +41,9 @@
                 {!! Former::text('name') !!}
 
 				{!! Former::text('due_date')
-	                        ->data_date_format(Session::get(SESSION_DATE_PICKER_FORMAT, DEFAULT_DATE_PICKER_FORMAT))
-	                        ->addGroupClass('due_date')
-	                        ->append('<i class="glyphicon glyphicon-calendar"></i>') !!}
+	                       ->data_date_format(Session::get(SESSION_DATE_PICKER_FORMAT, DEFAULT_DATE_PICKER_FORMAT))
+	                       ->addGroupClass('due_date')
+	                       ->append('<i class="glyphicon glyphicon-calendar"></i>') !!}
 
 				{!! Former::text('budgeted_hours') !!}
 
@@ -68,7 +68,7 @@
 
 		@if (false && $project && Auth::user()->can('createEntity', ENTITY_TASK))
 			{!! DropdownButton::normal(trans('texts.more_actions'))
-				  ->withContents([
+				 ->withContents([
 					  [
 						  'url' => url('/tasks/create/' . ($project->client ? $project->client->public_id : '0'). '/' . $project->public_id),
 						  'label' => trans('texts.new_task'),
@@ -87,7 +87,7 @@
 						  'label' => trans('texts.delete_project')
 					  ],
 				  ])
-				  ->large() !!}
+				 ->large() !!}
 		@endif
 	</center>
 	@endif

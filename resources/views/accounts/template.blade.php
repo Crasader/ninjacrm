@@ -17,11 +17,11 @@
                     {!! Former::populateField('frequency_id_reminder4',
                     $account->account_email_settings->frequency_id_reminder4) !!}
                     {!! Former::plaintext('frequency')
-                    ->value(
+                   ->value(
                     Former::select('frequency_id_reminder4')
-                    ->options(\App\Models\Frequency::selectOptions())
-                    ->style('float:left;')
-                    ->raw()
+                   ->options(\App\Models\Frequency::selectOptions())
+                   ->style('float:left;')
+                   ->raw()
                     ) !!}
                     @else
                     {!! Former::populateField('num_days_' . $field, $account->account_email_settings->{'num_days_' .
@@ -31,22 +31,22 @@
                     {!! Former::populateField('field_' . $field, $account->account_email_settings->{'field_' . $field})
                     !!}
                     {!! Former::plaintext('schedule')
-                    ->value(
+                   ->value(
                     Former::input('num_days_' . $field)
-                    ->style('float:left;width:20%')
-                    ->raw() .
+                   ->style('float:left;width:20%')
+                   ->raw() .
                     Former::select('direction_' . $field)
-                    ->addOption(trans('texts.days_before'), REMINDER_DIRECTION_BEFORE)
-                    ->addOption(trans('texts.days_after'), REMINDER_DIRECTION_AFTER)
-                    ->style('float:left;width:40%')
-                    ->raw() .
+                   ->addOption(trans('texts.days_before'), REMINDER_DIRECTION_BEFORE)
+                   ->addOption(trans('texts.days_after'), REMINDER_DIRECTION_AFTER)
+                   ->style('float:left;width:40%')
+                   ->raw() .
                     '<div id="days_after_'. $field .'" style="float:left;width:40%;display:none;padding-top:8px;padding-left:16px;font-size:16px;">'
                         . trans('texts.days_after') . '</div>' .
                     Former::select('field_' . $field)
-                    ->addOption(trans('texts.field_due_date'), REMINDER_FIELD_DUE_DATE)
-                    ->addOption(trans('texts.field_invoice_date'), REMINDER_FIELD_INVOICE_DATE)
-                    ->style('float:left;width:40%')
-                    ->raw()
+                   ->addOption(trans('texts.field_due_date'), REMINDER_FIELD_DUE_DATE)
+                   ->addOption(trans('texts.field_invoice_date'), REMINDER_FIELD_INVOICE_DATE)
+                   ->style('float:left;width:40%')
+                   ->raw()
                     ) !!}
                     @endif
                 </div>
@@ -54,9 +54,9 @@
                     {!! Former::populateField('enable_' . $field, $account->account_email_settings->{'enable_' .
                     $field}) !!}
                     {!! Former::checkbox('enable_' . $field)
-                    ->text('enable')
-                    ->label('send_email')
-                    ->value(1) !!}
+                   ->text('enable')
+                   ->label('send_email')
+                   ->value(1) !!}
 
                 </div>
             </div>
@@ -64,16 +64,16 @@
             <div class="row" style="padding-top:30px">
                 <div class="col-md-6">
                     {!! Former::text('late_fee' . $number . '_amount')
-                    ->label('late_fee_amount')
-                    ->type('number')
-                    ->step('any') !!}
+                   ->label('late_fee_amount')
+                   ->type('number')
+                   ->step('any') !!}
                 </div>
                 <div class="col-md-6">
                     {!! Former::text('late_fee' . $number . '_percent')
-                    ->label('late_fee_percent')
-                    ->type('number')
-                    ->step('any')
-                    ->append('%') !!}
+                   ->label('late_fee_percent')
+                   ->type('number')
+                   ->step('any')
+                   ->append('%') !!}
                 </div>
             </div>
             @endif
@@ -86,9 +86,9 @@
                 <div class="pull-right"><a href="#" onclick="return resetText('{{ 'subject' }}', '{{ $field }}')">{{
                         trans("texts.reset") }}</a></div>
                 {!! Former::text('email_subject_' . $field)
-                ->label(trans('texts.subject'))
-                ->appendIcon('question-sign')
-                ->addGroupClass('email-subject') !!}
+               ->label(trans('texts.subject'))
+               ->appendIcon('question-sign')
+               ->addGroupClass('email-subject') !!}
             </div>
             <div class="col-md-6">
                 <p>&nbsp;
@@ -102,8 +102,8 @@
                 <div class="pull-right"><a href="#" onclick="return resetText('{{ 'template' }}', '{{ $field }}')">{{
                         trans("texts.reset") }}</a></div>
                 {!! Former::textarea('email_template_' . $field)
-                ->label(trans('texts.body'))
-                ->style('display:none') !!}
+               ->label(trans('texts.body'))
+               ->style('display:none') !!}
                 <div id="{{ $field }}Editor" class="form-control" style="min-height:160px">
                 </div>
             </div>

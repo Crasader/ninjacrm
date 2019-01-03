@@ -1,8 +1,8 @@
 
 {!! Former::select($selectId)
-    ->addOption('', '')
-    ->fromQuery($items, $itemLabel, 'public_id')
-    ->label($fieldLabel) !!}
+   ->addOption('', '')
+   ->fromQuery($items, $itemLabel, 'public_id')
+   ->label($fieldLabel) !!}
 
 @push('component_scripts')
     <script type="text/javascript">

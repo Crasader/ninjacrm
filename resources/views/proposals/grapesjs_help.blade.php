@@ -1,6 +1,6 @@
 {!! Button::normal(trans('texts.help'))
-    ->appendIcon(Icon::create('question-sign'))
-    ->withAttributes(['onclick' => 'showProposalHelp()']) !!}
+   ->appendIcon(Icon::create('question-sign'))
+   ->withAttributes(['onclick' => 'showProposalHelp()']) !!}
 
 <script>
 

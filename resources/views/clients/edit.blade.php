@@ -19,11 +19,11 @@
 <div class="row">
 
 	{!! Former::open($url)
-            ->autocomplete('off')
-            ->rules(
+           ->autocomplete('off')
+           ->rules(
                 ['email' => 'email']
             )->addClass('col-md-12 warn-on-exit')
-            ->method($method) !!}
+           ->method($method) !!}
 
     @include('partials.autocomplete_fix')
 
@@ -219,23 +219,23 @@
 				<div class="tab-content" style="padding-top:24px;">
 					<div role="tabpanel" class="tab-pane active" id="settings">
 						{!! Former::select('currency_id')->addOption('','')
-			                ->placeholder($account->currency ? trans('texts.currency_'.Str::slug($account->currency->name, '_')) : '')
-			                ->fromQuery($currencies, 'name', 'id') !!}
+			               ->placeholder($account->currency ? trans('texts.currency_'.Str::slug($account->currency->name, '_')) : '')
+			               ->fromQuery($currencies, 'name', 'id') !!}
 			            {!! Former::select('language_id')->addOption('','')
-			                ->placeholder($account->language ? trans('texts.lang_'.$account->language->name) : '')
-			                ->fromQuery($languages, 'name', 'id') !!}
+			               ->placeholder($account->language ? trans('texts.lang_'.$account->language->name) : '')
+			               ->fromQuery($languages, 'name', 'id') !!}
 						{!! Former::select('payment_terms')->addOption('','')
 							->fromQuery(\App\Models\PaymentTerm::getSelectOptions(), 'name', 'num_days')
 							->placeholder($account->present()->paymentTerms)
-			                ->help(trans('texts.payment_terms_help') . ' | ' . link_to('/settings/payment_terms', trans('texts.customize_options'))) !!}
+			               ->help(trans('texts.payment_terms_help') . ' | ' . link_to('/settings/payment_terms', trans('texts.customize_options'))) !!}
 						@if ($account->isModuleEnabled(ENTITY_TASK))
 							{!! Former::text('task_rate')
 									->placeholder($account->present()->taskRate)
 									->help('task_rate_help') !!}
 							{!! Former::checkbox('show_tasks_in_portal')
-						        ->text(trans('texts.show_tasks_in_portal'))
+						       ->text(trans('texts.show_tasks_in_portal'))
 								->label('client_portal')
-						        ->value(1) !!}
+						       ->value(1) !!}
 						@endif
 						@if ($account->hasReminders())
 							{!! Former::checkbox('send_reminders')
@@ -299,17 +299,17 @@
 							->addOption(trans('texts.plan_term_monthly'), PLAN_TERM_MONTHLY)!!}
 				{!! Former::text('plan_price') !!}
 				{!! Former::text('plan_started')
-                            ->data_date_format('yyyy-mm-dd')
-                            ->addGroupClass('plan_start_date')
-                            ->append('<i class="glyphicon glyphicon-calendar"></i>') !!}
+                           ->data_date_format('yyyy-mm-dd')
+                           ->addGroupClass('plan_start_date')
+                           ->append('<i class="glyphicon glyphicon-calendar"></i>') !!}
                 {!! Former::text('plan_paid')
-                            ->data_date_format('yyyy-mm-dd')
-                            ->addGroupClass('plan_paid_date')
-                            ->append('<i class="glyphicon glyphicon-calendar"></i>') !!}
+                           ->data_date_format('yyyy-mm-dd')
+                           ->addGroupClass('plan_paid_date')
+                           ->append('<i class="glyphicon glyphicon-calendar"></i>') !!}
 				{!! Former::text('plan_expires')
-                            ->data_date_format('yyyy-mm-dd')
-                            ->addGroupClass('plan_expire_date')
-                            ->append('<i class="glyphicon glyphicon-calendar"></i>') !!}
+                           ->data_date_format('yyyy-mm-dd')
+                           ->addGroupClass('plan_expire_date')
+                           ->append('<i class="glyphicon glyphicon-calendar"></i>') !!}
                 <script type="text/javascript">
                     $(function() {
                         $('#plan_started, #plan_paid, #plan_expires').datepicker();

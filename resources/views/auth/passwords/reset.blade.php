@@ -4,9 +4,9 @@
 <div class="container">
 
   {!! Former::open($url)
-        ->addClass('form-signin')
-        ->autocomplete('off')
-        ->rules(array(
+       ->addClass('form-signin')
+       ->autocomplete('off')
+       ->rules(array(
         'email' => 'required|email',
         'password' => 'required',
         'password_confirmation' => 'required',

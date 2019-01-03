@@ -21,7 +21,7 @@
     fx.rates = {!!cache('currencies') -
         > keyBy('code') -
         > map(function ($item, $key) {
-            return $item ->exchange_rate ? : 1;
+            return $item->exchange_rate ? : 1;
         });!!
     };
 
@@ -31,12 +31,12 @@
     NINJA.secondaryColor = "{{ Auth::user()->account->secondary_color }}";
     NINJA.fontSize = {
         {
-            Auth::user() ->account ->font_size ? : DEFAULT_FONT_SIZE
+            Auth::user()->account->font_size ? : DEFAULT_FONT_SIZE
         }
     };
-    NINJA.headerFont = {!!json_encode(Auth::user() ->account ->getHeaderFontName()) !!
+    NINJA.headerFont = {!!json_encode(Auth::user()->account->getHeaderFontName()) !!
     };
-    NINJA.bodyFont = {!!json_encode(Auth::user() ->account ->getBodyFontName()) !!
+    NINJA.bodyFont = {!!json_encode(Auth::user()->account->getBodyFontName()) !!
     };
     @else
     NINJA.fontSize = {

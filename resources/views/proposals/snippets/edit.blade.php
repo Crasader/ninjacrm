@@ -16,10 +16,10 @@
 @section('content')
 
     {!! Former::open($url)
-            ->method($method)
-            ->onsubmit('return onFormSubmit(event)')
-            ->addClass('warn-on-exit')
-            ->rules([
+           ->method($method)
+           ->onsubmit('return onFormSubmit(event)')
+           ->addClass('warn-on-exit')
+           ->rules([
                 'name' => 'required',
             ]) !!}
 
@@ -41,16 +41,16 @@
                     <div class="col-md-6">
                         {!! Former::text('name') !!}
                         {!! Former::select('proposal_category_id')->addOption('', '')
-                                ->label(trans('texts.category'))
-                                ->addGroupClass('category-select') !!}
+                               ->label(trans('texts.category'))
+                               ->addGroupClass('category-select') !!}
                         {!! Former::select('icon')
-                                ->addGroupClass('icon-select')
-                                ->addOption('', '')
-                                ->options($icons) !!}
+                               ->addGroupClass('icon-select')
+                               ->addOption('', '')
+                               ->options($icons) !!}
                     </div>
                     <div class="col-md-6">
                         {!! Former::textarea('private_notes')
-                                ->style('height:160px') !!}
+                               ->style('height:160px') !!}
                     </div>
                 </div>
             </div>
@@ -62,12 +62,12 @@
         @include('proposals.grapesjs_help')
 
         {!! Button::normal(trans('texts.cancel'))
-                ->appendIcon(Icon::create('remove-circle'))
-                ->asLinkTo(HTMLUtils::previousUrl('/proposals')) !!}
+               ->appendIcon(Icon::create('remove-circle'))
+               ->asLinkTo(HTMLUtils::previousUrl('/proposals')) !!}
 
         {!! Button::success(trans("texts.save"))
-                ->submit()
-                ->appendIcon(Icon::create('floppy-disk')) !!}
+               ->submit()
+               ->appendIcon(Icon::create('floppy-disk')) !!}
     </center>
 
     {!! Former::close() !!}

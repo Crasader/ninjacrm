@@ -15,10 +15,10 @@
 @section('content')
 
 	{!! Former::open($url)
-            ->addClass('warn-on-exit main-form')
-            ->onsubmit('return onFormSubmit(event)')
-            ->autocomplete('off')
-            ->method($method) !!}
+           ->addClass('warn-on-exit main-form')
+           ->onsubmit('return onFormSubmit(event)')
+           ->autocomplete('off')
+           ->method($method) !!}
     <div style="display:none">
         {!! Former::text('action') !!}
         {!! Former::text('data')->data_bind('value: ko.mapping.toJSON(model)') !!}
@@ -40,43 +40,43 @@
                 <div class="col-md-6">
 
     				{!! Former::select('vendor_id')->addOption('', '')
-                            ->label(trans('texts.vendor'))
-                            ->addGroupClass('vendor-select') !!}
+                           ->label(trans('texts.vendor'))
+                           ->addGroupClass('vendor-select') !!}
 
                     {!! Former::select('expense_category_id')->addOption('', '')
-                            ->label(trans('texts.category'))
-                            ->addGroupClass('expense-category-select') !!}
+                           ->label(trans('texts.category'))
+                           ->addGroupClass('expense-category-select') !!}
 
                     {!! Former::text('amount')
-                            ->label(trans('texts.amount'))
-                            ->data_bind("value: amount, valueUpdate: 'afterkeydown'")
-                            ->addGroupClass('amount')
-                            ->append('<span data-bind="html: expenseCurrencyCode"></span>') !!}
+                           ->label(trans('texts.amount'))
+                           ->data_bind("value: amount, valueUpdate: 'afterkeydown'")
+                           ->addGroupClass('amount')
+                           ->append('<span data-bind="html: expenseCurrencyCode"></span>') !!}
 
                     {!! Former::select('expense_currency_id')->addOption('','')
-                            ->data_bind('combobox: expense_currency_id')
-                            ->label(trans('texts.currency_id'))
-                            ->data_placeholder(Utils::getFromCache($account->getCurrencyId(), 'currencies')->getTranslatedName())
-                            ->fromQuery($currencies, 'name', 'id') !!}
+                           ->data_bind('combobox: expense_currency_id')
+                           ->label(trans('texts.currency_id'))
+                           ->data_placeholder(Utils::getFromCache($account->getCurrencyId(), 'currencies')->getTranslatedName())
+                           ->fromQuery($currencies, 'name', 'id') !!}
 
                     @if (! $isRecurring)
                         {!! Former::text('expense_date')
-                                ->data_date_format(Session::get(SESSION_DATE_PICKER_FORMAT, DEFAULT_DATE_PICKER_FORMAT))
-                                ->addGroupClass('expense_date')
-                                ->label(trans('texts.date'))
-                                ->append('<i class="glyphicon glyphicon-calendar"></i>') !!}
+                               ->data_date_format(Session::get(SESSION_DATE_PICKER_FORMAT, DEFAULT_DATE_PICKER_FORMAT))
+                               ->addGroupClass('expense_date')
+                               ->label(trans('texts.date'))
+                               ->append('<i class="glyphicon glyphicon-calendar"></i>') !!}
                     @endif
 
                     @if ($expense && $expense->invoice_id)
                         {!! Former::plaintext()
-                                ->label('client')
-                                ->value($expense->client->present()->link)  !!}
+                               ->label('client')
+                               ->value($expense->client->present()->link)  !!}
                     @else
                         {!! Former::select('client_id')
-                                ->addOption('', '')
-                                ->label(trans('texts.client'))
-                                ->data_bind('combobox: client_id')
-                                ->addGroupClass('client-select') !!}
+                               ->addOption('', '')
+                               ->label(trans('texts.client'))
+                               ->data_bind('combobox: client_id')
+                               ->addGroupClass('client-select') !!}
                     @endif
 
                     @include('partials/custom_fields', ['entityType' => ENTITY_EXPENSE])
@@ -84,10 +84,10 @@
                     @if (count($taxRates))
                         @if (!$expense || ($expense && (!$expense->tax_name1 && !$expense->tax_name2)))
                             {!! Former::checkbox('apply_taxes')
-                                    ->text(trans('texts.apply_taxes'))
-                                    ->data_bind('checked: apply_taxes')
-                                    ->label(' ')
-                                    ->value(1) !!}
+                                   ->text(trans('texts.apply_taxes'))
+                                   ->data_bind('checked: apply_taxes')
+                                   ->label(' ')
+                                   ->value(1) !!}
                         @endif
                     @endif
 
@@ -98,52 +98,52 @@
 
                     @if (!$expense || ($expense && !$expense->invoice_id))
                         {!! Former::checkbox('should_be_invoiced')
-                                ->text(trans('texts.mark_billable'))
-                                ->data_bind('checked: should_be_invoiced()')
-                                ->label(' ')
-                                ->value(1) !!}
+                               ->text(trans('texts.mark_billable'))
+                               ->data_bind('checked: should_be_invoiced()')
+                               ->label(' ')
+                               ->value(1) !!}
                     @endif
 
                     @if ($isRecurring)
 
                         {!! Former::select('frequency_id')
-                                ->label('frequency')
-                                ->options(\App\Models\Frequency::selectOptions())
-                                ->data_bind("value: frequency_id") !!}
+                               ->label('frequency')
+                               ->options(\App\Models\Frequency::selectOptions())
+                               ->data_bind("value: frequency_id") !!}
                         {!! Former::text('start_date')
-                                ->data_bind("datePicker: start_date, valueUpdate: 'afterkeydown'")
+                               ->data_bind("datePicker: start_date, valueUpdate: 'afterkeydown'")
     							->data_date_format(Session::get(SESSION_DATE_PICKER_FORMAT, DEFAULT_DATE_PICKER_FORMAT))
-                                ->appendIcon('calendar')
-                                ->addGroupClass('start_date')
-                                ->data_date_start_date($expense ? false : $account->formatDate($account->getDateTime())) !!}
+                               ->appendIcon('calendar')
+                               ->addGroupClass('start_date')
+                               ->data_date_start_date($expense ? false : $account->formatDate($account->getDateTime())) !!}
                         {!! Former::text('end_date')
-                                ->data_bind("datePicker: end_date, valueUpdate: 'afterkeydown'")
+                               ->data_bind("datePicker: end_date, valueUpdate: 'afterkeydown'")
     							->data_date_format(Session::get(SESSION_DATE_PICKER_FORMAT, DEFAULT_DATE_PICKER_FORMAT))
-                                ->appendIcon('calendar')
-                                ->addGroupClass('end_date')
-                                ->data_date_start_date($expense ? false : $account->formatDate($account->getDateTime())) !!}
+                               ->appendIcon('calendar')
+                               ->addGroupClass('end_date')
+                               ->data_date_start_date($expense ? false : $account->formatDate($account->getDateTime())) !!}
 
                     @else
                         @if ((! $expense || ! $expense->transaction_id))
 
                             @if (! $expense || ! $expense->isPaid())
                                 {!! Former::checkbox('mark_paid')
-                                        ->data_bind('checked: mark_paid')
-                                        ->text(trans('texts.mark_expense_paid'))
-                                        ->label(' ')
-                                        ->value(1) !!}
+                                       ->data_bind('checked: mark_paid')
+                                       ->text(trans('texts.mark_expense_paid'))
+                                       ->label(' ')
+                                       ->value(1) !!}
                             @endif
 
                             <div style="display:none" data-bind="visible: mark_paid">
                                 {!! Former::select('payment_type_id')
-                                        ->addOption('','')
-                                        ->fromQuery($paymentTypes, 'name', 'id')
-                                        ->addGroupClass('payment-type-select') !!}
+                                       ->addOption('','')
+                                       ->fromQuery($paymentTypes, 'name', 'id')
+                                       ->addGroupClass('payment-type-select') !!}
 
                                 {!! Former::text('payment_date')
-                                        ->data_date_format(Session::get(SESSION_DATE_PICKER_FORMAT))
-                                        ->addGroupClass('payment_date')
-                                        ->append('<i class="glyphicon glyphicon-calendar"></i>') !!}
+                                       ->data_date_format(Session::get(SESSION_DATE_PICKER_FORMAT))
+                                       ->addGroupClass('payment_date')
+                                       ->append('<i class="glyphicon glyphicon-calendar"></i>') !!}
 
                                 {!! Former::text('transaction_reference') !!}
                             </div>
@@ -151,10 +151,10 @@
 
                         @if (!$expense || ($expense && ! $expense->isExchanged()))
                             {!! Former::checkbox('convert_currency')
-                                    ->text(trans('texts.convert_currency'))
-                                    ->data_bind('checked: convert_currency')
-                                    ->label(' ')
-                                    ->value(1) !!}
+                                   ->text(trans('texts.convert_currency'))
+                                   ->data_bind('checked: convert_currency')
+                                   ->label(' ')
+                                   ->value(1) !!}
                         @endif
 
 
@@ -162,34 +162,34 @@
                             <br/>
                             <span style="display:none" data-bind="visible: !client_id()">
                                 {!! Former::select('invoice_currency_id')->addOption('','')
-                                        ->label(trans('texts.invoice_currency'))
-                                        ->data_placeholder(Utils::getFromCache($account->getCurrencyId(), 'currencies')->name)
-                                        ->data_bind('combobox: invoice_currency_id, disable: true')
-                                        ->fromQuery($currencies, 'name', 'id') !!}
+                                       ->label(trans('texts.invoice_currency'))
+                                       ->data_placeholder(Utils::getFromCache($account->getCurrencyId(), 'currencies')->name)
+                                       ->data_bind('combobox: invoice_currency_id, disable: true')
+                                       ->fromQuery($currencies, 'name', 'id') !!}
                             </span>
                             <span style="display:none;" data-bind="visible: client_id">
                                 {!! Former::plaintext('')
-                                        ->value('<span data-bind="html: invoiceCurrencyName"></span>')
-                                        ->style('min-height:46px')
-                                        ->label(trans('texts.invoice_currency')) !!}
+                                       ->value('<span data-bind="html: invoiceCurrencyName"></span>')
+                                       ->style('min-height:46px')
+                                       ->label(trans('texts.invoice_currency')) !!}
                             </span>
 
                             {!! Former::text('exchange_rate')
-                                    ->data_bind("value: exchange_rate, enable: enableExchangeRate, valueUpdate: 'afterkeydown'") !!}
+                                   ->data_bind("value: exchange_rate, enable: enableExchangeRate, valueUpdate: 'afterkeydown'") !!}
 
                             {!! Former::text('invoice_amount')
-                                    ->addGroupClass('converted-amount')
-                                    ->data_bind("value: convertedAmount, enable: enableExchangeRate")
-                                    ->append('<span data-bind="html: invoiceCurrencyCode"></span>') !!}
+                                   ->addGroupClass('converted-amount')
+                                   ->data_bind("value: convertedAmount, enable: enableExchangeRate")
+                                   ->append('<span data-bind="html: invoiceCurrencyCode"></span>') !!}
                         </div>
 
                         @if ($account->hasFeature(FEATURE_DOCUMENTS))
                             {!! Former::checkbox('invoice_documents')
-                                    ->text(trans('texts.add_documents_to_invoice'))
-                                    ->onchange('onInvoiceDocumentsChange()')
-                                    ->data_bind('checked: invoice_documents')
-                                    ->label(' ')
-                                    ->value(1) !!}
+                                   ->text(trans('texts.add_documents_to_invoice'))
+                                   ->onchange('onInvoiceDocumentsChange()')
+                                   ->data_bind('checked: invoice_documents')
+                                   ->label(' ')
+                                   ->value(1) !!}
                         @endif
 
                     @endif
@@ -227,31 +227,31 @@
 
     <center class="buttons">
         {!! Button::normal(trans('texts.cancel'))
-                ->asLinkTo(HTMLUtils::previousUrl('/expenses'))
-                ->appendIcon(Icon::create('remove-circle'))
-                ->large() !!}
+               ->asLinkTo(HTMLUtils::previousUrl('/expenses'))
+               ->appendIcon(Icon::create('remove-circle'))
+               ->large() !!}
 
         @if (Auth::user()->canCreateOrEdit(ENTITY_EXPENSE, $expense))
             @if (Auth::user()->hasFeature(FEATURE_EXPENSES))
                 @if (!$expense || !$expense->is_deleted)
                     {!! Button::success(trans('texts.save'))
-                            ->appendIcon(Icon::create('floppy-disk'))
-                            ->large()
-                            ->submit() !!}
+                           ->appendIcon(Icon::create('floppy-disk'))
+                           ->large()
+                           ->submit() !!}
                 @endif
 
                 @if ($expense && !$expense->trashed())
                     {!! DropdownButton::normal(trans('texts.more_actions'))
-                          ->withContents($actions)
-                          ->large()
-                          ->dropup() !!}
+                         ->withContents($actions)
+                         ->large()
+                         ->dropup() !!}
                 @endif
 
                 @if ($expense && $expense->trashed())
                     {!! Button::primary(trans('texts.restore'))
-                            ->withAttributes(['onclick' => 'submitAction("restore")'])
-                            ->appendIcon(Icon::create('cloud-download'))
-                            ->large() !!}
+                           ->withAttributes(['onclick' => 'submitAction("restore")'])
+                           ->appendIcon(Icon::create('cloud-download'))
+                           ->large() !!}
                 @endif
 
             @endif

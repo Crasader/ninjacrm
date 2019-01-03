@@ -81,20 +81,20 @@
                         <div class="panel-body col-lg-10 col-lg-offset-1">
                             @if (Utils::isNinja() && ! Utils::isReseller())
                             {!! Former::inline_radios('domain_id')
-                            ->label(trans('texts.domain'))
-                            ->radios([
+                           ->label(trans('texts.domain'))
+                           ->radios([
                             'invoiceninja.com' => ['value' => \Domain::INVOICENINJA_COM, 'name' => 'domain_id'],
                             'invoice.services' => ['value' => \Domain::INVOICE_SERVICES, 'name' => 'domain_id'],
                             ])->check($account->domain_id)
-                            ->help($account->iframe_url ? 'domain_help_website' : 'domain_help') !!}
+                           ->help($account->iframe_url ? 'domain_help_website' : 'domain_help') !!}
                             @endif
 
                             @if (Utils::isNinja())
 
                             {!! Former::inline_radios('custom_invoice_link')
-                            ->onchange('onCustomLinkChange()')
-                            ->label(trans('texts.custom'))
-                            ->radios([
+                           ->onchange('onCustomLinkChange()')
+                           ->label(trans('texts.custom'))
+                           ->radios([
                             trans('texts.subdomain') => ['value' => 'subdomain', 'name' => 'custom_link'],
                             'iFrame' => ['value' => 'iframe', 'name' => 'custom_link'],
                             trans('texts.domain') => ['value' => 'domain', 'name' => 'custom_link'],
@@ -103,19 +103,19 @@
                             {{ Former::setOption('capitalize_translations', false) }}
 
                             {!! Former::text('subdomain')
-                            ->placeholder(Utils::isNinja() ? 'app' : trans('texts.www'))
-                            ->onchange('onSubdomainChange()')
-                            ->addGroupClass('subdomain')
-                            ->label(' ')
-                            ->help(trans('texts.subdomain_help')) !!}
+                           ->placeholder(Utils::isNinja() ? 'app' : trans('texts.www'))
+                           ->onchange('onSubdomainChange()')
+                           ->addGroupClass('subdomain')
+                           ->label(' ')
+                           ->help(trans('texts.subdomain_help')) !!}
                             @endif
 
                             {!! Former::text('iframe_url')
-                            ->placeholder('https://www.example.com')
-                            ->appendIcon('question-sign')
-                            ->addGroupClass('iframe_url')
-                            ->label(Utils::isNinja() ? ' ' : trans('texts.website'))
-                            ->help(trans(Utils::isNinja() ? 'texts.subdomain_help' : 'texts.website_help')) !!}
+                           ->placeholder('https://www.example.com')
+                           ->appendIcon('question-sign')
+                           ->addGroupClass('iframe_url')
+                           ->label(Utils::isNinja() ? ' ' : trans('texts.website'))
+                           ->help(trans(Utils::isNinja() ? 'texts.subdomain_help' : 'texts.website_help')) !!}
 
                             @if (Utils::isNinja())
                             <div style="display:none">
@@ -125,12 +125,12 @@
 
                             <div id="domainHelp" style="display:none">
                                 {!! Former::plaintext(' ')
-                                ->value('Using a custom domain requires an <a href="' . url('/settings/account_management?upgrade=true') . '"
+                               ->value('Using a custom domain requires an <a href="' . url('/settings/account_management?upgrade=true') . '"
                                     target="_blank">enterprise plan</a>') !!}
                             </div>
 
                             {!! Former::plaintext('preview')
-                            ->value($account->getSampleLink()) !!}
+                           ->value($account->getSampleLink()) !!}
 
                         </div>
                     </div>
@@ -138,15 +138,15 @@
                         <div class="panel-body col-lg-10 col-lg-offset-1">
 
                             {!! Former::checkbox('enable_client_portal')
-                            ->text(trans('texts.enable'))
-                            ->help(trans('texts.enable_client_portal_help'))
-                            ->value(1) !!}
+                           ->text(trans('texts.enable'))
+                           ->help(trans('texts.enable_client_portal_help'))
+                           ->value(1) !!}
 
 
                             {!! Former::checkbox('enable_client_portal_dashboard')
-                            ->text(trans('texts.enable'))
-                            ->help(trans('texts.enable_client_portal_dashboard_help'))
-                            ->value(1) !!}
+                           ->text(trans('texts.enable'))
+                           ->help(trans('texts.enable_client_portal_dashboard_help'))
+                           ->value(1) !!}
 
                         </div>
                     </div>
@@ -155,7 +155,7 @@
 
                             @foreach (App\Models\Account::$customMessageTypes as $type)
                             {!! Former::textarea('custom_messages[' . $type . ']')
-                            ->label($type) !!}
+                           ->label($type) !!}
                             @endforeach
 
                         </div>
@@ -164,11 +164,11 @@
                         <div class="panel-body">
 
                             {!! Former::textarea('client_view_css')
-                            ->label(trans('texts.custom_css'))
-                            ->rows(10)
-                            ->raw()
-                            ->maxlength(60000)
-                            ->style("min-width:100%;max-width:100%;font-family:'Roboto Mono', 'Lucida Console', Monaco,
+                           ->label(trans('texts.custom_css'))
+                           ->rows(10)
+                           ->raw()
+                           ->maxlength(60000)
+                           ->style("min-width:100%;max-width:100%;font-family:'Roboto Mono', 'Lucida Console', Monaco,
                             monospace;font-size:14px;'") !!}
 
                         </div>
@@ -178,11 +178,11 @@
                         <div class="panel-body">
 
                             {!! Former::textarea('client_view_js')
-                            ->label(trans('texts.custom_js'))
-                            ->rows(10)
-                            ->raw()
-                            ->maxlength(60000)
-                            ->style("min-width:100%;max-width:100%;font-family:'Roboto Mono', 'Lucida Console', Monaco,
+                           ->label(trans('texts.custom_js'))
+                           ->rows(10)
+                           ->raw()
+                           ->maxlength(60000)
+                           ->style("min-width:100%;max-width:100%;font-family:'Roboto Mono', 'Lucida Console', Monaco,
                             monospace;font-size:14px;'") !!}
 
                         </div>
@@ -212,18 +212,18 @@
                         <div class="panel-body">
                             <div class="row col-lg-10 col-lg-offset-1">
                                 {!! Former::checkbox('enable_portal_password')
-                                ->text(trans('texts.enable'))
-                                ->help(trans('texts.enable_portal_password_help'))
-                                ->label(trans('texts.enable_portal_password'))
-                                ->value(1) !!}
+                               ->text(trans('texts.enable'))
+                               ->help(trans('texts.enable_portal_password_help'))
+                               ->label(trans('texts.enable_portal_password'))
+                               ->value(1) !!}
                                 {!! Former::checkbox('send_portal_password')
-                                ->text(trans('texts.enable'))
-                                ->help(trans('texts.send_portal_password_help'))
-                                ->label(trans('texts.send_portal_password'))
-                                ->value(1) !!}
+                               ->text(trans('texts.enable'))
+                               ->help(trans('texts.send_portal_password_help'))
+                               ->label(trans('texts.send_portal_password'))
+                               ->value(1) !!}
                                 {!! Former::plaintext('client_login')
-                                ->value(link_to($account->present()->clientLoginUrl, null, ['target' => '_blank']))
-                                ->help(Utils::isNinja() && ! $account->subdomain && ! $account->iframe_url ?
+                               ->value(link_to($account->present()->clientLoginUrl, null, ['target' => '_blank']))
+                               ->help(Utils::isNinja() && ! $account->subdomain && ! $account->iframe_url ?
                                 'improve_client_portal_link' : '') !!}
                             </div>
                         </div>
@@ -232,15 +232,15 @@
                         <div class="panel-body">
                             <div class="row col-lg-10 col-lg-offset-1">
                                 {!! Former::checkbox('show_accept_invoice_terms')
-                                ->text(trans('texts.enable'))
-                                ->help(trans('texts.show_accept_invoice_terms_help'))
-                                ->label(trans('texts.show_accept_invoice_terms'))
-                                ->value(1) !!}
+                               ->text(trans('texts.enable'))
+                               ->help(trans('texts.show_accept_invoice_terms_help'))
+                               ->label(trans('texts.show_accept_invoice_terms'))
+                               ->value(1) !!}
                                 {!! Former::checkbox('show_accept_quote_terms')
-                                ->text(trans('texts.enable'))
-                                ->help(trans('texts.show_accept_quote_terms_help'))
-                                ->label(trans('texts.show_accept_quote_terms'))
-                                ->value(1) !!}
+                               ->text(trans('texts.enable'))
+                               ->help(trans('texts.show_accept_quote_terms_help'))
+                               ->label(trans('texts.show_accept_quote_terms'))
+                               ->value(1) !!}
                             </div>
                         </div>
                     </div>
@@ -248,21 +248,21 @@
                         <div class="panel-body">
                             <div class="row col-lg-10 col-lg-offset-1">
                                 {!! Former::checkbox('require_invoice_signature')
-                                ->text(trans('texts.enable'))
-                                ->help(trans('texts.require_invoice_signature_help'))
-                                ->label(trans('texts.require_invoice_signature'))
-                                ->value(1) !!}
+                               ->text(trans('texts.enable'))
+                               ->help(trans('texts.require_invoice_signature_help'))
+                               ->label(trans('texts.require_invoice_signature'))
+                               ->value(1) !!}
 
                                 {!! Former::checkbox('require_quote_signature')
-                                ->text(trans('texts.enable'))
-                                ->help(trans('texts.require_quote_signature_help'))
-                                ->label(trans('texts.require_quote_signature'))
-                                ->value(1) !!}
+                               ->text(trans('texts.enable'))
+                               ->help(trans('texts.require_quote_signature_help'))
+                               ->label(trans('texts.require_quote_signature'))
+                               ->value(1) !!}
 
                                 {!! Former::checkbox('signature_on_pdf')
-                                ->text(trans('texts.enable'))
-                                ->help(trans('texts.signature_on_pdf_help'))
-                                ->value(1) !!}
+                               ->text(trans('texts.enable'))
+                               ->help(trans('texts.signature_on_pdf_help'))
+                               ->value(1) !!}
                             </div>
                         </div>
                     </div>
@@ -280,59 +280,59 @@
                     @if (count($gateway_types) && count($products))
 
                     {!! Former::checkbox('enable_buy_now_buttons')
-                    ->text(trans('texts.enable'))
-                    ->label(' ')
-                    ->help(trans('texts.enable_buy_now_buttons_help'))
-                    ->value(1) !!}
+                   ->text(trans('texts.enable'))
+                   ->label(' ')
+                   ->help(trans('texts.enable_buy_now_buttons_help'))
+                   ->value(1) !!}
 
                     @if ($account->enable_buy_now_buttons)
                     {!! Former::select('product')
-                    ->onchange('updateBuyNowButtons()')
-                    ->addOption('', '')
-                    ->inlineHelp('buy_now_buttons_warning')
-                    ->addGroupClass('product-select') !!}
+                   ->onchange('updateBuyNowButtons()')
+                   ->addOption('', '')
+                   ->inlineHelp('buy_now_buttons_warning')
+                   ->addGroupClass('product-select') !!}
 
                     @if (count($account->present()->customTextFields))
                     {!! Former::inline_checkboxes('custom_fields')
-                    ->onchange('updateBuyNowButtons()')
-                    ->checkboxes($account->present()->customTextFields) !!}
+                   ->onchange('updateBuyNowButtons()')
+                   ->checkboxes($account->present()->customTextFields) !!}
                     @endif
 
                     {!! Former::inline_radios('landing_page')
-                    ->onchange('showPaymentTypes();updateBuyNowButtons();')
-                    ->radios([
+                   ->onchange('showPaymentTypes();updateBuyNowButtons();')
+                   ->radios([
                     trans('texts.invoice') => ['value' => 'invoice', 'name' => 'landing_page_type'],
                     trans('texts.payment') => ['value' => 'payment', 'name' => 'landing_page_type'],
                     ])->check('invoice') !!}
 
                     <div id="paymentTypesDiv" style="display:none">
                         {!! Former::select('payment_type')
-                        ->onchange('updateBuyNowButtons()')
-                        ->options($gateway_types) !!}
+                       ->onchange('updateBuyNowButtons()')
+                       ->options($gateway_types) !!}
                     </div>
 
                     {!! Former::text('redirect_url')
-                    ->onchange('updateBuyNowButtons()')
-                    ->placeholder('https://www.example.com')
-                    ->help('redirect_url_help') !!}
+                   ->onchange('updateBuyNowButtons()')
+                   ->placeholder('https://www.example.com')
+                   ->help('redirect_url_help') !!}
 
 
                     {!! Former::checkbox('is_recurring')
-                    ->text('enable')
-                    ->label('recurring')
-                    ->onchange('showRecurring();updateBuyNowButtons();')
-                    ->value(1) !!}
+                   ->text('enable')
+                   ->label('recurring')
+                   ->onchange('showRecurring();updateBuyNowButtons();')
+                   ->value(1) !!}
 
                     <div id="recurringDiv" style="display:none">
 
                         {!! Former::select('frequency_id')
-                        ->options(\App\Models\Frequency::selectOptions())
-                        ->onchange('updateBuyNowButtons()')
-                        ->value(FREQUENCY_MONTHLY) !!}
+                       ->options(\App\Models\Frequency::selectOptions())
+                       ->onchange('updateBuyNowButtons()')
+                       ->value(FREQUENCY_MONTHLY) !!}
 
                         {!! Former::select('auto_bill')
-                        ->onchange('updateBuyNowButtons()')
-                        ->options([
+                       ->onchange('updateBuyNowButtons()')
+                       ->options([
                         AUTO_BILL_OFF => trans('texts.off'),
                         AUTO_BILL_OPT_IN => trans('texts.opt_in'),
                         AUTO_BILL_OPT_OUT => trans('texts.opt_out'),
@@ -511,7 +511,7 @@ iframe.src = '{{ rtrim(SITE_URL ,'/') }}/' + parts[1] + '/' + parts[0].substring
 
             var form = '<form action="' + link + '" method="post" target="_top">' + "\n";
 
-            @foreach($account ->present() ->customTextFields as $field => $val)
+            @foreach($account->present()->customTextFields as $field => $val)
             if ($('input#{{ $val['
                     name '] }}').is(':checked')) {
                 form += '<input type="text" name="{{ $val['
@@ -566,7 +566,7 @@ iframe.src = '{{ rtrim(SITE_URL ,'/') }}/' + parts[1] + '/' + parts[0].substring
         } else if (val == 'iframe') {
             $('.iframe_url, #iframeModalHelp').show();
         } else {
-            @if(auth() ->user() ->isEnterprise())
+            @if(auth()->user()->isEnterprise())
             $('.iframe_url, #domainModalHelp').show();
             $('#is_custom_domain').val(1);
             @else

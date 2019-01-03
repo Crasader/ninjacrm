@@ -23,9 +23,9 @@
     @endif
 
     {!! Former::text('num_days')
-    ->type('number')
-    ->min(1)
-    ->label('texts.num_days') !!}
+   ->type('number')
+   ->min(1)
+   ->label('texts.num_days') !!}
 
   </div>
 </div>

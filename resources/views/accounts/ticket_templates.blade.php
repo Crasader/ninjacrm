@@ -40,7 +40,7 @@
 
                 {{trans('texts.name')}}
                 {!! Former::small_text('name')
-                ->label('')->style('width:100%;')
+               ->label('')->style('width:100%;')
                 !!}
 
                 {{ trans('texts.description') }}

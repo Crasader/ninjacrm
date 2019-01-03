@@ -10,10 +10,10 @@
 @section('content')
 
     {!! Former::open($url)
-            ->method($method)
-            ->onsubmit('return onFormSubmit(event)')
-            ->addClass('warn-on-exit')
-            ->rules([
+           ->method($method)
+           ->onsubmit('return onFormSubmit(event)')
+           ->addClass('warn-on-exit')
+           ->rules([
                 'name' => 'required',
             ]) !!}
 
@@ -48,28 +48,28 @@
 
         @if (count($templateOptions))
             {!! Former::select()
-                    ->style('display:inline;width:170px;background-color:white !important')
-                    ->placeholder(trans('texts.load_template'))
-                    ->onchange('onTemplateSelectChange()')
-                    ->addClass('template-select')
-                    ->options($templateOptions)
-                    ->raw() !!}
+                   ->style('display:inline;width:170px;background-color:white !important')
+                   ->placeholder(trans('texts.load_template'))
+                   ->onchange('onTemplateSelectChange()')
+                   ->addClass('template-select')
+                   ->options($templateOptions)
+                   ->raw() !!}
         @endif
 
         @include('proposals.grapesjs_help')
 
         {!! Button::normal(trans('texts.cancel'))
-                ->appendIcon(Icon::create('remove-circle'))
-                ->asLinkTo(HTMLUtils::previousUrl('/proposals')) !!}
+               ->appendIcon(Icon::create('remove-circle'))
+               ->asLinkTo(HTMLUtils::previousUrl('/proposals')) !!}
 
         {!! Button::success(trans('texts.save'))
-                ->submit()
-                ->appendIcon(Icon::create('floppy-disk')) !!}
+               ->submit()
+               ->appendIcon(Icon::create('floppy-disk')) !!}
 
         @if ($template)
             {!! Button::primary(trans('texts.new_proposal'))
-                    ->appendIcon(Icon::create('plus-sign'))
-                    ->asLinkTo(url('/proposals/create/0/' . $template->public_id)) !!}
+                   ->appendIcon(Icon::create('plus-sign'))
+                   ->asLinkTo(url('/proposals/create/0/' . $template->public_id)) !!}
         @endif
 
     </center>

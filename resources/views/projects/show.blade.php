@@ -30,8 +30,8 @@
                 @if ( ! $project->is_deleted)
                     @can('edit', $project)
                         {!! DropdownButton::normal(trans('texts.edit_project'))
-                            ->withAttributes(['class'=>'normalDropDown'])
-                            ->withContents([
+                           ->withAttributes(['class'=>'normalDropDown'])
+                           ->withContents([
                               ($project->trashed() ? false : ['label' => trans('texts.archive_project'), 'url' => "javascript:onArchiveClick()"]),
                               ['label' => trans('texts.delete_project'), 'url' => "javascript:onDeleteClick()"],
                             ]
@@ -42,8 +42,8 @@
                 @if ($project->trashed())
                     @can('edit', $project)
                         {!! Button::primary(trans('texts.restore_project'))
-                                ->appendIcon(Icon::create('cloud-download'))
-                                ->withAttributes(['onclick' => 'onRestoreClick()']) !!}
+                               ->appendIcon(Icon::create('cloud-download'))
+                               ->withAttributes(['onclick' => 'onRestoreClick()']) !!}
                     @endcan
                 @endif
 

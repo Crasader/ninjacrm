@@ -23,10 +23,10 @@
     @endif
 
     {!! Former::open($url)
-            ->addClass('col-lg-10 col-lg-offset-1 warn-on-exit task-form')
-            ->onsubmit('return onFormSubmit(event)')
-            ->autocomplete('off')
-            ->method($method) !!}
+           ->addClass('col-lg-10 col-lg-offset-1 warn-on-exit task-form')
+           ->onsubmit('return onFormSubmit(event)')
+           ->autocomplete('off')
+           ->method($method) !!}
 
     @if ($task)
         {!! Former::populate($task) !!}
@@ -50,19 +50,19 @@
 
             @if ($task && $task->invoice_id)
                 {!! Former::plaintext()
-                        ->label('client')
-                        ->value($task->client->present()->link) !!}
+                       ->label('client')
+                       ->value($task->client->present()->link) !!}
                 @if ($task->project)
                     {!! Former::plaintext()
-                            ->label('project')
-                            ->value($task->present()->project) !!}
+                           ->label('project')
+                           ->value($task->present()->project) !!}
                 @endif
             @else
                 {!! Former::select('client')->addOption('', '')->addGroupClass('client-select') !!}
                 {!! Former::select('project_id')
-                        ->addOption('', '')
-                        ->addGroupClass('project-select')
-                        ->label(trans('texts.project')) !!}
+                       ->addOption('', '')
+                       ->addGroupClass('project-select')
+                       ->label(trans('texts.project')) !!}
             @endif
 
             @include('partials/custom_fields', ['entityType' => ENTITY_TASK])
@@ -169,9 +169,9 @@
                     {!! Button::success(trans('texts.save'))->large()->appendIcon(Icon::create('floppy-disk'))->withAttributes(['id' => 'save-button']) !!}
                     {!! Button::primary(trans('texts.resume'))->large()->appendIcon(Icon::create('play'))->withAttributes(['id' => 'resume-button']) !!}
                     {!! DropdownButton::normal(trans('texts.more_actions'))
-                          ->withContents($actions)
-                          ->large()
-                          ->dropup() !!}
+                         ->withContents($actions)
+                         ->large()
+                         ->dropup() !!}
                 @else
                     {!! Button::success(trans('texts.start'))->large()->appendIcon(Icon::create('play'))->withAttributes(['id' => 'start-button']) !!}
                     {!! Button::success(trans('texts.save'))->large()->appendIcon(Icon::create('floppy-disk'))->withAttributes(['id' => 'save-button', 'style' => 'display:none']) !!}

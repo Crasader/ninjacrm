@@ -12,13 +12,13 @@
             <div class="panel-body">
 
                 {!! Former::plaintext('recipients')
-                        ->value('') !!}
+                       ->value('') !!}
 
                 @if (Utils::isPro())
                     {!! Former::select('template_type')
-                            ->label('template')
-                            ->onchange('loadTemplate()')
-                            ->options([
+                           ->label('template')
+                           ->onchange('loadTemplate()')
+                           ->options([
                                 $invoice->getEntityType() => trans('texts.initial_email'),
                                 'reminder1' => trans('texts.first_reminder'),
                                 'reminder2' => trans('texts.second_reminder'),
@@ -56,12 +56,12 @@
                         {{ Former::setOption('TwitterBootstrap3.labelWidths.large', 0) }}
                         {{ Former::setOption('TwitterBootstrap3.labelWidths.small', 0) }}
                         {!! Former::text('emailSubject')
-                                ->placeholder('subject')
-                                ->label(false)
-                                ->onchange('onEmailSubjectChange()')
-                                ->oninput('onEmailSubjectInput()')
-                                ->appendIcon('question-sign')
-                                ->addGroupClass('email-subject') !!}
+                               ->placeholder('subject')
+                               ->label(false)
+                               ->onchange('onEmailSubjectChange()')
+                               ->oninput('onEmailSubjectInput()')
+                               ->appendIcon('question-sign')
+                               ->addGroupClass('email-subject') !!}
                         {{ Former::setOption('TwitterBootstrap3.labelWidths.large', 4) }}
                         {{ Former::setOption('TwitterBootstrap3.labelWidths.small', 4) }}
 
@@ -122,8 +122,8 @@
             <div class="modal-footer" style="margin-top: 2px; padding-right:0px">
                 <div id="defaultDiv" style="display:none" class="pull-left">
                     {!! Former::checkbox('save_as_default')
-                            ->text('save_as_default')
-                            ->raw() !!}
+                           ->text('save_as_default')
+                           ->raw() !!}
                 </div>
                 <button type="button" class="btn btn-default" data-dismiss="modal">{{ trans('texts.cancel') }}</button>
                 <button id="sendEmailButton" type="button" class="btn btn-info" onclick="onConfirmEmailClick()">{{ trans('texts.send_email') }}</button>

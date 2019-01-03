@@ -30,12 +30,12 @@
     <center>
         @if(isset($amount))
             {!! Button::success(request()->capture ? strtoupper(trans('texts.submit')) : strtoupper(trans('texts.pay_now') . ' - ' . $account->formatMoney($amount, $client, CURRENCY_DECORATOR_CODE)  ))
-                            ->submit()
-                            ->large() !!}
+                           ->submit()
+                           ->large() !!}
         @else
             {!! Button::success(strtoupper(trans('texts.add_paypal_account') ))
-                        ->submit()
-                        ->large() !!}
+                       ->submit()
+                       ->large() !!}
         @endif
     </center>
 

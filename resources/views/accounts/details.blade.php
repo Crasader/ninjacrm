@@ -56,13 +56,13 @@
 
 
                 {!! Former::select('size_id')
-                ->addOption('','')
-                ->fromQuery($sizes, 'name', 'id') !!}
+               ->addOption('','')
+               ->fromQuery($sizes, 'name', 'id') !!}
 
                 {!! Former::select('industry_id')
-                ->addOption('','')
-                ->fromQuery($industries, 'name', 'id')
-                ->help('texts.industry_help') !!}
+               ->addOption('','')
+               ->fromQuery($industries, 'name', 'id')
+               ->help('texts.industry_help') !!}
 
             </div>
         </div>
@@ -79,8 +79,8 @@
                 {!! Former::text('state')->autocomplete('address-level1') !!}
                 {!! Former::text('postal_code')->autocomplete('postal-code') !!}
                 {!! Former::select('country_id')
-                ->addOption('','')
-                ->fromQuery($countries, 'name', 'id') !!}
+               ->addOption('','')
+               ->fromQuery($countries, 'name', 'id') !!}
 
             </div>
         </div>
@@ -92,19 +92,19 @@
             <div class="panel-body form-padding-right">
 
                 {!! Former::select('payment_type_id')
-                ->addOption('','')
-                ->fromQuery($paymentTypes, 'name', 'id')
-                ->help(trans('texts.payment_type_help')) !!}
+               ->addOption('','')
+               ->fromQuery($paymentTypes, 'name', 'id')
+               ->help(trans('texts.payment_type_help')) !!}
 
                 {!! Former::select('payment_terms')
-                ->addOption('','')
-                ->fromQuery(\App\Models\PaymentTerm::getSelectOptions(), 'name', 'num_days')
-                ->help(trans('texts.payment_terms_help') . ' | ' . link_to('/settings/payment_terms',
+               ->addOption('','')
+               ->fromQuery(\App\Models\PaymentTerm::getSelectOptions(), 'name', 'num_days')
+               ->help(trans('texts.payment_terms_help') . ' | ' . link_to('/settings/payment_terms',
                 trans('texts.customize_options'))) !!}
 
                 @if ($account->isModuleEnabled(ENTITY_TASK))
                 {!! Former::text('task_rate')
-                ->help('task_rate_help')!!}
+               ->help('task_rate_help')!!}
                 @endif
 
             </div>

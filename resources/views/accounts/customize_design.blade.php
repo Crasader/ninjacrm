@@ -220,11 +220,11 @@
 
         <div>
             {!! Former::select('invoice_design_id')
-            ->placeholder(trans('texts.load_design'))
-            ->style('display:inline;width:180px')
-            ->fromQuery($invoiceDesigns, 'name', 'id')
-            ->onchange('onSelectChange()')
-            ->raw() !!}
+           ->placeholder(trans('texts.load_design'))
+           ->style('display:inline;width:180px')
+           ->fromQuery($invoiceDesigns, 'name', 'id')
+           ->onchange('onSelectChange()')
+           ->raw() !!}
             <div class="pull-right">
                 {!! Button::normal(trans('texts.help'))->withAttributes(['onclick' =>
                 'showHelp()'])->appendIcon(Icon::create('question-sign')) !!}

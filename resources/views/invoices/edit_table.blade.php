@@ -78,20 +78,20 @@
         </td>
         <td style="display:none;" data-bind="visible: $root.invoice_item_taxes.show">
                 {!! Former::select('')
-                        ->addOption('', '')
-                        ->options($taxRateOptions)
-                        ->data_bind('value: tax1, event:{change:onTax1Change}')
-                        ->addClass($account->enable_second_tax_rate ? 'tax-select' : '')
-                        ->raw() !!}
+                       ->addOption('', '')
+                       ->options($taxRateOptions)
+                       ->data_bind('value: tax1, event:{change:onTax1Change}')
+                       ->addClass($account->enable_second_tax_rate ? 'tax-select' : '')
+                       ->raw() !!}
             <input type="text" data-bind="value: tax_name1, attr: {name: 'invoice_items[{{ $isTasks ? 'T' : '' }}' + $index() + '][tax_name1]'}" style="display:none">
             <input type="text" data-bind="value: tax_rate1, attr: {name: 'invoice_items[{{ $isTasks ? 'T' : '' }}' + $index() + '][tax_rate1]'}" style="display:none">
             <div data-bind="visible: $root.invoice().account.enable_second_tax_rate == '1'">
                 {!! Former::select('')
-                        ->addOption('', '')
-                        ->options($taxRateOptions)
-                        ->data_bind('value: tax2, event:{change:onTax2Change}')
-                        ->addClass('tax-select')
-                        ->raw() !!}
+                       ->addOption('', '')
+                       ->options($taxRateOptions)
+                       ->data_bind('value: tax2, event:{change:onTax2Change}')
+                       ->addClass('tax-select')
+                       ->raw() !!}
             </div>
             <input type="text" data-bind="value: tax_name2, attr: {name: 'invoice_items[{{ $isTasks ? 'T' : '' }}' + $index() + '][tax_name2]'}" style="display:none">
             <input type="text" data-bind="value: tax_rate2, attr: {name: 'invoice_items[{{ $isTasks ? 'T' : '' }}' + $index() + '][tax_rate2]'}" style="display:none">

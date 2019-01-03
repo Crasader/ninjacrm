@@ -42,10 +42,10 @@
                 {!! Former::text('email') !!}
                 {!! Former::text('phone') !!}
                 {!! Former::file('avatar')
-                ->max(2, 'MB')
-                ->accept('image')
-                ->label(trans('texts.avatar'))
-                ->inlineHelp(trans('texts.logo_help')) !!}
+               ->max(2, 'MB')
+               ->accept('image')
+               ->label(trans('texts.avatar'))
+               ->inlineHelp(trans('texts.logo_help')) !!}
 
                 @if ($user->hasAvatar())
                 <div class="form-group">
@@ -74,39 +74,39 @@
                 @if ($user->confirmed)
                 @if ($user->google_2fa_secret)
                 {!! Former::checkbox('enable_two_factor')
-                ->help(trans('texts.enable_two_factor_help'))
-                ->text(trans('texts.enable'))
-                ->value(1) !!}
+               ->help(trans('texts.enable_two_factor_help'))
+               ->text(trans('texts.enable'))
+               ->value(1) !!}
                 @elseif ($user->phone)
                 {!! Former::plaintext('enable_two_factor')->value(
                 Button::primary(trans('texts.enable'))->asLinkTo(url('settings/enable_two_factor'))->small()
                 )->help('enable_two_factor_help') !!}
                 @else
                 {!! Former::plaintext('enable_two_factor')
-                ->value('<span class="text-muted">' . trans('texts.set_phone_for_two_factor') . '</span>') !!}
+               ->value('<span class="text-muted">' . trans('texts.set_phone_for_two_factor') . '</span>') !!}
                 @endif
                 @endif
 
                 {!! Former::checkbox('dark_mode')
-                ->help(trans('texts.dark_mode_help'))
-                ->text(trans('texts.enable'))
-                ->value(1) !!}
+               ->help(trans('texts.dark_mode_help'))
+               ->text(trans('texts.enable'))
+               ->value(1) !!}
 
                 @if (Utils::isNinja())
                 @if ($user->referral_code)
                 {{ Former::setOption('capitalize_translations', false) }}
                 {!! Former::plaintext('referral_code')
-                ->help($referralCounts['free'] . ' ' . trans('texts.free') . ' | ' .
+               ->help($referralCounts['free'] . ' ' . trans('texts.free') . ' | ' .
                 $referralCounts['pro'] . ' ' . trans('texts.pro') .
                 '<a href="'.REFERRAL_PROGRAM_URL.'" target="_blank" title="'.trans('texts.learn_more').'">' .
                     Icon::create('question-sign') . '</a> ')
-                ->value(NINJA_APP_URL . '/invoice_now?rc=' . $user->referral_code) !!}
+               ->value(NINJA_APP_URL . '/invoice_now?rc=' . $user->referral_code) !!}
                 @else
                 {!! Former::checkbox('referral_code')
-                ->help(trans('texts.referral_code_help'))
-                ->text(trans('texts.enable') . ' <a href="'.REFERRAL_PROGRAM_URL.'" target="_blank" title="'.trans('texts.learn_more').'">'
+               ->help(trans('texts.referral_code_help'))
+               ->text(trans('texts.enable') . ' <a href="'.REFERRAL_PROGRAM_URL.'" target="_blank" title="'.trans('texts.learn_more').'">'
                     . Icon::create('question-sign') . '</a>')
-                ->value(1) !!}
+               ->value(1) !!}
                 @endif
                 @endif
 
@@ -137,16 +137,16 @@
 <center class="buttons">
     @if (Auth::user()->confirmed)
     {!! Button::primary(trans('texts.change_password'))
-    ->appendIcon(Icon::create('lock'))
-    ->large()->withAttributes(['onclick'=>'showChangePassword()']) !!}
+   ->appendIcon(Icon::create('lock'))
+   ->large()->withAttributes(['onclick'=>'showChangePassword()']) !!}
     @elseif (Auth::user()->registered && Utils::isNinja())
     {!! Button::primary(trans('texts.resend_confirmation'))
-    ->appendIcon(Icon::create('send'))
-    ->asLinkTo(URL::to('/resend_confirmation'))->large() !!}
+   ->appendIcon(Icon::create('send'))
+   ->asLinkTo(URL::to('/resend_confirmation'))->large() !!}
     @endif
     {!! Button::success(trans('texts.save'))
-    ->submit()->large()
-    ->appendIcon(Icon::create('floppy-disk')) !!}
+   ->submit()->large()
+   ->appendIcon(Icon::create('floppy-disk')) !!}
 </center>
 
 

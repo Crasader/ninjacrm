@@ -41,15 +41,15 @@
 
                 @if ($gatewayLink)
                     {!! Button::normal(trans('texts.view_in_gateway', ['gateway'=>$gatewayName]))
-                            ->asLinkTo($gatewayLink)
-                            ->withAttributes(['target' => '_blank']) !!}
+                           ->asLinkTo($gatewayLink)
+                           ->withAttributes(['target' => '_blank']) !!}
                 @endif
 
                 @if ( ! $client->is_deleted)
                     @can('edit', $client)
                         {!! DropdownButton::normal(trans('texts.edit_client'))
-                            ->withAttributes(['class'=>'normalDropDown'])
-                            ->withContents([
+                           ->withAttributes(['class'=>'normalDropDown'])
+                           ->withContents([
                               ($client->trashed() ? false : ['label' => trans('texts.archive_client'), 'url' => "javascript:onArchiveClick()"]),
                               ['label' => trans('texts.delete_client'), 'url' => "javascript:onDeleteClick()"],
                               auth()->user()->is_admin ? \DropdownButton::DIVIDER : false,
@@ -60,8 +60,8 @@
                     @if ( ! $client->trashed())
                         @can('create', ENTITY_INVOICE)
                             {!! DropdownButton::primary(trans('texts.view_statement'))
-                                    ->withAttributes(['class'=>'primaryDropDown'])
-                                    ->withContents($actionLinks)->split() !!}
+                                   ->withAttributes(['class'=>'primaryDropDown'])
+                                   ->withContents($actionLinks)->split() !!}
                         @endcan
                     @endif
                 @endif
@@ -70,12 +70,12 @@
                     @can('edit', $client)
                         @if (auth()->user()->is_admin && $client->is_deleted)
                             {!! Button::danger(trans('texts.purge_client'))
-                                    ->appendIcon(Icon::create('warning-sign'))
-                                    ->withAttributes(['onclick' => 'onPurgeClick()']) !!}
+                                   ->appendIcon(Icon::create('warning-sign'))
+                                   ->withAttributes(['onclick' => 'onPurgeClick()']) !!}
                         @endif
                         {!! Button::primary(trans('texts.restore_client'))
-                                ->appendIcon(Icon::create('cloud-download'))
-                                ->withAttributes(['onclick' => 'onRestoreClick()']) !!}
+                               ->appendIcon(Icon::create('cloud-download'))
+                               ->withAttributes(['onclick' => 'onRestoreClick()']) !!}
                     @endcan
                 @endif
 
@@ -271,9 +271,9 @@
 		    		trans('texts.balance'),
 		    		trans('texts.adjustment'))
 		    	->setUrl(url('api/activities/'. $client->public_id))
-                ->setCustomValues('entityType', 'activity')
-                ->setCustomValues('clientId', $client->public_id)
-                ->setCustomValues('rightAlign', [2, 3])
+               ->setCustomValues('entityType', 'activity')
+               ->setCustomValues('clientId', $client->public_id)
+               ->setCustomValues('rightAlign', [2, 3])
 		    	->setOptions('sPaginationType', 'bootstrap')
 		    	->setOptions('bFilter', false)
 		    	->setOptions('aaSorting', [['0', 'desc']])

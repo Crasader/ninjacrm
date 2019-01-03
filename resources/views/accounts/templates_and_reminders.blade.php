@@ -168,7 +168,7 @@
     var stringTypes = ['subject', 'template'];
     var templates = {!!json_encode($defaultTemplates) !!
     };
-    var account = {!!Auth::user() ->account!!
+    var account = {!!Auth::user()->account!!
     };
 
     function refreshPreview() {

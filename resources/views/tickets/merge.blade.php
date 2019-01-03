@@ -13,10 +13,10 @@
 @section('content')
 
     {!! Former::open($url)
-        ->addClass('col-lg-10 col-lg-offset-1 warn-on-exit main-form')
-        ->autocomplete('off')
-        ->method($method)
-        ->rules([
+       ->addClass('col-lg-10 col-lg-offset-1 warn-on-exit main-form')
+       ->autocomplete('off')
+       ->method($method)
+       ->rules([
             'updated_ticket_id' => 'required',
         ]) !!}
 
@@ -58,9 +58,9 @@
                 <div class="col-md-9">
 
                 {!! Former::textarea('old_ticket_comment')
-                            ->label('')
-                            ->data_bind("value: old_ticket_comment")
-                            ->help('This ticket will be closed with the following comment')
+                           ->label('')
+                           ->data_bind("value: old_ticket_comment")
+                           ->help('This ticket will be closed with the following comment')
                             !!}
 
                 </div>
@@ -94,17 +94,17 @@
                 <div class="col-md-9">
 
                     {!! Former::select('updated_ticket_id')
-                            ->label('')
-                            ->help('Select ticket to merge into')
-                            ->addOption('', '')
-                            ->data_bind("dropdown: updated_ticket_id, dropdownOptions: {highlighter: comboboxHighlighter}")
-                            ->addClass('pull-right')
-                            ->addGroupClass('') !!}
+                           ->label('')
+                           ->help('Select ticket to merge into')
+                           ->addOption('', '')
+                           ->data_bind("dropdown: updated_ticket_id, dropdownOptions: {highlighter: comboboxHighlighter}")
+                           ->addClass('pull-right')
+                           ->addGroupClass('') !!}
 
                     {!! Former::textarea('updated_ticket_comment')
-                                ->data_bind("value: updated_ticket_comment")
-                                ->label('')
-                                ->help('This ticket will be updated with the following comment')
+                               ->data_bind("value: updated_ticket_comment")
+                               ->label('')
+                               ->help('This ticket will be updated with the following comment')
                                 !!}
 
                 </div>

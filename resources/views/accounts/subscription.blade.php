@@ -21,7 +21,7 @@
         @endif
 
         {!! Former::select('event_id')
-        ->options([
+       ->options([
         trans('texts.clients') => [
         EVENT_CREATE_CLIENT => trans('texts.subscription_event_' . EVENT_CREATE_CLIENT),
         EVENT_UPDATE_CLIENT => trans('texts.subscription_event_' . EVENT_UPDATE_CLIENT),
@@ -58,18 +58,18 @@
         EVENT_DELETE_EXPENSE => trans('texts.subscription_event_' . EVENT_DELETE_EXPENSE),
         ],
         ])
-        ->label('event') !!}
+       ->label('event') !!}
 
         {!! Former::text('target_url')
-        ->placeholder('https://example.com')!!}
+       ->placeholder('https://example.com')!!}
 
         <!--
             {!! Former::select('format')
-                    ->options([
+                   ->options([
                         SUBSCRIPTION_FORMAT_JSON => SUBSCRIPTION_FORMAT_JSON,
                         SUBSCRIPTION_FORMAT_UBL => SUBSCRIPTION_FORMAT_UBL
                     ])
-                    ->help('target_url_help') !!}
+                   ->help('target_url_help') !!}
             -->
 
     </div>

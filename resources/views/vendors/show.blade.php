@@ -43,8 +43,8 @@
               @if ( ! $vendor->is_deleted)
                   @can('edit', $vendor)
                       {!! DropdownButton::normal(trans('texts.edit_vendor'))
-                          ->withAttributes(['class'=>'normalDropDown'])
-                          ->withContents([
+                         ->withAttributes(['class'=>'normalDropDown'])
+                         ->withContents([
                             ($vendor->trashed() ? false : ['label' => trans('texts.archive_vendor'), 'url' => "javascript:onArchiveClick()"]),
                             ['label' => trans('texts.delete_vendor'), 'url' => "javascript:onDeleteClick()"],
                           ]
@@ -53,8 +53,8 @@
                   @if ( ! $vendor->trashed())
                       @can('create', ENTITY_EXPENSE)
                           {!! Button::primary(trans("texts.new_expense"))
-                                  ->asLinkTo(URL::to("/expenses/create/0/{$vendor->public_id}"))
-                                  ->appendIcon(Icon::create('plus-sign')) !!}
+                                 ->asLinkTo(URL::to("/expenses/create/0/{$vendor->public_id}"))
+                                 ->appendIcon(Icon::create('plus-sign')) !!}
                       @endcan
                   @endif
               @endif
@@ -62,8 +62,8 @@
               @if ($vendor->trashed())
                   @can('edit', $vendor)
                       {!! Button::primary(trans('texts.restore_vendor'))
-                              ->appendIcon(Icon::create('cloud-download'))
-                              ->withAttributes(['onclick' => 'onRestoreClick()']) !!}
+                             ->appendIcon(Icon::create('cloud-download'))
+                             ->withAttributes(['onclick' => 'onRestoreClick()']) !!}
                   @endcan
               @endif
 

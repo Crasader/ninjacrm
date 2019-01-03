@@ -12,8 +12,8 @@
     <div class="panel-body">
 
         {!! Former::open_for_files('bank_accounts/import_ofx')
-        ->rules(['ofx_file' => 'required'])
-        ->addClass('warn-on-exit') !!}
+       ->rules(['ofx_file' => 'required'])
+       ->addClass('warn-on-exit') !!}
 
         {!! Former::file("ofx_file") !!}
 

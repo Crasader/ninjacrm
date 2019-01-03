@@ -61,7 +61,7 @@
         var NINJA = NINJA || {};
         NINJA.fontSize = 9;
         NINJA.isRegistered = {
-            {\
+            {
                 Utils::isRegistered() ? 'true' : 'false'
             }
         };
@@ -259,7 +259,7 @@
             ANALYTICS_KEY '] }}', 'auto');
         ga('set', 'anonymizeIp', true);
 
-        @if(request() ->invitation_key || request() ->proposal_invitation_key || request() ->contact_key)
+        @if(request()->invitation_key || request()->proposal_invitation_key || request()->contact_key)
         ga('send', 'pageview', {
             'page': '/client/portal'
         });

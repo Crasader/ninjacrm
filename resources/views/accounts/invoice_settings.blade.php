@@ -72,51 +72,51 @@
             <div role="tabpanel" class="tab-pane active" id="invoice_number">
                 <div class="panel-body">
                     {!! Former::inline_radios('invoice_number_type')
-                    ->onchange("onNumberTypeChange('invoice')")
-                    ->label(trans('texts.type'))
-                    ->radios([
+                   ->onchange("onNumberTypeChange('invoice')")
+                   ->label(trans('texts.type'))
+                   ->radios([
                     trans('texts.prefix') => ['value' => 'prefix', 'name' => 'invoice_number_type'],
                     trans('texts.pattern') => ['value' => 'pattern', 'name' => 'invoice_number_type'],
                     ])->check($account->invoice_number_pattern ? 'pattern' : 'prefix') !!}
 
                     {!! Former::text('invoice_number_prefix')
-                    ->addGroupClass('invoice-prefix')
-                    ->label(trans('texts.prefix')) !!}
+                   ->addGroupClass('invoice-prefix')
+                   ->label(trans('texts.prefix')) !!}
                     {!! Former::text('invoice_number_pattern')
-                    ->appendIcon('question-sign')
-                    ->addGroupClass('invoice-pattern')
-                    ->label(trans('texts.pattern'))
-                    ->addGroupClass('number-pattern') !!}
+                   ->appendIcon('question-sign')
+                   ->addGroupClass('invoice-pattern')
+                   ->label(trans('texts.pattern'))
+                   ->addGroupClass('number-pattern') !!}
                     {!! Former::text('invoice_number_counter')
-                    ->label(trans('texts.counter'))
-                    ->help(trans('texts.invoice_number_help') . ' ' .
+                   ->label(trans('texts.counter'))
+                   ->help(trans('texts.invoice_number_help') . ' ' .
                     trans('texts.next_invoice_number', ['number' => $account->previewNextInvoiceNumber()])) !!}
                 </div>
             </div>
             <div role="tabpanel" class="tab-pane" id="quote_number">
                 <div class="panel-body">
                     {!! Former::inline_radios('quote_number_type')
-                    ->onchange("onNumberTypeChange('quote')")
-                    ->label(trans('texts.type'))
-                    ->radios([
+                   ->onchange("onNumberTypeChange('quote')")
+                   ->label(trans('texts.type'))
+                   ->radios([
                     trans('texts.prefix') => ['value' => 'prefix', 'name' => 'quote_number_type'],
                     trans('texts.pattern') => ['value' => 'pattern', 'name' => 'quote_number_type'],
                     ])->check($account->quote_number_pattern ? 'pattern' : 'prefix') !!}
 
                     {!! Former::text('quote_number_prefix')
-                    ->addGroupClass('quote-prefix')
-                    ->label(trans('texts.prefix')) !!}
+                   ->addGroupClass('quote-prefix')
+                   ->label(trans('texts.prefix')) !!}
                     {!! Former::text('quote_number_pattern')
-                    ->appendIcon('question-sign')
-                    ->addGroupClass('quote-pattern')
-                    ->addGroupClass('number-pattern')
-                    ->label(trans('texts.pattern')) !!}
+                   ->appendIcon('question-sign')
+                   ->addGroupClass('quote-pattern')
+                   ->addGroupClass('number-pattern')
+                   ->label(trans('texts.pattern')) !!}
                     {!! Former::text('quote_number_counter')
-                    ->label(trans('texts.counter'))
-                    ->addGroupClass('pad-checkbox')
-                    ->append(Former::checkbox('share_counter')->raw()->value(1)
-                    ->onclick('setQuoteNumberEnabled()') . ' ' . trans('texts.share_invoice_counter'))
-                    ->help(trans('texts.quote_number_help') . ' ' .
+                   ->label(trans('texts.counter'))
+                   ->addGroupClass('pad-checkbox')
+                   ->append(Former::checkbox('share_counter')->raw()->value(1)
+                   ->onclick('setQuoteNumberEnabled()') . ' ' . trans('texts.share_invoice_counter'))
+                   ->help(trans('texts.quote_number_help') . ' ' .
                     trans('texts.next_quote_number', ['number' => $account->previewNextInvoiceNumber(ENTITY_QUOTE)]))
                     !!}
 
@@ -126,34 +126,34 @@
             <div role="tabpanel" class="tab-pane" id="client_number">
                 <div class="panel-body">
                     {!! Former::checkbox('client_number_enabled')
-                    ->label('client_number')
-                    ->onchange('onClientNumberEnabled()')
-                    ->text('enable')
-                    ->value(1)
-                    ->check($account->client_number_counter > 0) !!}
+                   ->label('client_number')
+                   ->onchange('onClientNumberEnabled()')
+                   ->text('enable')
+                   ->value(1)
+                   ->check($account->client_number_counter > 0) !!}
 
                     <div id="clientNumberDiv" style="display:none">
 
                         {!! Former::inline_radios('client_number_type')
-                        ->onchange("onNumberTypeChange('client')")
-                        ->label(trans('texts.type'))
-                        ->radios([
+                       ->onchange("onNumberTypeChange('client')")
+                       ->label(trans('texts.type'))
+                       ->radios([
                         trans('texts.prefix') => ['value' => 'prefix', 'name' => 'client_number_type'],
                         trans('texts.pattern') => ['value' => 'pattern', 'name' => 'client_number_type'],
                         ])->check($account->client_number_pattern ? 'pattern' : 'prefix') !!}
 
                         {!! Former::text('client_number_prefix')
-                        ->addGroupClass('client-prefix')
-                        ->label(trans('texts.prefix')) !!}
+                       ->addGroupClass('client-prefix')
+                       ->label(trans('texts.prefix')) !!}
                         {!! Former::text('client_number_pattern')
-                        ->appendIcon('question-sign')
-                        ->addGroupClass('client-pattern')
-                        ->addGroupClass('client-number-pattern')
-                        ->label(trans('texts.pattern')) !!}
+                       ->appendIcon('question-sign')
+                       ->addGroupClass('client-pattern')
+                       ->addGroupClass('client-number-pattern')
+                       ->label(trans('texts.pattern')) !!}
                         {!! Former::text('client_number_counter')
-                        ->label(trans('texts.counter'))
-                        ->addGroupClass('pad-checkbox')
-                        ->help(trans('texts.client_number_help') . ' ' .
+                       ->label(trans('texts.counter'))
+                       ->addGroupClass('pad-checkbox')
+                       ->help(trans('texts.client_number_help') . ' ' .
                         trans('texts.next_client_number', ['number' => $account->getNextNumber() ?: '0001'])) !!}
 
                     </div>
@@ -163,34 +163,34 @@
                 <div class="panel-body">
 
                     {!! Former::checkbox('credit_number_enabled')
-                    ->label('credit_number')
-                    ->onchange('onCreditNumberEnabled()')
-                    ->text('enable')
-                    ->value(1)
-                    ->check($account->credit_number_counter > 0) !!}
+                   ->label('credit_number')
+                   ->onchange('onCreditNumberEnabled()')
+                   ->text('enable')
+                   ->value(1)
+                   ->check($account->credit_number_counter > 0) !!}
 
                     <div id="creditNumberDiv" style="display:none">
 
                         {!! Former::inline_radios('credit_number_type')
-                        ->onchange("onNumberTypeChange('credit')")
-                        ->label(trans('texts.type'))
-                        ->radios([
+                       ->onchange("onNumberTypeChange('credit')")
+                       ->label(trans('texts.type'))
+                       ->radios([
                         trans('texts.prefix') => ['value' => 'prefix', 'name' => 'credit_number_type'],
                         trans('texts.pattern') => ['value' => 'pattern', 'name' => 'credit_number_type'],
                         ])->check($account->credit_number_pattern ? 'pattern' : 'prefix') !!}
 
                         {!! Former::text('credit_number_prefix')
-                        ->addGroupClass('credit-prefix')
-                        ->label(trans('texts.prefix')) !!}
+                       ->addGroupClass('credit-prefix')
+                       ->label(trans('texts.prefix')) !!}
                         {!! Former::text('credit_number_pattern')
-                        ->appendIcon('question-sign')
-                        ->addGroupClass('credit-pattern')
-                        ->addGroupClass('credit-number-pattern')
-                        ->label(trans('texts.pattern')) !!}
+                       ->appendIcon('question-sign')
+                       ->addGroupClass('credit-pattern')
+                       ->addGroupClass('credit-number-pattern')
+                       ->label(trans('texts.pattern')) !!}
                         {!! Former::text('credit_number_counter')
-                        ->label(trans('texts.counter'))
-                        ->addGroupClass('pad-checkbox')
-                        ->help(trans('texts.credit_number_help') . ' ' .
+                       ->label(trans('texts.counter'))
+                       ->addGroupClass('pad-checkbox')
+                       ->help(trans('texts.credit_number_help') . ' ' .
                         trans('texts.next_credit_number', ['number' => $account->getNextNumber(new
                         \App\Models\Credit()) ?: '0001'])) !!}
                     </div>
@@ -200,25 +200,25 @@
                 <div class="panel-body">
 
                     {!! Former::text('invoice_number_padding')
-                    ->help('padding_help') !!}
+                   ->help('padding_help') !!}
 
                     {!! Former::text('recurring_invoice_number_prefix')
-                    ->label(trans('texts.recurring_prefix'))
-                    ->help(trans('texts.recurring_invoice_number_prefix_help')) !!}
+                   ->label(trans('texts.recurring_prefix'))
+                   ->help(trans('texts.recurring_invoice_number_prefix_help')) !!}
 
                     {!! Former::select('reset_counter_frequency_id')
-                    ->onchange('onResetFrequencyChange()')
-                    ->label('reset_counter')
-                    ->addOption(trans('texts.never'), '')
-                    ->options(\App\Models\Frequency::selectOptions())
-                    ->help('reset_counter_help') !!}
+                   ->onchange('onResetFrequencyChange()')
+                   ->label('reset_counter')
+                   ->addOption(trans('texts.never'), '')
+                   ->options(\App\Models\Frequency::selectOptions())
+                   ->help('reset_counter_help') !!}
 
                     {!! Former::text('reset_counter_date')
-                    ->label('next_reset')
-                    ->data_date_format(Session::get(SESSION_DATE_PICKER_FORMAT, DEFAULT_DATE_PICKER_FORMAT))
-                    ->addGroupClass('reset_counter_date_group')
-                    ->append('<i class="glyphicon glyphicon-calendar"></i>')
-                    ->data_date_start_date($account->formatDate($account->getDateTime())) !!}
+                   ->label('next_reset')
+                   ->data_date_format(Session::get(SESSION_DATE_PICKER_FORMAT, DEFAULT_DATE_PICKER_FORMAT))
+                   ->addGroupClass('reset_counter_date_group')
+                   ->append('<i class="glyphicon glyphicon-calendar"></i>')
+                   ->data_date_start_date($account->formatDate($account->getDateTime())) !!}
 
                 </div>
             </div>
@@ -267,12 +267,12 @@
                 <div class="panel-body">
 
                     {!! Former::text('custom_fields[product1]')
-                    ->label('product_field')
-                    ->data_lpignore('true') !!}
+                   ->label('product_field')
+                   ->data_lpignore('true') !!}
                     {!! Former::text('custom_fields[product2]')
-                    ->label('product_field')
-                    ->data_lpignore('true')
-                    ->help(trans('texts.custom_product_fields_help') . ' ' . trans('texts.custom_fields_tip')) !!}
+                   ->label('product_field')
+                   ->data_lpignore('true')
+                   ->help(trans('texts.custom_product_fields_help') . ' ' . trans('texts.custom_fields_tip')) !!}
 
                 </div>
             </div>
@@ -280,27 +280,27 @@
                 <div class="panel-body">
 
                     {!! Former::text('custom_fields[client1]')
-                    ->label('client_field')
-                    ->addGroupClass('pad-checkbox')
-                    ->append(Former::checkbox('custom_fields_options[client1_filter]')
-                    ->value(1)
-                    ->raw() . trans('texts.include_in_filter')) !!}
+                   ->label('client_field')
+                   ->addGroupClass('pad-checkbox')
+                   ->append(Former::checkbox('custom_fields_options[client1_filter]')
+                   ->value(1)
+                   ->raw() . trans('texts.include_in_filter')) !!}
 
                     {!! Former::text('custom_fields[client2]')
-                    ->label('client_field')
-                    ->addGroupClass('pad-checkbox')
-                    ->append(Former::checkbox('custom_fields_options[client2_filter]')
-                    ->value(1)
-                    ->raw() . trans('texts.include_in_filter'))
-                    ->help(trans('texts.custom_client_fields_helps') . ' ' . trans('texts.custom_fields_tip')) !!}
+                   ->label('client_field')
+                   ->addGroupClass('pad-checkbox')
+                   ->append(Former::checkbox('custom_fields_options[client2_filter]')
+                   ->value(1)
+                   ->raw() . trans('texts.include_in_filter'))
+                   ->help(trans('texts.custom_client_fields_helps') . ' ' . trans('texts.custom_fields_tip')) !!}
 
                     <br />
 
                     {!! Former::text('custom_fields[contact1]')
-                    ->label('contact_field') !!}
+                   ->label('contact_field') !!}
                     {!! Former::text('custom_fields[contact2]')
-                    ->label('contact_field')
-                    ->help(trans('texts.custom_contact_fields_help') . ' ' . trans('texts.custom_fields_tip')) !!}
+                   ->label('contact_field')
+                   ->help(trans('texts.custom_contact_fields_help') . ' ' . trans('texts.custom_fields_tip')) !!}
 
                 </div>
             </div>
@@ -308,25 +308,25 @@
                 <div class="panel-body">
 
                     {!! Former::text('custom_fields[invoice_text1]')
-                    ->label('invoice_field') !!}
+                   ->label('invoice_field') !!}
                     {!! Former::text('custom_fields[invoice_text2]')
-                    ->label('invoice_field')
-                    ->help(trans('texts.custom_invoice_fields_helps') . ' ' . trans('texts.custom_fields_tip')) !!}
+                   ->label('invoice_field')
+                   ->help(trans('texts.custom_invoice_fields_helps') . ' ' . trans('texts.custom_fields_tip')) !!}
 
                     {!! Former::text('custom_fields[invoice1]')
-                    ->label('invoice_surcharge')
-                    ->addGroupClass('pad-checkbox')
-                    ->append(Former::checkbox('custom_invoice_taxes1')
-                    ->value(1)
-                    ->raw() . trans('texts.charge_taxes')) !!}
+                   ->label('invoice_surcharge')
+                   ->addGroupClass('pad-checkbox')
+                   ->append(Former::checkbox('custom_invoice_taxes1')
+                   ->value(1)
+                   ->raw() . trans('texts.charge_taxes')) !!}
 
                     {!! Former::text('custom_fields[invoice2]')
-                    ->label('invoice_surcharge')
-                    ->addGroupClass('pad-checkbox')
-                    ->append(Former::checkbox('custom_invoice_taxes2')
-                    ->value(1)
-                    ->raw() . trans('texts.charge_taxes'))
-                    ->help(trans('texts.custom_invoice_charges_helps')) !!}
+                   ->label('invoice_surcharge')
+                   ->addGroupClass('pad-checkbox')
+                   ->append(Former::checkbox('custom_invoice_taxes2')
+                   ->value(1)
+                   ->raw() . trans('texts.charge_taxes'))
+                   ->help(trans('texts.custom_invoice_charges_helps')) !!}
 
                 </div>
             </div>
@@ -334,18 +334,18 @@
                 <div class="panel-body">
 
                     {!! Former::text('custom_fields[task1]')
-                    ->label('task_field') !!}
+                   ->label('task_field') !!}
                     {!! Former::text('custom_fields[task2]')
-                    ->label('task_field')
-                    ->help(trans('texts.custom_task_fields_help') . ' ' . trans('texts.custom_fields_tip')) !!}
+                   ->label('task_field')
+                   ->help(trans('texts.custom_task_fields_help') . ' ' . trans('texts.custom_fields_tip')) !!}
 
                     <br />
 
                     {!! Former::text('custom_fields[project1]')
-                    ->label('project_field') !!}
+                   ->label('project_field') !!}
                     {!! Former::text('custom_fields[project2]')
-                    ->label('project_field')
-                    ->help(trans('texts.custom_project_fields_help') . ' ' . trans('texts.custom_fields_tip')) !!}
+                   ->label('project_field')
+                   ->help(trans('texts.custom_project_fields_help') . ' ' . trans('texts.custom_fields_tip')) !!}
 
                 </div>
             </div>
@@ -353,18 +353,18 @@
                 <div class="panel-body">
 
                     {!! Former::text('custom_fields[expense1]')
-                    ->label(trans('texts.expense_field')) !!}
+                   ->label(trans('texts.expense_field')) !!}
                     {!! Former::text('custom_fields[expense2]')
-                    ->label(trans('texts.expense_field'))
-                    ->help(trans('texts.custom_expense_fields_help') . ' ' . trans('texts.custom_fields_tip')) !!}
+                   ->label(trans('texts.expense_field'))
+                   ->help(trans('texts.custom_expense_fields_help') . ' ' . trans('texts.custom_fields_tip')) !!}
 
                     <br />
 
                     {!! Former::text('custom_fields[vendor1]')
-                    ->label(trans('texts.vendor_field')) !!}
+                   ->label(trans('texts.vendor_field')) !!}
                     {!! Former::text('custom_fields[vendor2]')
-                    ->label(trans('texts.vendor_field'))
-                    ->help(trans('texts.custom_vendor_fields_help') . ' ' . trans('texts.custom_fields_tip')) !!}
+                   ->label(trans('texts.vendor_field'))
+                   ->help(trans('texts.custom_vendor_fields_help') . ' ' . trans('texts.custom_fields_tip')) !!}
 
                 </div>
             </div>
@@ -372,15 +372,15 @@
                 <div class="panel-body">
 
                     {!! Former::text('custom_fields[account1]')
-                    ->label(trans('texts.company_field')) !!}
+                   ->label(trans('texts.company_field')) !!}
                     {!! Former::text('custom_value1')
-                    ->label(trans('texts.field_value')) !!}
+                   ->label(trans('texts.field_value')) !!}
                     <p>&nbsp;</p>
                     {!! Former::text('custom_fields[account2]')
-                    ->label(trans('texts.company_field')) !!}
+                   ->label(trans('texts.company_field')) !!}
                     {!! Former::text('custom_value2')
-                    ->label(trans('texts.field_value'))
-                    ->help(trans('texts.custom_account_fields_helps')) !!}
+                   ->label(trans('texts.field_value'))
+                   ->help(trans('texts.custom_account_fields_helps')) !!}
 
                 </div>
             </div>
@@ -410,32 +410,32 @@
             <div role="tabpanel" class="tab-pane active" id="invoice_workflow">
                 <div class="panel-body">
                     {!! Former::checkbox('auto_email_invoice')
-                    ->text(trans('texts.enable'))
-                    ->blockHelp(trans('texts.auto_email_invoice_help'))
-                    ->value(1) !!}
+                   ->text(trans('texts.enable'))
+                   ->blockHelp(trans('texts.auto_email_invoice_help'))
+                   ->value(1) !!}
 
                     {!! Former::checkbox('auto_archive_invoice')
-                    ->text(trans('texts.enable'))
-                    ->blockHelp(trans('texts.auto_archive_invoice_help'))
-                    ->value(1) !!}
+                   ->text(trans('texts.enable'))
+                   ->blockHelp(trans('texts.auto_archive_invoice_help'))
+                   ->value(1) !!}
                 </div>
             </div>
             <div role="tabpanel" class="tab-pane" id="quote_workflow">
                 <div class="panel-body">
                     {!! Former::checkbox('auto_convert_quote')
-                    ->text(trans('texts.enable'))
-                    ->blockHelp(trans('texts.auto_convert_quote_help'))
-                    ->value(1) !!}
+                   ->text(trans('texts.enable'))
+                   ->blockHelp(trans('texts.auto_convert_quote_help'))
+                   ->value(1) !!}
 
                     {!! Former::checkbox('auto_archive_quote')
-                    ->text(trans('texts.enable'))
-                    ->blockHelp(trans('texts.auto_archive_quote_help'))
-                    ->value(1) !!}
+                   ->text(trans('texts.enable'))
+                   ->blockHelp(trans('texts.auto_archive_quote_help'))
+                   ->value(1) !!}
 
                     {!! Former::checkbox('allow_approve_expired_quote')
-                    ->text(trans('texts.enable'))
-                    ->blockHelp(trans('texts.allow_approve_expired_quote_help'))
-                    ->value(1) !!}
+                   ->text(trans('texts.enable'))
+                   ->blockHelp(trans('texts.allow_approve_expired_quote_help'))
+                   ->value(1) !!}
                 </div>
             </div>
         </div>
@@ -471,17 +471,17 @@
             <div role="tabpanel" class="tab-pane active" id="invoice_terms">
                 <div class="panel-body">
                     {!! Former::textarea('invoice_terms')
-                    ->label(trans('texts.default_invoice_terms'))
-                    ->rows(8)
-                    ->raw() !!}
+                   ->label(trans('texts.default_invoice_terms'))
+                   ->rows(8)
+                   ->raw() !!}
                 </div>
             </div>
             <div role="tabpanel" class="tab-pane" id="invoice_footer">
                 <div class="panel-body">
                     {!! Former::textarea('invoice_footer')
-                    ->label(trans('texts.default_invoice_footer'))
-                    ->rows(8)
-                    ->raw() !!}
+                   ->label(trans('texts.default_invoice_footer'))
+                   ->rows(8)
+                   ->raw() !!}
                     @if ($account->hasFeature(FEATURE_REMOVE_CREATED_BY) && ! $account->isTrial())
                     <div class="help-block">
                         {{ trans('texts.invoice_footer_help')}}
@@ -492,9 +492,9 @@
             <div role="tabpanel" class="tab-pane" id="quote_terms">
                 <div class="panel-body">
                     {!! Former::textarea('quote_terms')
-                    ->label(trans('texts.default_quote_terms'))
-                    ->rows(8)
-                    ->raw() !!}
+                   ->label(trans('texts.default_quote_terms'))
+                   ->rows(8)
+                   ->raw() !!}
                 </div>
             </div>
             @if ($account->hasFeature(FEATURE_DOCUMENTS))
@@ -580,7 +580,7 @@
     function setQuoteNumberEnabled() {
         var disabled = $('#share_counter').prop('checked');
         $('#quote_number_counter').prop('disabled', disabled);
-        $('#quote_number_counter').val(disabled ? '' : {!!json_encode($account ->quote_number_counter) !!
+        $('#quote_number_counter').val(disabled ? '' : {!!json_encode($account->quote_number_counter) !!
         });
     }
 
@@ -601,7 +601,7 @@
             $('#clientNumberDiv').show();
             $('#client_number_counter').val({
                 {
-                    $account ->client_number_counter ? : 1
+                    $account->client_number_counter ? : 1
                 }
             });
         } else {
@@ -616,7 +616,7 @@
             $('#creditNumberDiv').show();
             $('#credit_number_counter').val({
                 {
-                    $account ->credit_number_counter ? : 1
+                    $account->credit_number_counter ? : 1
                 }
             });
         } else {
@@ -650,7 +650,7 @@
     });
 
 
-    var defaultDocuments = {!!$account ->defaultDocuments() ->get() !!
+    var defaultDocuments = {!!$account->defaultDocuments()->get() !!
     };
 
     $(function () {
@@ -670,7 +670,7 @@
             toggleDatePicker('reset_counter_date');
         });
 
-        @if($account ->hasFeature(FEATURE_DOCUMENTS))
+        @if($account->hasFeature(FEATURE_DOCUMENTS))
         @include('partials.dropzone', ['documentSource' => 'defaultDocuments', 'isDefault' => true])
         @endif
     });

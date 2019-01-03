@@ -39,18 +39,18 @@
     <div class="panel-body form-padding-right">
 
         {!! Former::text('reply_to_email')
-        ->placeholder(Auth::user()->registered ? Auth::user()->email : ' ')
-        ->help('reply_to_email_help') !!}
+       ->placeholder(Auth::user()->registered ? Auth::user()->email : ' ')
+       ->help('reply_to_email_help') !!}
 
         {!! Former::text('bcc_email')
-        ->help('bcc_email_help') !!}
+       ->help('bcc_email_help') !!}
 
         &nbsp;
 
         {!! Former::checkbox('pdf_email_attachment')
-        ->text(trans('texts.enable'))
-        ->value(1)
-        ->help(Utils::isNinjaProd() ? '' : (config('pdf.phantomjs.bin_path') ? (config('pdf.phantomjs.cloud_key') ?
+       ->text(trans('texts.enable'))
+       ->value(1)
+       ->help(Utils::isNinjaProd() ? '' : (config('pdf.phantomjs.bin_path') ? (config('pdf.phantomjs.cloud_key') ?
         trans('texts.phantomjs_local_and_cloud') : trans('texts.phantomjs_local')) : trans('texts.phantomjs_help', [
         'link_phantom' => link_to('https://phantomjscloud.com/', 'phantomjscloud.com', ['target' => '_blank']),
         'link_docs' => link_to('https://invoice-ninja.readthedocs.io/en/latest/configure.html#phantomjs', 'PhantomJS',
@@ -58,13 +58,13 @@
         ])) . ' | ' . link_to('/test_headless', trans('texts.test'), ['target' => '_blank'])) !!}
 
         {!! Former::checkbox('document_email_attachment')
-        ->text(trans('texts.enable'))
-        ->value(1) !!}
+       ->text(trans('texts.enable'))
+       ->value(1) !!}
 
         {!! Former::checkbox('ubl_email_attachment')
-        ->text(trans('texts.enable'))
-        ->label(sprintf('%s [%s]', trans('texts.ubl_email_attachment'), trans('texts.beta')))
-        ->value(1) !!}
+       ->text(trans('texts.enable'))
+       ->label(sprintf('%s [%s]', trans('texts.ubl_email_attachment'), trans('texts.beta')))
+       ->value(1) !!}
 
 
         &nbsp;
@@ -81,22 +81,22 @@
     <div class="panel-body form-padding-right">
 
         {!! Former::select('email_design_id')
-        ->appendIcon('question-sign')
-        ->addGroupClass('email_design_id')
-        ->addOption(trans('texts.plain'), EMAIL_DESIGN_PLAIN)
-        ->addOption(trans('texts.light'), EMAIL_DESIGN_LIGHT)
-        ->addOption(trans('texts.dark'), EMAIL_DESIGN_DARK)
-        ->help(trans('texts.email_design_help')) !!}
+       ->appendIcon('question-sign')
+       ->addGroupClass('email_design_id')
+       ->addOption(trans('texts.plain'), EMAIL_DESIGN_PLAIN)
+       ->addOption(trans('texts.light'), EMAIL_DESIGN_LIGHT)
+       ->addOption(trans('texts.dark'), EMAIL_DESIGN_DARK)
+       ->help(trans('texts.email_design_help')) !!}
 
         &nbsp;
 
         @if (Utils::isNinja())
         {!! Former::checkbox('enable_email_markup')
-        ->text(trans('texts.enable') .
+       ->text(trans('texts.enable') .
         '<a href="'.EMAIL_MARKUP_URL.'" target="_blank" title="'.trans('texts.learn_more').'">' .
             Icon::create('question-sign') . '</a> ')
-        ->help(trans('texts.enable_email_markup_help'))
-        ->value(1) !!}
+       ->help(trans('texts.enable_email_markup_help'))
+       ->value(1) !!}
         @endif
     </div>
 </div>

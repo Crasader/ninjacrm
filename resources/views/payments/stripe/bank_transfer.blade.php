@@ -135,10 +135,10 @@
 @section('payment_details')
 
     {!! Former::open($url)
-            ->autocomplete('on')
-            ->addClass('payment-form')
-            ->id('payment-form')
-            ->rules(array(
+           ->autocomplete('on')
+           ->addClass('payment-form')
+           ->id('payment-form')
+           ->rules(array(
                 'country_id' => 'required',
                 'currency_id' => 'required',
                 'account_number' => 'required',
@@ -193,23 +193,23 @@
             ))->inline()->label(trans('texts.account_holder_type'));  !!}
 
         {!! Former::text('account_holder_name')
-               ->label(trans('texts.account_holder_name')) !!}
+              ->label(trans('texts.account_holder_name')) !!}
 
         {!! Former::select('country_id')
-                ->label(trans('texts.country_id'))
-                ->addOption('','')
-                ->fromQuery(Cache::get('countries'), 'name', 'id')
-                ->addGroupClass('country-select') !!}
+               ->label(trans('texts.country_id'))
+               ->addOption('','')
+               ->fromQuery(Cache::get('countries'), 'name', 'id')
+               ->addGroupClass('country-select') !!}
 
         {!! Former::select('currency_id')
-                ->label(trans('texts.currency_id'))
-                ->addOption('','')
-                ->fromQuery(Cache::get('currencies'), 'name', 'code')
-                ->addGroupClass('currency-select') !!}
+               ->label(trans('texts.currency_id'))
+               ->addOption('','')
+               ->fromQuery(Cache::get('currencies'), 'name', 'code')
+               ->addGroupClass('currency-select') !!}
 
         {!! Former::text('')
-                ->id('routing_number')
-                ->label(trans('texts.routing_number')) !!}
+               ->id('routing_number')
+               ->label(trans('texts.routing_number')) !!}
 
         <div class="form-group" style="margin-top:-15px">
             <div class="col-md-8 col-md-offset-4">
@@ -218,17 +218,17 @@
         </div>
 
         {!! Former::text('')
-                ->id('account_number')
-                ->label(trans('texts.account_number')) !!}
+               ->id('account_number')
+               ->label(trans('texts.account_number')) !!}
         {!! Former::text('')
-                ->id('confirm_account_number')
-                ->label(trans('texts.confirm_account_number')) !!}
+               ->id('confirm_account_number')
+               ->label(trans('texts.confirm_account_number')) !!}
     </div>
 
     {!! Former::checkbox('authorize_ach')
-            ->text(trans('texts.ach_authorization', ['company'=>$account->getDisplayName(), 'email' => $account->work_email]))
-            ->label(' ')
-            ->value(1) !!}
+           ->text(trans('texts.ach_authorization', ['company'=>$account->getDisplayName(), 'email' => $account->work_email]))
+           ->label(' ')
+           ->value(1) !!}
 
 
     <div class="col-md-12">
@@ -242,15 +242,15 @@
         {!! Button::normal(strtoupper(trans('texts.cancel')))->large()->asLinkTo($invitation->getLink()) !!}
         &nbsp;&nbsp;
         {!! Button::success(strtoupper(trans('texts.add_account')))
-                        ->submit()
-                        ->withAttributes(['id'=>'add_account_button'])
-                        ->large() !!}
+                       ->submit()
+                       ->withAttributes(['id'=>'add_account_button'])
+                       ->large() !!}
 
         @if ($accountGateway->getPlaidEnabled() && !empty($amount))
             {!! Button::success(request()->capture ? strtoupper(trans('texts.submit')) : strtoupper(trans('texts.pay_now') . ' - ' . $account->formatMoney($amount, $client, CURRENCY_DECORATOR_CODE)  ))
-                        ->submit()
-                        ->withAttributes(['style'=>'display:none', 'id'=>'pay_now_button'])
-                        ->large() !!}
+                       ->submit()
+                       ->withAttributes(['style'=>'display:none', 'id'=>'pay_now_button'])
+                       ->large() !!}
         @endif
 
     </div>

@@ -69,9 +69,9 @@
     {!! Button::success(trans('texts.save'))->submit()->large()->appendIcon(Icon::create('floppy-disk')) !!}
     @if ($product)
     {!! DropdownButton::normal(trans('texts.more_actions'))
-    ->withContents($product->present()->moreActions())
-    ->large()
-    ->dropup() !!}
+   ->withContents($product->present()->moreActions())
+   ->large()
+   ->dropup() !!}
     @endif
 </center>
 @endif

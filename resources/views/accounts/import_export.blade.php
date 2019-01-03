@@ -23,25 +23,25 @@
     <div class="panel-body">
 
         {!! Former::open_for_files('/import')
-        ->onsubmit('return onFormSubmit(event)')
-        ->addClass('warn-on-exit') !!}
+       ->onsubmit('return onFormSubmit(event)')
+       ->addClass('warn-on-exit') !!}
 
         {!! Former::select('source')
-        ->onchange('setFileTypesVisible()')
-        ->options(array_combine(\App\Services\ImportService::$sources, \App\Services\ImportService::$sources))
-        ->style('width: 200px') !!}
+       ->onchange('setFileTypesVisible()')
+       ->options(array_combine(\App\Services\ImportService::$sources, \App\Services\ImportService::$sources))
+       ->style('width: 200px') !!}
 
         <br />
         @foreach (\App\Services\ImportService::$entityTypes as $entityType)
         {!! Former::file($entityType)
-        ->addGroupClass("import-file {$entityType}-file")
-        ->label(Utils::pluralizeEntityType($entityType)) !!}
+       ->addGroupClass("import-file {$entityType}-file")
+       ->label(Utils::pluralizeEntityType($entityType)) !!}
         @endforeach
 
         <div id="jsonIncludes" style="display:none">
             {!! Former::checkboxes('json_include_radio')
-            ->label(trans('texts.include'))
-            ->checkboxes([
+           ->label(trans('texts.include'))
+           ->checkboxes([
             trans('texts.settings') => 'settings',
             trans('texts.data') => 'data',
             ]) !!}
@@ -72,20 +72,20 @@
     </div>
     <div class="panel-body">
         {!! Former::select('format')
-        ->onchange('setCheckboxesEnabled()')
-        ->addOption('CSV', 'CSV')
-        ->addOption('XLS', 'XLS')
-        ->addOption('JSON', 'JSON')
-        ->style('max-width: 200px')
-        ->help('<br />' . trans('texts.export_help') . (Utils::isSelfHost() ? '<b>' .
+       ->onchange('setCheckboxesEnabled()')
+       ->addOption('CSV', 'CSV')
+       ->addOption('XLS', 'XLS')
+       ->addOption('JSON', 'JSON')
+       ->style('max-width: 200px')
+       ->help('<br />' . trans('texts.export_help') . (Utils::isSelfHost() ? '<b>' .
             trans('texts.selfhost_export_help') . '</b>' : '')) !!}
 
 
         <div id="csvIncludes">
             {!! Former::inline_radios('include_radio')
-            ->onchange('setCheckboxesEnabled()')
-            ->label(trans('texts.include'))
-            ->radios([
+           ->onchange('setCheckboxesEnabled()')
+           ->label(trans('texts.include'))
+           ->radios([
             trans('texts.all') . ' &nbsp; ' => ['value' => 'all', 'name' => 'include'],
             trans('texts.selected') => ['value' => 'selected', 'name' => 'include'],
             ])->check('all') !!}

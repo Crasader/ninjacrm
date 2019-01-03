@@ -35,10 +35,10 @@
 @section('payment_details')
 
     {!! Former::open($url)
-            ->autocomplete('on')
-            ->addClass('payment-form')
-            ->id('payment-form')
-            ->rules(array(
+           ->autocomplete('on')
+           ->addClass('payment-form')
+           ->id('payment-form')
+           ->rules(array(
                 'iban' => 'required',
                 'authorize_sepa' => 'required',
             )) !!}
@@ -50,9 +50,9 @@
     {!! Former::text('iban') !!}
 
     {!! Former::checkbox('authorize_sepa')
-            ->text(trans('texts.sepa_authorization', ['company'=>$account->getDisplayName(), 'email' => $account->work_email]))
-            ->label(' ')
-            ->value(1) !!}
+           ->text(trans('texts.sepa_authorization', ['company'=>$account->getDisplayName(), 'email' => $account->work_email]))
+           ->label(' ')
+           ->value(1) !!}
 
 
     <br/>
@@ -62,9 +62,9 @@
         {!! Button::normal(strtoupper(trans('texts.cancel')))->large()->asLinkTo($invitation->getLink()) !!}
         &nbsp;&nbsp;
         {!! Button::success(strtoupper(trans('texts.add_account')))
-                        ->submit()
-                        ->withAttributes(['id'=>'add_account_button'])
-                        ->large() !!}
+                       ->submit()
+                       ->withAttributes(['id'=>'add_account_button'])
+                       ->large() !!}
     </div>
 
     {!! Former::close() !!}

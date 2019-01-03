@@ -121,10 +121,10 @@
 @section('payment_details')
 
     {!! Former::vertical_open($url)
-            ->autocomplete('on')
-            ->addClass('payment-form')
-            ->id('payment-form')
-            ->rules(array(
+           ->autocomplete('on')
+           ->addClass('payment-form')
+           ->id('payment-form')
+           ->rules(array(
                 'first_name' => 'required',
                 'last_name' => 'required',
                 'card_number' => 'required',
@@ -189,23 +189,23 @@
         <div class="row">
             <div class="col-md-6">
                 {!! Former::text('first_name')
-                        ->placeholder(trans('texts.first_name'))
-                        ->label('') !!}
+                       ->placeholder(trans('texts.first_name'))
+                       ->label('') !!}
             </div>
             <div class="col-md-6">
                 {!! Former::text('last_name')
-                        ->placeholder(trans('texts.last_name'))
-                        ->autocomplete('family-name')
-                        ->label('') !!}
+                       ->placeholder(trans('texts.last_name'))
+                       ->autocomplete('family-name')
+                       ->label('') !!}
             </div>
         </div>
 
         <div class="row" style="display:{{ isset($paymentTitle) || empty($contact->email) ? 'block' : 'none' }}">
             <div class="col-md-12">
                 {!! Former::text('email')
-                        ->placeholder(trans('texts.email'))
-                        ->autocomplete('email')
-                        ->label('') !!}
+                       ->placeholder(trans('texts.email'))
+                       ->autocomplete('email')
+                       ->label('') !!}
             </div>
         </div>
     </div>
@@ -218,44 +218,44 @@
             <div class="row">
                 <div class="col-md-6">
                     {!! Former::text('address1')
-                            ->autocomplete('address-line1')
-                            ->placeholder(trans('texts.address1'))
-                            ->label('') !!}
+                           ->autocomplete('address-line1')
+                           ->placeholder(trans('texts.address1'))
+                           ->label('') !!}
                 </div>
                 <div class="col-md-6">
                     {!! Former::text('address2')
-                            ->autocomplete('address-line2')
-                            ->placeholder(trans('texts.address2'))
-                            ->label('') !!}
+                           ->autocomplete('address-line2')
+                           ->placeholder(trans('texts.address2'))
+                           ->label('') !!}
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6">
                     {!! Former::text('city')
-                            ->autocomplete('address-level2')
-                            ->placeholder(trans('texts.city'))
-                            ->label('') !!}
+                           ->autocomplete('address-level2')
+                           ->placeholder(trans('texts.city'))
+                           ->label('') !!}
                 </div>
                 <div class="col-md-6">
                     {!! Former::text('state')
-                            ->autocomplete('address-level1')
-                            ->placeholder(trans('texts.state'))
-                            ->label('') !!}
+                           ->autocomplete('address-level1')
+                           ->placeholder(trans('texts.state'))
+                           ->label('') !!}
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6">
                     {!! Former::text('postal_code')
-                            ->autocomplete('postal-code')
-                            ->placeholder(trans('texts.postal_code'))
-                            ->label('') !!}
+                           ->autocomplete('postal-code')
+                           ->placeholder(trans('texts.postal_code'))
+                           ->label('') !!}
                 </div>
                 <div class="col-md-6">
                     {!! Former::select('country_id')
-                            ->placeholder(trans('texts.country_id'))
-                            ->fromQuery($countries, 'name', 'id')
-                            ->addGroupClass('country-select')
-                            ->label('') !!}
+                           ->placeholder(trans('texts.country_id'))
+                           ->fromQuery($countries, 'name', 'id')
+                           ->addGroupClass('country-select')
+                           ->label('') !!}
                 </div>
             </div>
         </div>
@@ -278,44 +278,44 @@
             <div class="row">
                 <div class="col-md-6">
                     {!! Former::text('shipping_address1')
-                            ->autocomplete('shipping address-line1')
-                            ->placeholder(trans('texts.address1'))
-                            ->label('') !!}
+                           ->autocomplete('shipping address-line1')
+                           ->placeholder(trans('texts.address1'))
+                           ->label('') !!}
                 </div>
                 <div class="col-md-6">
                     {!! Former::text('shipping_address2')
-                            ->autocomplete('shipping address-line2')
-                            ->placeholder(trans('texts.address2'))
-                            ->label('') !!}
+                           ->autocomplete('shipping address-line2')
+                           ->placeholder(trans('texts.address2'))
+                           ->label('') !!}
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6">
                     {!! Former::text('shipping_city')
-                            ->autocomplete('shipping address-level2')
-                            ->placeholder(trans('texts.city'))
-                            ->label('') !!}
+                           ->autocomplete('shipping address-level2')
+                           ->placeholder(trans('texts.city'))
+                           ->label('') !!}
                 </div>
                 <div class="col-md-6">
                     {!! Former::text('shipping_state')
-                            ->autocomplete('shipping address-level1')
-                            ->placeholder(trans('texts.state'))
-                            ->label('') !!}
+                           ->autocomplete('shipping address-level1')
+                           ->placeholder(trans('texts.state'))
+                           ->label('') !!}
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6">
                     {!! Former::text('shipping_postal_code')
-                            ->autocomplete('shipping postal-code')
-                            ->placeholder(trans('texts.postal_code'))
-                            ->label('') !!}
+                           ->autocomplete('shipping postal-code')
+                           ->placeholder(trans('texts.postal_code'))
+                           ->label('') !!}
                 </div>
                 <div class="col-md-6">
                     {!! Former::select('shipping_country_id')
-                            ->placeholder(trans('texts.country_id'))
-                            ->fromQuery($countries, 'name', 'id')
-                            ->addGroupClass('shipping-country-select')
-                            ->label('') !!}
+                           ->placeholder(trans('texts.country_id'))
+                           ->fromQuery($countries, 'name', 'id')
+                           ->addGroupClass('shipping-country-select')
+                           ->label('') !!}
                 </div>
             </div>
         </div>
@@ -515,10 +515,10 @@
                                 <div id="card_number" class="braintree-hosted form-control"></div>
                             @else
                                 {!! Former::text(!empty($tokenize) ? '' : 'card_number')
-                                        ->id('card_number')
-                                        ->placeholder(trans('texts.card_number'))
-                                        ->autocomplete('cc-number')
-                                        ->label('') !!}
+                                       ->id('card_number')
+                                       ->placeholder(trans('texts.card_number'))
+                                       ->autocomplete('cc-number')
+                                       ->label('') !!}
                             @endif
                         </div>
                     </div>
@@ -528,21 +528,21 @@
                                 <div id="expiration_month" class="braintree-hosted form-control"></div>
                             @else
                                 {!! Former::select(!empty($tokenize) ? '' : 'expiration_month')
-                                        ->id('expiration_month')
-                                        ->autocomplete('cc-exp-month')
-                                        ->placeholder(trans('texts.expiration_month'))
-                                          ->addOption('01 - ' . trans('texts.january'), '1')
-                                          ->addOption('02 - ' . trans('texts.february'), '2')
-                                          ->addOption('03 - ' . trans('texts.march'), '3')
-                                          ->addOption('04 - ' . trans('texts.april'), '4')
-                                          ->addOption('05 - ' . trans('texts.may'), '5')
-                                          ->addOption('06 - ' . trans('texts.june'), '6')
-                                          ->addOption('07 - ' . trans('texts.july'), '7')
-                                          ->addOption('08 - ' . trans('texts.august'), '8')
-                                          ->addOption('09 - ' . trans('texts.september'), '9')
-                                          ->addOption('10 - ' . trans('texts.october'), '10')
-                                          ->addOption('11 - ' . trans('texts.november'), '11')
-                                          ->addOption('12 - ' . trans('texts.december'), '12')->label('')
+                                       ->id('expiration_month')
+                                       ->autocomplete('cc-exp-month')
+                                       ->placeholder(trans('texts.expiration_month'))
+                                         ->addOption('01 - ' . trans('texts.january'), '1')
+                                         ->addOption('02 - ' . trans('texts.february'), '2')
+                                         ->addOption('03 - ' . trans('texts.march'), '3')
+                                         ->addOption('04 - ' . trans('texts.april'), '4')
+                                         ->addOption('05 - ' . trans('texts.may'), '5')
+                                         ->addOption('06 - ' . trans('texts.june'), '6')
+                                         ->addOption('07 - ' . trans('texts.july'), '7')
+                                         ->addOption('08 - ' . trans('texts.august'), '8')
+                                         ->addOption('09 - ' . trans('texts.september'), '9')
+                                         ->addOption('10 - ' . trans('texts.october'), '10')
+                                         ->addOption('11 - ' . trans('texts.november'), '11')
+                                         ->addOption('12 - ' . trans('texts.december'), '12')->label('')
                                         !!}
                             @endif
                         </div>
@@ -551,16 +551,16 @@
                                 <div id="expiration_year" class="braintree-hosted form-control"></div>
                             @else
                                 {!! Former::select(!empty($tokenize) ? '' : 'expiration_year')
-                                        ->id('expiration_year')
-                                        ->autocomplete('cc-exp-year')
-                                        ->placeholder(trans('texts.expiration_year'))
-                                        ->options(
+                                       ->id('expiration_year')
+                                       ->autocomplete('cc-exp-year')
+                                       ->placeholder(trans('texts.expiration_year'))
+                                       ->options(
                                             array_combine(
                                                 range(date('Y'), date('Y') + 10),
                                                 range(date('Y'), date('Y') + 10)
                                             )
                                         )
-                                        ->label('') !!}
+                                       ->label('') !!}
                             @endif
                         </div>
                         <div class="col-md-3">
@@ -568,10 +568,10 @@
                                 <div id="cvv" class="braintree-hosted form-control"></div>
                             @else
                                 {!! Former::text(!empty($tokenize) ? '' : 'cvv')
-                                        ->id('cvv')
-                                        ->placeholder(trans('texts.cvv'))
-                                        ->autocomplete('off')
-                                        ->label('') !!}
+                                       ->id('cvv')
+                                       ->placeholder(trans('texts.cvv'))
+                                       ->autocomplete('off')
+                                       ->label('') !!}
                             @endif
                         </div>
                     </div>
@@ -613,12 +613,12 @@
 
         @if (isset($amount))
             {!! Button::success(request()->capture ? strtoupper(trans('texts.submit')) : strtoupper(trans('texts.pay_now') . ' - ' . $account->formatMoney($amount, $client, CURRENCY_DECORATOR_CODE)  ))
-                            ->submit()
-                            ->large() !!}
+                           ->submit()
+                           ->large() !!}
         @else
             {!! Button::success(strtoupper(trans('texts.add_credit_card') ))
-                        ->submit()
-                        ->large() !!}
+                       ->submit()
+                       ->large() !!}
         @endif
     </center>
     <p>&nbsp;</p>

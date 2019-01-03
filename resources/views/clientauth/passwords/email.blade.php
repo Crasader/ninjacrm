@@ -4,8 +4,8 @@
     @include('partials.warn_session', ['redirectTo' => '/client/session_expired'])
     <div class="container">
         {!! Former::open()
-                ->rules(['email' => 'required|email'])
-                ->addClass('form-signin') !!}
+               ->rules(['email' => 'required|email'])
+               ->addClass('form-signin') !!}
 
         <h2 class="form-signin-heading">{{ trans('texts.password_recovery') }}</h2>
         <hr class="green">
@@ -41,8 +41,8 @@
             {!! Former::text('email')->placeholder(trans('texts.email_address'))->raw() !!}
         </div>
         {!! Button::success(trans('texts.send_email'))
-                    ->withAttributes(['class' => 'green'])
-                    ->large()->submit()->block() !!}
+                   ->withAttributes(['class' => 'green'])
+                   ->large()->submit()->block() !!}
 
         <div class="row meta">
             <div class="col-md-12 col-sm-12" style="text-align:center;padding-top:8px;">
