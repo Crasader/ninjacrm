@@ -12,14 +12,19 @@
             "email": "hillelcoren@gmail.com"
         }
     ],
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "optimize-autoloader": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "require": {
         "php": ">=7.0.0",
         "ext-gd": "*",
-        "ext-gmp": "*",
         "anahkiasen/former": "4.*",
         "asgrim/ofxparser": "^1.1",
         "bacon/bacon-qr-code": "^1.0",
-        "barracudanetworks/archivestream-php": "1.0.5",
         "barryvdh/laravel-cors": "^0.9.1",
         "barryvdh/laravel-debugbar": "~2.2",
         "barryvdh/laravel-ide-helper": "~2.2",
@@ -27,8 +32,6 @@
         "chumper/datatable": "dev-add-back-options",
         "cleverit/ubl_invoice": "1.*",
         "codedge/laravel-selfupdater": "5.x-dev",
-        "collizo4sky/omnipay-wepay": "dev-address-fix",
-        "digitickets/omnipay-gocardlessv2": "dev-payment-fix",
         "doctrine/dbal": "2.5.x",
         "dompdf/dompdf": "0.6.2",
         "ezyang/htmlpurifier": "~v4.7",
@@ -36,7 +39,6 @@
         "google/apiclient": "^2.0",
         "guzzlehttp/guzzle": "^6.3",
         "intervention/image": "dev-master",
-        "invoiceninja/omnipay-collection": "^0.10.0",
         "jaybizzle/laravel-crawler-detect": "1.*",
         "jlapp/swaggervel": "master-dev",
         "jonnyw/php-phantomjs": "dev-fixes",
@@ -54,7 +56,6 @@
         "mpdf/mpdf": "7.1.0",
         "nesbot/carbon": "^1.25",
         "nwidart/laravel-modules": "1.*",
-        "omnipay/authorizenet": "dev-solution-id as 2.5.0",
         "patricktalmadge/bootstrapper": "5.5.x",
         "pragmarx/google2fa-laravel": "^0.1.2",
         "predis/predis": "^1.1",
@@ -64,7 +65,6 @@
         "tamayo/laravel-scout-elastic": "^3.0",
         "turbo124/laravel-push-notification": "2.*",
         "webpatser/laravel-countries": "dev-master#75992ad",
-        "websight/l5-google-cloud-storage": "dev-master",
         "wepay/php-sdk": "^0.2",
         "wildbit/postmark-php": "^2.5"
     },
@@ -117,26 +117,7 @@
             "php artisan key:generate"
         ]
     },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
-    "config": {
-        "preferred-install": "dist",
-        "sort-packages": true,
-        "optimize-autoloader": true
-    },
     "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/hillelcoren/l5-google-cloud-storage"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/hillelcoren/omnipay-wepay"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/hillelcoren/omnipay-gocardlessv2"
-        },
         {
             "type": "vcs",
             "url": "https://github.com/hillelcoren/datatable"
